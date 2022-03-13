@@ -25,8 +25,8 @@ namespace AlgoSdk.Examples.AuctionDemo
             if (APPROVAL_PROGRAM == null || APPROVAL_PROGRAM.Length == 0)
             {
                 string projectPath = Directory.GetCurrentDirectory();
-                APPROVAL_PROGRAM = await Util.FullyCompileContract(client, Path.Combine(projectPath, @"Assets\AlgoSdk.Examples\AuctionDemo\auction_approval.teal"));
-                CLEAR_STATE_PROGRAM = await Util.FullyCompileContract(client, Path.Combine(projectPath, @"Assets\AlgoSdk.Examples\AuctionDemo\auction_clear_state.teal"));
+                APPROVAL_PROGRAM = await Util.FullyCompileContract(client, Path.Combine(projectPath, @"Assets\Scripts\AlgoSdk.Examples\AuctionDemo\auction_approval.teal"));
+                CLEAR_STATE_PROGRAM = await Util.FullyCompileContract(client, Path.Combine(projectPath, @"Assets\Scripts\AlgoSdk.Examples\AuctionDemo\auction_clear_state.teal"));
             }
             return (APPROVAL_PROGRAM, CLEAR_STATE_PROGRAM);
         }

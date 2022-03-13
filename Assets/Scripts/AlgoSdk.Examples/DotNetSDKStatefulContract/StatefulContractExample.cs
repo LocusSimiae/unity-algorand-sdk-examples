@@ -44,9 +44,9 @@ namespace AlgoSdk.Examples.StatefulContract
             StateSchema localSchema = new StateSchema() { NumUints = 1, NumByteSlices = 1 };
 
             string projectPath = Directory.GetCurrentDirectory();
-            string approvalPath = Path.Combine(projectPath, @"Assets\AlgoSdk.Examples\DotNetSDKStatefulContract\stateful_approval_init.teal");
-            string approvalRefactPath = Path.Combine(projectPath, @"Assets\AlgoSdk.Examples\DotNetSDKStatefulContract\stateful_approval_refact.teal");
-            string clearPath = Path.Combine(projectPath, @"Assets\AlgoSdk.Examples\DotNetSDKStatefulContract\stateful_clear.teal");
+            string approvalPath = Path.Combine(projectPath, @"Assets\Scripts\AlgoSdk.Examples\DotNetSDKStatefulContract\stateful_approval_init.teal");
+            string approvalRefactPath = Path.Combine(projectPath, @"Assets\Scripts\AlgoSdk.Examples\DotNetSDKStatefulContract\stateful_approval_refact.teal");
+            string clearPath = Path.Combine(projectPath, @"Assets\Scripts\AlgoSdk.Examples\DotNetSDKStatefulContract\stateful_clear.teal");
 
             // user declared approval program (initial)
             byte[] approvalProgram = await Util.FullyCompileContract(client, approvalPath);
