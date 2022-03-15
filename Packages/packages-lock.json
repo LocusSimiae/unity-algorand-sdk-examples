@@ -1,17 +1,17 @@
 {
   "dependencies": {
     "com.careboo.unity-algorand-sdk": {
-      "version": "2.0.0-pre.2",
+      "version": "2.1.0-pre.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.collections": "1.0.0-pre.6",
-        "com.cysharp.unitask": "2.2.5"
+        "com.unity.collections": "1.1.0",
+        "com.cysharp.unitask": "2.3.1"
       },
       "url": "https://package.openupm.com"
     },
     "com.cysharp.unitask": {
-      "version": "2.2.5",
+      "version": "2.3.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
@@ -121,12 +121,12 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collections": {
-      "version": "1.0.0-pre.6",
+      "version": "1.1.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.burst": "1.5.4",
-        "com.unity.test-framework": "1.1.22"
+        "com.unity.test-framework": "1.1.29"
       },
       "url": "https://packages.unity.com"
     },

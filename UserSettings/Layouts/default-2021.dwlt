@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 8
-    y: 51
-    width: 1904
-    height: 1093
+    x: 0
+    y: 43
+    width: 1920
+    height: 1109
   m_ShowMode: 4
-  m_Title: 
+  m_Title: Test Runner
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
-  m_Maximized: 0
+  m_Maximized: 1
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -43,12 +43,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 1904
-    height: 1043
+    width: 1920
+    height: 1059
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 34
+  controlID: 106
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -64,15 +64,15 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1454
+    x: 1466
     y: 0
-    width: 450
-    height: 1043
+    width: 454
+    height: 1059
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 13}
+  m_ActualView: {fileID: 14}
   m_Panes:
-  - {fileID: 13}
+  - {fileID: 14}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &4
@@ -92,13 +92,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 360
-    height: 618
+    width: 363
+    height: 634
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 15}
   m_Panes:
-  - {fileID: 14}
+  - {fileID: 15}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &5
@@ -117,15 +117,15 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 618
-    width: 1454
+    y: 634
+    width: 1466
     height: 425
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 12}
+  m_ActualView: {fileID: 13}
   m_Panes:
-  - {fileID: 12}
-  - {fileID: 17}
+  - {fileID: 13}
+  - {fileID: 18}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &6
@@ -148,8 +148,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1904
-    height: 1093
+    width: 1920
+    height: 1109
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
@@ -173,7 +173,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1904
+    width: 1920
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -194,8 +194,8 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 1073
-    width: 1904
+    y: 1089
+    width: 1920
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -218,12 +218,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1454
-    height: 1043
+    width: 1466
+    height: 1059
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 40
+  controlID: 76
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -243,12 +243,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1454
-    height: 618
+    width: 1466
+    height: 634
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 41
+  controlID: 77
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -259,24 +259,501 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
+  m_Name: TestRunnerWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 360
+    x: 363
     y: 0
-    width: 1094
-    height: 618
-  m_MinSize: {x: 202, y: 221}
+    width: 1103
+    height: 634
+  m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 15}
+  m_ActualView: {fileID: 12}
   m_Panes:
-  - {fileID: 15}
   - {fileID: 16}
-  m_Selected: 0
-  m_LastSelected: 1
+  - {fileID: 17}
+  - {fileID: 12}
+  m_Selected: 2
+  m_LastSelected: 0
 --- !u!114 &12
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13401, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Test Runner
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 363
+    y: 73
+    width: 1101
+    height: 613
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+  m_Spl:
+    ID: 136
+    splitterInitialOffset: 370
+    currentActiveSplitter: -1
+    realSizes:
+    - 301
+    - 242
+    relativeSizes:
+    - 0.5543278
+    - 0.4456722
+    minSizes:
+    - 32
+    - 32
+    maxSizes:
+    - 0
+    - 0
+    lastTotalSize: 543
+    splitSize: 6
+    xOffset: 0
+    m_Version: 1
+    oldRealSizes: 
+    oldMinSizes: 
+    oldMaxSizes: 
+    oldSplitSize: 0
+  m_TestTypeToolbarIndex: 1
+  m_PlayModeTestListGUI:
+    m_Window: {fileID: 12}
+    m_NewResultList:
+    - id: 1042
+      uniqueId: '[unity-algorand-sdk-examples][suite]'
+      name: unity-algorand-sdk-examples
+      fullName: unity-algorand-sdk-examples
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    m_ResultText: 
+    m_ResultStacktrace: 
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 43118221ffffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategoryMask: 0
+      availableCategories:
+      - Uncategorized
+    m_SelectedOption: 0
+  m_EditModeTestListGUI:
+    m_Window: {fileID: 12}
+    m_NewResultList:
+    - id: 1000
+      uniqueId: '[unity-algorand-sdk-examples][suite]'
+      name: unity-algorand-sdk-examples
+      fullName: unity-algorand-sdk-examples
+      resultStatus: 2
+      duration: 0.1481078
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    - id: 1005
+      uniqueId: '[AlgoSdk.Examples.Tests.dll][suite]'
+      name: AlgoSdk.Examples.Tests.dll
+      fullName: C:/Black Hole/Repositories/Alrogrand/unity-algorand-sdk-examples/Library/ScriptAssemblies/AlgoSdk.Examples.Tests.dll
+      resultStatus: 2
+      duration: 0.1197152
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1000
+      parentUniqueId: '[unity-algorand-sdk-examples][suite]'
+    - id: 1006
+      uniqueId: AlgoSdk.Examples.Tests.dll/[AlgoSdk][suite]
+      name: AlgoSdk
+      fullName: AlgoSdk
+      resultStatus: 2
+      duration: 0.1185533
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1005
+      parentUniqueId: '[AlgoSdk.Examples.Tests.dll][suite]'
+    - id: 1007
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/[Examples][suite]
+      name: Examples
+      fullName: AlgoSdk.Examples
+      resultStatus: 2
+      duration: 0.1182994
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1006
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/[AlgoSdk][suite]
+    - id: 1008
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/[AuctionDemo][suite]
+      name: AuctionDemo
+      fullName: AlgoSdk.Examples.AuctionDemo
+      resultStatus: 2
+      duration: 0.1168587
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1007
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/[Examples][suite]
+    - id: 1009
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests][suite]
+      name: Tests
+      fullName: AlgoSdk.Examples.AuctionDemo.Tests
+      resultStatus: 2
+      duration: 0.1158184
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1008
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/[AuctionDemo][suite]
+    - id: 1001
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.SetupTest][suite]
+      name: SetupTest
+      fullName: AlgoSdk.Examples.AuctionDemo.Tests.SetupTest
+      resultStatus: 2
+      duration: 0.1141443
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1009
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests][suite]
+    - id: 1002
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/SetupTest/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.SetupTest.GetAlgodClient]
+      name: GetAlgodClient
+      fullName: AlgoSdk.Examples.AuctionDemo.Tests.SetupTest.GetAlgodClient
+      resultStatus: 1
+      duration: 0.0393537
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.SetupTest][suite]
+    - id: 1004
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/SetupTest/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.SetupTest.GetGenesisAccounts]
+      name: GetGenesisAccounts
+      fullName: AlgoSdk.Examples.AuctionDemo.Tests.SetupTest.GetGenesisAccounts
+      resultStatus: 2
+      duration: 0.0436036
+      messages: "AlgoSdk.SerializationException : Got exception when deserializing
+        \"wallets\" for type AlgoSdk.ListWalletsResponse\r\n  ----> AlgoSdk.SerializationException
+        : Got exception when deserializing \"supported_txs\" for type AlgoSdk.Wallet\r\n 
+        ----> System.TypeInitializationException : The type initializer for 'AlgoSdk.AlgoApiFormatterCache`1'
+        threw an exception.\r\n  ----> System.NotImplementedException : Formatter
+        for type AlgoSdk.TransactionType[] could not be found..."
+      output: 
+      stacktrace: "  at AlgoSdk.AlgoApiObjectFormatter`1[T].Deserialize (AlgoSdk.Json.JsonReader&
+        reader) [0x0006f] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiObjectFormatter.cs:60
+        \r\n  at AlgoSdk.AlgoApiSerializer.DeserializeJson[T] (Unity.Collections.NativeText
+        text) [0x00009] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiSerializer.cs:92
+        \r\n  at AlgoSdk.AlgoApiSerializer.DeserializeJson[T] (Unity.Collections.NativeArray`1[T]
+        bytes) [0x0003d] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiSerializer.cs:63
+        \r\n  at AlgoSdk.AlgoApiSerializer.Deserialize[T] (Unity.Collections.NativeArray`1[T]
+        bytes, AlgoSdk.ContentType contentType) [0x00013] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiSerializer.cs:40
+        \r\n  at AlgoSdk.AlgoApiSerializer.Deserialize[T] (System.Byte[] bytes, AlgoSdk.ContentType
+        contentType) [0x0001e] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiSerializer.cs:26
+        \r\n  at AlgoSdk.AlgoApiResponse`1[T]..ctor (AlgoSdk.AlgoApiResponse response)
+        [0x00015] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiResponse.cs:91
+        \r\n  at AlgoSdk.AlgoApiResponse`1[T].op_Implicit (AlgoSdk.AlgoApiResponse
+        response) [0x00001] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiResponse.cs:127
+        \r\n  at AlgoSdk.AlgoApiRequest+Awaiter`1[TResponse].GetResult () [0x0001d]
+        in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiRequest.cs:426
+        \r\n  at AlgoSdk.Examples.AuctionDemo.Setup.GetGenesisAccounts () [0x00071]
+        in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Assets\\Scripts\\AlgoSdk.Examples\\AuctionDemo\\Setup.cs:33
+        \r\n  at Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1[TResult].GetResult
+        (System.Int16 token) [0x00067] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskCompletionSource.cs:244
+        \r\n  at Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`2[TStateMachine,T].GetResult
+        (System.Int16 token) [0x00002] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\CompilerServices\\StateMachineRunner.cs:342
+        \r\n  at Cysharp.Threading.Tasks.UniTask`1+Awaiter[T].GetResult () [0x00025]
+        in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTask.cs:653
+        \r\n  at AlgoSdk.Examples.AuctionDemo.Tests.SetupTest+<>c.<GetGenesisAccounts>b__2_0
+        () [0x0002e] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Assets\\Scripts\\AlgoSdk.Examples.Test\\AuctionDemo\\SetupTest.cs:41
+        \r\n  at Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1[TResult].GetResult
+        (System.Int16 token) [0x00067] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskCompletionSource.cs:244
+        \r\n  at Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`1[TStateMachine].GetResult
+        (System.Int16 token) [0x00002] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\CompilerServices\\StateMachineRunner.cs:218
+        \r\n  at Cysharp.Threading.Tasks.UniTask+Awaiter.GetResult () [0x00015] in
+        C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTask.cs:312
+        \r\n  at Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.RunTask
+        (Cysharp.Threading.Tasks.UniTask task) [0x00024] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskExtensions.cs:805
+        \r\n  at Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.MoveNext
+        () [0x0003a] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskExtensions.cs:836
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0004e]
+        in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.unity.test-framework@1.1.31\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:46
+        \r\n--SerializationException\r\n  at AlgoSdk.AlgoApiObjectFormatter`1[T].Deserialize
+        (AlgoSdk.Json.JsonReader& reader) [0x0006f] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiObjectFormatter.cs:60
+        \r\n  at AlgoSdk.Formatters.ArrayFormatter`1[T].Deserialize (AlgoSdk.Json.JsonReader&
+        reader) [0x0003c] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\Formatters\\Generics\\ArrayFormatter.cs:22
+        \r\n  at AlgoSdk.AlgoApiField`1+<>c__DisplayClass18_0`1[TAlgoApiObject,T].<Assign>g__deserializeJson|1
+        (TAlgoApiObject& obj, AlgoSdk.Json.JsonReader& reader) [0x00001] in C:\\Black
+        Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiField.cs:98
+        \r\n  at AlgoSdk.AlgoApiObjectFormatter`1[T].Deserialize (AlgoSdk.Json.JsonReader&
+        reader) [0x00050] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiObjectFormatter.cs:56
+        \r\n--TypeInitializationException\r\n  at (wrapper managed-to-native) System.Object.__icall_wrapper_mono_generic_class_init(intptr)\r\n 
+        at AlgoSdk.AlgoApiField`1+<>c__DisplayClass18_0`1[TAlgoApiObject,T].<Assign>g__deserializeJson|1
+        (TAlgoApiObject& obj, AlgoSdk.Json.JsonReader& reader) [0x00001] in C:\\Black
+        Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiField.cs:98
+        \r\n  at AlgoSdk.AlgoApiObjectFormatter`1[T].Deserialize (AlgoSdk.Json.JsonReader&
+        reader) [0x00050] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiObjectFormatter.cs:56
+        \r\n--NotImplementedException\r\n  at AlgoSdk.AlgoApiFormatterCache`1[T]..cctor
+        () [0x00017] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiFormatterCache.cs:18 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.SetupTest][suite]
+    - id: 1003
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/SetupTest/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.SetupTest.GetKmdClient]
+      name: GetKmdClient
+      fullName: AlgoSdk.Examples.AuctionDemo.Tests.SetupTest.GetKmdClient
+      resultStatus: 1
+      duration: 0.0168425
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.SetupTest][suite]
+    m_ResultText: "GetGenesisAccounts (0.044s)\n---\nAlgoSdk.SerializationException
+      : Got exception when deserializing \"wallets\" for type AlgoSdk.ListWalletsResponse\r\n 
+      ----> AlgoSdk.SerializationException : Got exception when deserializing \"supported_txs\"
+      for type AlgoSdk.Wallet\r\n  ----> System.TypeInitializationException : The
+      type initializer for 'AlgoSdk.AlgoApiFormatterCache`1' threw an exception.\r\n 
+      ----> System.NotImplementedException : Formatter for type AlgoSdk.TransactionType[]
+      could not be found...\n---\nat AlgoSdk.AlgoApiObjectFormatter`1[T].Deserialize
+      (AlgoSdk.Json.JsonReader& reader) [0x0006f] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiObjectFormatter.cs:60
+      \r\n  at AlgoSdk.AlgoApiSerializer.DeserializeJson[T] (Unity.Collections.NativeText
+      text) [0x00009] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiSerializer.cs:92
+      \r\n  at AlgoSdk.AlgoApiSerializer.DeserializeJson[T] (Unity.Collections.NativeArray`1[T]
+      bytes) [0x0003d] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiSerializer.cs:63
+      \r\n  at AlgoSdk.AlgoApiSerializer.Deserialize[T] (Unity.Collections.NativeArray`1[T]
+      bytes, AlgoSdk.ContentType contentType) [0x00013] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiSerializer.cs:40
+      \r\n  at AlgoSdk.AlgoApiSerializer.Deserialize[T] (System.Byte[] bytes, AlgoSdk.ContentType
+      contentType) [0x0001e] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiSerializer.cs:26
+      \r\n  at AlgoSdk.AlgoApiResponse`1[T]..ctor (AlgoSdk.AlgoApiResponse response)
+      [0x00015] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiResponse.cs:91
+      \r\n  at AlgoSdk.AlgoApiResponse`1[T].op_Implicit (AlgoSdk.AlgoApiResponse
+      response) [0x00001] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiResponse.cs:127
+      \r\n  at AlgoSdk.AlgoApiRequest+Awaiter`1[TResponse].GetResult () [0x0001d]
+      in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiRequest.cs:426
+      \r\n  at AlgoSdk.Examples.AuctionDemo.Setup.GetGenesisAccounts () [0x00071]
+      in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Assets\\Scripts\\AlgoSdk.Examples\\AuctionDemo\\Setup.cs:33
+      \r\n  at Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1[TResult].GetResult
+      (System.Int16 token) [0x00067] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskCompletionSource.cs:244
+      \r\n  at Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`2[TStateMachine,T].GetResult
+      (System.Int16 token) [0x00002] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\CompilerServices\\StateMachineRunner.cs:342
+      \r\n  at Cysharp.Threading.Tasks.UniTask`1+Awaiter[T].GetResult () [0x00025]
+      in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTask.cs:653
+      \r\n  at AlgoSdk.Examples.AuctionDemo.Tests.SetupTest+<>c.<GetGenesisAccounts>b__2_0
+      () [0x0002e] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Assets\\Scripts\\AlgoSdk.Examples.Test\\AuctionDemo\\SetupTest.cs:41
+      \r\n  at Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1[TResult].GetResult
+      (System.Int16 token) [0x00067] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskCompletionSource.cs:244
+      \r\n  at Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`1[TStateMachine].GetResult
+      (System.Int16 token) [0x00002] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\CompilerServices\\StateMachineRunner.cs:218
+      \r\n  at Cysharp.Threading.Tasks.UniTask+Awaiter.GetResult () [0x00015] in
+      C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTask.cs:312
+      \r\n  at Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.RunTask
+      (Cysharp.Threading.Tasks.UniTask task) [0x00024] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskExtensions.cs:805
+      \r\n  at Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.MoveNext
+      () [0x0003a] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskExtensions.cs:836
+      \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0004e]
+      in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.unity.test-framework@1.1.31\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:46
+      \r\n--SerializationException\r\n  at AlgoSdk.AlgoApiObjectFormatter`1[T].Deserialize
+      (AlgoSdk.Json.JsonReader& reader) [0x0006f] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiObjectFormatter.cs:60
+      \r\n  at AlgoSdk.Formatters.ArrayFormatter`1[T].Deserialize (AlgoSdk.Json.JsonReader&
+      reader) [0x0003c] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\Formatters\\Generics\\ArrayFormatter.cs:22
+      \r\n  at AlgoSdk.AlgoApiField`1+<>c__DisplayClass18_0`1[TAlgoApiObject,T].<Assign>g__deserializeJson|1
+      (TAlgoApiObject& obj, AlgoSdk.Json.JsonReader& reader) [0x00001] in C:\\Black
+      Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiField.cs:98
+      \r\n  at AlgoSdk.AlgoApiObjectFormatter`1[T].Deserialize (AlgoSdk.Json.JsonReader&
+      reader) [0x00050] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiObjectFormatter.cs:56
+      \r\n--TypeInitializationException\r\n  at (wrapper managed-to-native) System.Object.__icall_wrapper_mono_generic_class_init(intptr)\r\n 
+      at AlgoSdk.AlgoApiField`1+<>c__DisplayClass18_0`1[TAlgoApiObject,T].<Assign>g__deserializeJson|1
+      (TAlgoApiObject& obj, AlgoSdk.Json.JsonReader& reader) [0x00001] in C:\\Black
+      Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiField.cs:98
+      \r\n  at AlgoSdk.AlgoApiObjectFormatter`1[T].Deserialize (AlgoSdk.Json.JsonReader&
+      reader) [0x00050] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiObjectFormatter.cs:56
+      \r\n--NotImplementedException\r\n  at AlgoSdk.AlgoApiFormatterCache`1[T]..cctor
+      () [0x00017] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiFormatterCache.cs:18"
+    m_ResultStacktrace: "  at AlgoSdk.AlgoApiObjectFormatter`1[T].Deserialize (AlgoSdk.Json.JsonReader&
+      reader) [0x0006f] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiObjectFormatter.cs:60
+      \r\n  at AlgoSdk.AlgoApiSerializer.DeserializeJson[T] (Unity.Collections.NativeText
+      text) [0x00009] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiSerializer.cs:92
+      \r\n  at AlgoSdk.AlgoApiSerializer.DeserializeJson[T] (Unity.Collections.NativeArray`1[T]
+      bytes) [0x0003d] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiSerializer.cs:63
+      \r\n  at AlgoSdk.AlgoApiSerializer.Deserialize[T] (Unity.Collections.NativeArray`1[T]
+      bytes, AlgoSdk.ContentType contentType) [0x00013] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiSerializer.cs:40
+      \r\n  at AlgoSdk.AlgoApiSerializer.Deserialize[T] (System.Byte[] bytes, AlgoSdk.ContentType
+      contentType) [0x0001e] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiSerializer.cs:26
+      \r\n  at AlgoSdk.AlgoApiResponse`1[T]..ctor (AlgoSdk.AlgoApiResponse response)
+      [0x00015] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiResponse.cs:91
+      \r\n  at AlgoSdk.AlgoApiResponse`1[T].op_Implicit (AlgoSdk.AlgoApiResponse
+      response) [0x00001] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiResponse.cs:127
+      \r\n  at AlgoSdk.AlgoApiRequest+Awaiter`1[TResponse].GetResult () [0x0001d]
+      in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\AlgoApi\\AlgoApiRequest.cs:426
+      \r\n  at AlgoSdk.Examples.AuctionDemo.Setup.GetGenesisAccounts () [0x00071]
+      in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Assets\\Scripts\\AlgoSdk.Examples\\AuctionDemo\\Setup.cs:33
+      \r\n  at Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1[TResult].GetResult
+      (System.Int16 token) [0x00067] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskCompletionSource.cs:244
+      \r\n  at Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`2[TStateMachine,T].GetResult
+      (System.Int16 token) [0x00002] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\CompilerServices\\StateMachineRunner.cs:342
+      \r\n  at Cysharp.Threading.Tasks.UniTask`1+Awaiter[T].GetResult () [0x00025]
+      in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTask.cs:653
+      \r\n  at AlgoSdk.Examples.AuctionDemo.Tests.SetupTest+<>c.<GetGenesisAccounts>b__2_0
+      () [0x0002e] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Assets\\Scripts\\AlgoSdk.Examples.Test\\AuctionDemo\\SetupTest.cs:41
+      \r\n  at Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1[TResult].GetResult
+      (System.Int16 token) [0x00067] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskCompletionSource.cs:244
+      \r\n  at Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`1[TStateMachine].GetResult
+      (System.Int16 token) [0x00002] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\CompilerServices\\StateMachineRunner.cs:218
+      \r\n  at Cysharp.Threading.Tasks.UniTask+Awaiter.GetResult () [0x00015] in
+      C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTask.cs:312
+      \r\n  at Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.RunTask
+      (Cysharp.Threading.Tasks.UniTask task) [0x00024] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskExtensions.cs:805
+      \r\n  at Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.MoveNext
+      () [0x0003a] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskExtensions.cs:836
+      \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0004e]
+      in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.unity.test-framework@1.1.31\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:46
+      \r\n--SerializationException\r\n  at AlgoSdk.AlgoApiObjectFormatter`1[T].Deserialize
+      (AlgoSdk.Json.JsonReader& reader) [0x0006f] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiObjectFormatter.cs:60
+      \r\n  at AlgoSdk.Formatters.ArrayFormatter`1[T].Deserialize (AlgoSdk.Json.JsonReader&
+      reader) [0x0003c] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\Formatters\\Generics\\ArrayFormatter.cs:22
+      \r\n  at AlgoSdk.AlgoApiField`1+<>c__DisplayClass18_0`1[TAlgoApiObject,T].<Assign>g__deserializeJson|1
+      (TAlgoApiObject& obj, AlgoSdk.Json.JsonReader& reader) [0x00001] in C:\\Black
+      Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiField.cs:98
+      \r\n  at AlgoSdk.AlgoApiObjectFormatter`1[T].Deserialize (AlgoSdk.Json.JsonReader&
+      reader) [0x00050] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiObjectFormatter.cs:56
+      \r\n--TypeInitializationException\r\n  at (wrapper managed-to-native) System.Object.__icall_wrapper_mono_generic_class_init(intptr)\r\n 
+      at AlgoSdk.AlgoApiField`1+<>c__DisplayClass18_0`1[TAlgoApiObject,T].<Assign>g__deserializeJson|1
+      (TAlgoApiObject& obj, AlgoSdk.Json.JsonReader& reader) [0x00001] in C:\\Black
+      Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiField.cs:98
+      \r\n  at AlgoSdk.AlgoApiObjectFormatter`1[T].Deserialize (AlgoSdk.Json.JsonReader&
+      reader) [0x00050] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiObjectFormatter.cs:56
+      \r\n--NotImplementedException\r\n  at AlgoSdk.AlgoApiFormatterCache`1[T]..cctor
+      () [0x00017] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.careboo.unity-algorand-sdk@2.1.0-pre.5\\Runtime\\CareBoo.AlgoSdk\\Serialization\\AlgoApiFormatterCache.cs:18 "
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 1cfa798b
+      m_LastClickedID: -1954940388
+      m_ExpandedIDs: 1534ce929eaba697afa2bca011d5c7cbfd2468d649d4f9d9fe3ef2edf7bb4e027c8a960343118221d9825439f6ac43611172b77fffffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategoryMask: 0
+      availableCategories:
+      - Uncategorized
+--- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,9 +773,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 8
-    y: 699
-    width: 1453
+    x: 0
+    y: 707
+    width: 1465
     height: 404
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -317,22 +794,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scripts/AlgoSdk.Examples.Test
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scripts/AlgoSdk.Examples.Test
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d2640000
-    m_LastClickedID: 25810
-    m_ExpandedIDs: 00000000d264000000ca9a3bffffff7f
+    m_SelectedIDs: f8660000
+    m_LastClickedID: 26360
+    m_ExpandedIDs: 00000000ba660000c466000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -348,7 +825,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 5}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -360,7 +837,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 
+    m_ExpandedIDs: 00000000ba660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -387,7 +864,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -404,7 +881,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 5}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -416,7 +893,7 @@ MonoBehaviour:
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
---- !u!114 &13
+--- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -436,10 +913,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1462
-    y: 81
-    width: 449
-    height: 1022
+    x: 1466
+    y: 73
+    width: 453
+    height: 1038
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -457,7 +934,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
---- !u!114 &14
+--- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -477,10 +954,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 8
-    y: 81
-    width: 359
-    height: 597
+    x: 0
+    y: 73
+    width: 362
+    height: 613
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -490,7 +967,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 20fbffff
+      m_ExpandedIDs: 7efaffff2cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -506,7 +983,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
+        m_ClientGUIView: {fileID: 4}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -514,7 +991,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: 4c969a2b90040154d917609493e03593
---- !u!114 &15
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -534,10 +1011,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 368
-    y: 81
-    width: 1092
-    height: 597
+    x: 363
+    y: 73
+    width: 1101
+    height: 613
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -794,7 +1271,7 @@ MonoBehaviour:
       m_Fade:
         m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
@@ -841,7 +1318,7 @@ MonoBehaviour:
   m_SceneVisActive: 1
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &16
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -861,10 +1338,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 507
-    y: 94
-    width: 1532
-    height: 790
+    x: 363
+    y: 73
+    width: 1101
+    height: 613
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -875,10 +1352,10 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1532, y: 769}
+  m_TargetSize: {x: 1101, y: 592}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
-  m_RenderIMGUI: 0
+  m_RenderIMGUI: 1
   m_EnterPlayModeBehavior: 0
   m_UseMipMap: 0
   m_VSyncEnabled: 0
@@ -890,10 +1367,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -766
-    m_HBaseRangeMax: 766
-    m_VBaseRangeMin: -395
-    m_VBaseRangeMax: 395
+    m_HBaseRangeMin: -550.5
+    m_HBaseRangeMax: 550.5
+    m_VBaseRangeMin: -306.5
+    m_VBaseRangeMax: 306.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -911,29 +1388,29 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 1532
-      height: 790
+      width: 1101
+      height: 613
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 766, y: 395}
+    m_Translation: {x: 550.5, y: 306.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -766
-      y: -395
-      width: 1532
-      height: 790
+      x: -550.5
+      y: -306.5
+      width: 1101
+      height: 613
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1532, y: 790}
+  m_LastWindowPixelSize: {x: 1101, y: 613}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
---- !u!114 &17
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -953,10 +1430,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2249
-    y: 726.5
-    width: 920
-    height: 250
+    x: 0
+    y: 707
+    width: 1465
+    height: 404
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
