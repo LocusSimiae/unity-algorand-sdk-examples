@@ -1,16 +1,15 @@
-﻿using AlgoSdk;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.TestTools;
 
-namespace AlgoSdk.Examples.AuctionDemo.Tests
+namespace AlgoSdk.Examples.AuctionDemo
 {
     [TestFixture]
-    public class SetupTest
+    public class Tests
     {
-        [UnityTest]
+        [UnityTest, Order(1)]
         public IEnumerator GetAlgodClient() => UniTask.ToCoroutine(async () =>
         {
             Setup setup = new Setup();
@@ -21,7 +20,7 @@ namespace AlgoSdk.Examples.AuctionDemo.Tests
             Assert.IsFalse(response.Error.IsError, "Couldn't connect to Algorand!");
         });
 
-        [UnityTest]
+        [UnityTest, Order(2)]
         public IEnumerator GetKmdClient() => UniTask.ToCoroutine(async () =>
         {
             Setup setup = new Setup();
@@ -34,7 +33,7 @@ namespace AlgoSdk.Examples.AuctionDemo.Tests
             Assert.AreEqual("v1", response.Payload.Versions[0], "Unexpected version!");
         });
 
-        [UnityTest]
+        [UnityTest, Order(3)]
         public IEnumerator GetGenesisAccounts() => UniTask.ToCoroutine(async () =>
         {
             Setup setup = new Setup();
@@ -46,5 +45,10 @@ namespace AlgoSdk.Examples.AuctionDemo.Tests
             //    len(base64.b64decode(account.getPrivateKey())) == 64 for account in accounts
         });
 
+        [UnityTest, Order(4)]
+        public IEnumerator RunAuctionDemo() => UniTask.ToCoroutine(async () =>
+        {
+            await AuctionDemoExample.Run();
+        });
     }
 }

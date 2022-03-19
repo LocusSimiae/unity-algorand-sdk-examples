@@ -9,7 +9,7 @@ namespace AlgoSdk.Examples.AuctionDemo
     {
         private void Start() => Run().Forget();
 
-        private static async UniTaskVoid Run()
+        public static async UniTask Run()
         {
             Debug.Log("Auction demo started!");
 

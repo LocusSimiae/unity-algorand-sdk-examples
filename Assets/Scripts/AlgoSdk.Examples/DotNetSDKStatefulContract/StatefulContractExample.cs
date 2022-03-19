@@ -16,7 +16,7 @@ namespace AlgoSdk.Examples.StatefulContract
     {
         private void Start() => Run().Forget();
 
-        private static async UniTaskVoid Run()
+        public static async UniTask Run()
         {
             Debug.Log("Started stateful contract example!");
             
@@ -65,7 +65,7 @@ namespace AlgoSdk.Examples.StatefulContract
             await OptIn(client, user, appId);
 
             // call application without arguments
-            //await CallApp(client, user, appId, null); //throws error because args are null???
+            await CallApp(client, user, appId, null); //throws error because args are null???
 
             // read local state of application from user account
             await ReadLocalState(client, user, appId);
