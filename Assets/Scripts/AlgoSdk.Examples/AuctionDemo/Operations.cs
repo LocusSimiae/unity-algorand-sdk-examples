@@ -16,6 +16,8 @@ namespace AlgoSdk.Examples.AuctionDemo
         static byte[] APPROVAL_PROGRAM;
         static byte[] CLEAR_STATE_PROGRAM;
 
+        static readonly Address ZERO_ADDRESS = Address.FromString("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ");
+
         /// <summary>
         /// Get the compiled TEAL contracts for the auction.
         /// </summary>
@@ -240,7 +242,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             ulong nftId = value.UintValue;
 
             Address? prevBidLeader = GetAddressFromAppState(appGlobalState, "bid_account");
-            if(!prevBidLeader.HasValue)
+            if(!prevBidLeader.HasValue || prevBidLeader.Value == ZERO_ADDRESS)
             {
                 Debug.Log("No previous bidder found. Placing first bid!");
             }

@@ -77,7 +77,6 @@ namespace AlgoSdk.Examples.AuctionDemo
             Debug.Log($"Alice's balances: {sellerBalancesBefore.ToDebugString()}");
 
             var (_, lastRoundTime) = await Util.GetLastBlockTimestamp(client);
-            Debug.Log($"Last round timestamp is {lastRoundTime}");
             if (lastRoundTime < startTime + 5)
             {
                 int waitTime = (int)(startTime + 5 - lastRoundTime);
