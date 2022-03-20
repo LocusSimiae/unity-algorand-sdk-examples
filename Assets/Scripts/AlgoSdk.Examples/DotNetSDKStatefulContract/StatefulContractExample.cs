@@ -9,6 +9,7 @@ using Unity.Collections;
 using UnityEngine;
 using Account = AlgoSdk.Examples.AuctionDemo.Account;
 using Resources = AlgoSdk.Examples.AuctionDemo.Resources;
+using AlgoSdk.LowLevel;
 
 namespace AlgoSdk.Examples.StatefulContract
 {
@@ -80,7 +81,7 @@ namespace AlgoSdk.Examples.StatefulContract
 
             // call application with arguments
             var date = DateTime.Now;
-            Debug.Log(date.ToString("yyyy-MM-dd 'at' HH:mm:ss"));
+            Debug.Log($"Sending app argument: {date.ToString("yyyy-MM-dd 'at' HH:mm:ss")}");
             List<byte[]> appArgs = new List<byte[]>
             {
                 System.Text.Encoding.UTF8.GetBytes(date.ToString("yyyy-MM-dd 'at' HH:mm:ss"))
@@ -90,6 +91,9 @@ namespace AlgoSdk.Examples.StatefulContract
 
             // read local state of application from user account
             await ReadLocalState(client, user, appId);
+
+            // read global state of application
+            await ReadGlobalState(client, creator, appId);
 
             // close-out from application
             await CloseOutApp(client, user, appId);
@@ -102,6 +106,9 @@ namespace AlgoSdk.Examples.StatefulContract
 
             // read local state of application from user account
             await ReadLocalState(client, user, appId);
+
+            // read global state of application
+            await ReadGlobalState(client, creator, appId);
 
             // delete application
             await DeleteApp(client, creator, appId);
@@ -341,10 +348,20 @@ namespace AlgoSdk.Examples.StatefulContract
                 return;
             }
 
+            CompiledTeal[] compiledTeals = null;
+            if(args != null && args.Count > 0)
+            {
+                compiledTeals = new CompiledTeal[args.Count];
+                for (int i = 0; i < compiledTeals.Length; i++)
+                {
+                    compiledTeals[i] = args[i];
+                }
+            }
+
             var txn = Transaction.AppCall(
                 sender: sender.Address,
                 applicationId: appId,
-                appArguments: args?.SelectMany(x => x).ToArray(),
+                appArguments: compiledTeals,
                 txnParams: txnParams
             );
 
@@ -402,21 +419,6 @@ namespace AlgoSdk.Examples.StatefulContract
             {
                 Debug.Log($"[ReadGlobalState] Application global state: { GetAppStateValues(app.Params.GlobalState) }");
             }
-
-            //var (error, application) = await client.GetApplication(appId);
-            //if (error.IsError)
-            //{
-            //    Debug.LogError($"Algod GetApplication failed: {error.Message}");
-            //    return;
-            //}
-
-            //return application.Params.GlobalState.ToDictionary(
-            //    x =>
-            //    {
-            //        FixedString128Bytes keyDecoded = default;
-            //        x.Key.Base64ToUtf8(ref keyDecoded);
-            //        return keyDecoded.ToString();
-            //    }, x => x.Value);
         }
 
         static string GetAppStateValues(TealKeyValue[] keyValues)
@@ -437,10 +439,11 @@ namespace AlgoSdk.Examples.StatefulContract
                 }
                 else if (value.Type == TealValueType.Bytes)
                 {
-                    FixedString128Bytes encodedValue = value.Bytes.ToString();
-                    FixedString128Bytes decodedValue = default;
-                    encodedValue.Base64ToUtf8(ref decodedValue);
-                    outStr += "(bytes) " + decodedValue.ToString();
+                    //FixedString128Bytes encodedValue = value.Bytes.ToString();
+                    //FixedString128Bytes decodedValue = default;
+                    //encodedValue.Base64ToUtf8(ref decodedValue);
+                    //outStr += "(bytes) " + encodedValue;
+                    outStr += "(bytes) " + System.Text.Encoding.UTF8.GetString(value.Bytes.ToArray());
                 }
                 else
                 {
@@ -470,10 +473,11 @@ namespace AlgoSdk.Examples.StatefulContract
                 }
                 else if (value.Action == EvalDeltaAction.SetBytes)
                 {
-                    FixedString128Bytes encodedValue = value.Bytes.ToString();
-                    FixedString128Bytes decodedValue = default;
-                    encodedValue.Base64ToUtf8(ref decodedValue);
-                    outStr += "(set bytes) " + decodedValue.ToString();
+                    //FixedString128Bytes encodedValue = value.Bytes.ToString();
+                    //FixedString128Bytes decodedValue = default;
+                    //encodedValue.Base64ToUtf8(ref decodedValue);
+                    //outStr += "(set bytes) " + encodedValue;
+                    outStr += "(set bytes) " + System.Text.Encoding.UTF8.GetString(value.Bytes.ToArray());
                 }
                 else if(value.Action == EvalDeltaAction.Delete)
                 {

@@ -85,7 +85,6 @@ namespace AlgoSdk.Examples.AuctionDemo
 
             var txnsArray = txns.Select(x => x.GetId()).ToArray();
             var groupId = Transaction.GetGroupId(txnsArray);
-            //txns.ForEach(x => x.Group = groupId);
 
             List<Signed<PaymentTxn>> signedTxns = new List<Signed<PaymentTxn>>();
             for (int i = 0; i < txns.Count; ++i)
@@ -93,7 +92,6 @@ namespace AlgoSdk.Examples.AuctionDemo
                 Account fundingAccount = genesisAccounts[i % genesisAccounts.Count];
                 PaymentTxn txn = txns[i];
                 txn.Group = groupId;
-                //signedTxns.Add(txns[i].Sign(fundingAccount.PrivateKey.ToKeyPair().SecretKey));
                 signedTxns.Add(txn.Sign(fundingAccount.PrivateKey.ToKeyPair().SecretKey));
             }
 
@@ -140,7 +138,6 @@ namespace AlgoSdk.Examples.AuctionDemo
                 assetId
             );
 
-            //assetOptInTxn.AssetReceiver = kp.PublicKey;
             var signedTxn = assetOptInTxn.Sign(kp.SecretKey);
             var (txnErr, txid) = await client.SendTransaction(signedTxn);
             if (txnErr.IsError)

@@ -1,7 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.TestTools;
 
 namespace AlgoSdk.Examples.AuctionDemo
@@ -9,6 +11,25 @@ namespace AlgoSdk.Examples.AuctionDemo
     [TestFixture]
     public class Tests
     {
+        [UnityTest, Order(1)]
+        public IEnumerator CheckCurrentAndLastBlockTimes() => UniTask.ToCoroutine(async () =>
+        {
+            Setup setup = new Setup();
+            IAlgodClient client = setup.AlgodClient;
+
+            ulong currentTime =(ulong) DateTimeOffset.Now.ToUnixTimeSeconds();
+            Debug.Log($"Current timestamp is {currentTime}");
+
+            var (_, lastBlockTime) = await Util.GetLastBlockTimestamp(client);
+            Debug.Log($"Last block timestamp is {lastBlockTime}");
+
+            long difference = (long)(currentTime - lastBlockTime);
+            Debug.Log($"Timestamps are off by { difference } seconds");
+
+            Assert.IsTrue(currentTime >= lastBlockTime, "Current timestamp should be bigger than last round!");
+            Assert.IsTrue(difference < 60, "The timestamps are off by more than 1 minute! Is the client synched to the latest block?");
+        });
+
         [UnityTest, Order(1)]
         public IEnumerator GetAlgodClient() => UniTask.ToCoroutine(async () =>
         {

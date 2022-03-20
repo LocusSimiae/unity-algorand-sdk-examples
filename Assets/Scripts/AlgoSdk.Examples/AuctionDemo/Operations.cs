@@ -1,4 +1,5 @@
 ﻿using AlgoSdk;
+using AlgoSdk.Crypto;
 using AlgoSdk.LowLevel;
 using Cysharp.Threading.Tasks;
 using System;
@@ -50,7 +51,6 @@ namespace AlgoSdk.Examples.AuctionDemo
         {
             var (approval, clear) = await GetContracts(client);
 
-            //StateSchema globalSchema = new StateSchema() { NumUints = 7, NumByteSlices = 2 };
             StateSchema globalSchema = new StateSchema() { NumUints = 7, NumByteSlices = 2 };
             StateSchema localSchema = new StateSchema() { NumUints = 0, NumByteSlices = 0 };
 
@@ -64,15 +64,13 @@ namespace AlgoSdk.Examples.AuctionDemo
             AppCallTxn txn = Transaction.AppCreate(sender.Address, txnParams, approval, clear, globalSchema, localSchema);
             txn.OnComplete = OnCompletion.NoOp;
 
-            List<byte> appArgs = new List<byte>();
-            //appArgs.AddRange(seller.ToPublicKey().ToArray());
-            //appArgs.AddRange(Base32Encoding.ToBytes(seller.ToFixedString().ToString()));
-            appArgs.AddRange(seller.ToArray());
-            appArgs.AddRange(nftId.ToBytesBigEndian(Allocator.Persistent));
-            appArgs.AddRange(startTime.ToBytesBigEndian(Allocator.Persistent));
-            appArgs.AddRange(endTime.ToBytesBigEndian(Allocator.Persistent));
-            appArgs.AddRange(reserve.ToBytesBigEndian(Allocator.Persistent));
-            appArgs.AddRange(minBidIncrement.ToBytesBigEndian(Allocator.Persistent));
+            List<byte[]> appArgs = new List<byte[]>();
+            appArgs.Add(seller.ToPublicKey().ToArray());
+            appArgs.Add(nftId.ToBytesBigEndian(Allocator.Temp).ToArray());
+            appArgs.Add(startTime.ToBytesBigEndian(Allocator.Temp).ToArray());
+            appArgs.Add(endTime.ToBytesBigEndian(Allocator.Temp).ToArray());
+            appArgs.Add(reserve.ToBytesBigEndian(Allocator.Temp).ToArray());
+            appArgs.Add(minBidIncrement.ToBytesBigEndian(Allocator.Temp).ToArray());
 
             /*
                 app_args = [
@@ -84,7 +82,14 @@ namespace AlgoSdk.Examples.AuctionDemo
                 minBidIncrement.to_bytes(8, "big"),
             ]
             */
-            txn.AppArguments = appArgs.ToArray();
+
+            CompiledTeal[] compiledTeals = new CompiledTeal[appArgs.Count];
+            for(int i = 0; i < compiledTeals.Length; i++)
+            {
+                compiledTeals[i] = appArgs[i];
+            }
+
+            txn.AppArguments = compiledTeals;
 
             var signedTxn = txn.Sign(sender.PrivateKey.ToKeyPair().SecretKey);
 
@@ -162,12 +167,15 @@ namespace AlgoSdk.Examples.AuctionDemo
                 txnParams: txnParams
             );
 
+            CompiledTeal[] appArgs = new CompiledTeal[1];
+            appArgs[0].Bytes = System.Text.Encoding.UTF8.GetBytes("setup");
+
             AppCallTxn setupTxn = Transaction.AppCall(
                 sender: funder.Address,
                 applicationId: appId,
                 txnParams: txnParams,
                 onComplete: OnCompletion.NoOp,
-                appArguments: "setup".Select(x => Convert.ToByte(x)).ToArray(),
+                appArguments: appArgs,
                 foreignAssets: new ulong[] { nftId }
             );
 
@@ -224,21 +232,22 @@ namespace AlgoSdk.Examples.AuctionDemo
             var appGlobalState = await Util.GetAppGlobalState(client, appId);
 
             TealValue value = default;
-            if (appGlobalState.TryGetValue("nft_id", out value))
+            if (!appGlobalState.TryGetValue("nft_id", out value))
             {
                 Debug.LogError($"[PlaceBid] Unable to get nft_id from app global state");
                 return;
             }
             ulong nftId = value.UintValue;
 
-            /*
-               if any(appGlobalState[b"bid_account"]):
-                   # if "bid_account" is not the zero address
-                   prevBidLeader = encoding.encode_address(appGlobalState[b"bid_account"])
-               else:
-                   prevBidLeader = None
-            */
             Address? prevBidLeader = GetAddressFromAppState(appGlobalState, "bid_account");
+            if(!prevBidLeader.HasValue)
+            {
+                Debug.Log("No previous bidder found. Placing first bid!");
+            }
+            else
+            {
+                Debug.Log($"Previous bidder found: { prevBidLeader.Value }");
+            }
 
             var (txnParamsError, txnParams) = await client.GetSuggestedParams();
             if (txnParamsError.IsError)
@@ -254,11 +263,14 @@ namespace AlgoSdk.Examples.AuctionDemo
                 txnParams: txnParams
             );
 
+            CompiledTeal[] appArgs = new CompiledTeal[1];
+            appArgs[0].Bytes = System.Text.Encoding.UTF8.GetBytes("bid");
+
             AppCallTxn appCallTxn = Transaction.AppCall(
                 sender: bidder.Address,
                 applicationId: appId,
                 onComplete: OnCompletion.NoOp,
-                appArguments: "bid".Select(x => Convert.ToByte(x)).ToArray(),
+                appArguments: appArgs,
                 foreignAssets: new ulong[] { nftId },
                 accounts: prevBidLeader.HasValue ? new Address[] { prevBidLeader.Value } : null,
                 txnParams: txnParams
@@ -316,7 +328,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             var appGlobalState = await Util.GetAppGlobalState(client, appId);
 
             TealValue value = default;
-            if (appGlobalState.TryGetValue("nft_id", out value))
+            if (!appGlobalState.TryGetValue("nft_id", out value))
             {
                 Debug.LogError($"[CloseAuction] Unable to get nft_id from app global state");
                 return;
@@ -360,13 +372,13 @@ namespace AlgoSdk.Examples.AuctionDemo
 
         private static Address? GetAddressFromAppState(Dictionary<string, TealValue> globalAppState, string key)
         {
-            Address? address = default;
+            Address? address = null;
             if (globalAppState.ContainsKey(key))
             {
-                FixedString128Bytes addressBytes = globalAppState[key].Bytes.ToString();
-                FixedString128Bytes decodedAddress = default;
-                addressBytes.Base64ToUtf8(ref decodedAddress);
-                address = decodedAddress.ToString();
+                byte[] publicKeyBytes = globalAppState[key].Bytes.ToArray();
+                Ed25519.PublicKey publicKey = default;
+                publicKey.CopyFrom(publicKeyBytes, 0);
+                address = Address.FromPublicKey(publicKey);
             }
             return address;
         }

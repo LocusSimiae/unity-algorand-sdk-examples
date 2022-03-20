@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Collections;
 using UnityEngine;
+using AlgoSdk.LowLevel;
 
 namespace AlgoSdk.Examples.AuctionDemo
 {
@@ -89,22 +90,6 @@ namespace AlgoSdk.Examples.AuctionDemo
             return state
         */
 
-        //public static async UniTask<Dictionary<byte[], TealValue>> DecodeState(TealKeyValue[] stateArray)
-        //{
-        //    stateArray.ToDictionary(x => x.Key, x => x.Value);
-        //    //Dictionary<byte, TealValue> state = new Dictionary<byte, TealValue>();
-
-        //    //foreach (TealKeyValue kv in stateArray)
-        //    //{
-        //    //    byte[] key = Convert.FromBase64String(kv.Key.ToString());
-        //    //    TealValue value = kv.Value;
-        //    //    Type valueType = value.GetType();
-        //    //    value.Bytes
-        //    //}
-
-        //    //return state;
-        //}
-
         public static async UniTask<Dictionary<string, TealValue>> GetAppGlobalState(IAlgodClient client, ulong appId)
         {
             var (error, application) = await client.GetApplication(appId);
@@ -114,14 +99,15 @@ namespace AlgoSdk.Examples.AuctionDemo
                 return null;
             }
 
+            //uses decodeState func in Python (see above)
             return application.Params.GlobalState.ToDictionary(
                 x =>
                 {
-                    FixedString128Bytes keyDecoded = default;
-                    x.Key.Base64ToUtf8(ref keyDecoded);
-                    return keyDecoded.ToString();
+                    FixedString128Bytes encodedKey = x.Key;
+                    FixedString128Bytes decodedKey = default;
+                    encodedKey.Base64ToUtf8(ref decodedKey);
+                    return decodedKey.Value;
                 }, x => x.Value);
-            //return await DecodeState(application.Params.GlobalState);
         }
 
         public static async UniTask<Dictionary<ulong, ulong>> GetBalances(IAlgodClient client, Address account)

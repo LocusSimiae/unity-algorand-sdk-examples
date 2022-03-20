@@ -34,11 +34,11 @@ namespace AlgoSdk.Examples.AuctionDemo
             Debug.Log($"Alice's balances: {sellerBalances.ToDebugString()}");
 
 
-            ulong startTime = (ulong)DateTime.UtcNow.ToFileTimeUtc() + 10;  // start time is 10 seconds in the future
+            ulong startTime = (ulong) DateTimeOffset.Now.ToUnixTimeSeconds() + 30;  // start time is 30 seconds in the future
             ulong endTime = startTime + 30;  // end time is 30 seconds after start
             ulong reserve = 1_000_000;  // 1 Algo
             ulong increment = 100_000;  // 0.1 Algo
-            Debug.Log("Bob is creating an auction that lasts 30 seconds to auction off the NFT...");
+            Debug.Log($"Bob is creating an auction that lasts 30 seconds to auction off the NFT... (start time is {startTime})");
 
             ulong appId = await Operations.CreateAuctionApp(
                 client: client,
@@ -76,10 +76,13 @@ namespace AlgoSdk.Examples.AuctionDemo
             ulong sellerAlgosBefore = sellerBalancesBefore[0];
             Debug.Log($"Alice's balances: {sellerBalancesBefore.ToDebugString()}");
 
-            var (_, lastRoundTIme) = await Util.GetLastBlockTimestamp(client);
-            if (lastRoundTIme < startTime + 5)
+            var (_, lastRoundTime) = await Util.GetLastBlockTimestamp(client);
+            Debug.Log($"Last round timestamp is {lastRoundTime}");
+            if (lastRoundTime < startTime + 5)
             {
-                await UniTask.Delay((int)(startTime + 5 - lastRoundTIme) * 1000);
+                int waitTime = (int)(startTime + 5 - lastRoundTime);
+                Debug.Log($"Now waiting {waitTime} seconds before bidding begins!");
+                await UniTask.Delay(waitTime * 1000);
             }
 
             var actualAppBalancesBefore = await Util.GetBalances(client, appAddress);
@@ -99,10 +102,10 @@ namespace AlgoSdk.Examples.AuctionDemo
 
             Debug.Log("Done");
 
-            (_, lastRoundTIme) = await Util.GetLastBlockTimestamp(client);
-            if (lastRoundTIme < endTime + 5)
+            (_, lastRoundTime) = await Util.GetLastBlockTimestamp(client);
+            if (lastRoundTime < endTime + 5)
             {
-                int waitTime = (int)(endTime + 5 - lastRoundTIme);
+                int waitTime = (int)(endTime + 5 - lastRoundTime);
                 Debug.Log($"Waiting {waitTime} seconds for the auction to finish");
                 await UniTask.Delay(waitTime * 1000);
             }
