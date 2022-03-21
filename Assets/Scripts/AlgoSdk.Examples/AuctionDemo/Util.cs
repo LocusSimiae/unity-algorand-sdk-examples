@@ -1,11 +1,9 @@
-﻿using AlgoSdk;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Collections;
 using UnityEngine;
-using AlgoSdk.LowLevel;
 
 namespace AlgoSdk.Examples.AuctionDemo
 {
@@ -47,7 +45,6 @@ namespace AlgoSdk.Examples.AuctionDemo
 
         public static async UniTask<byte[]> FullyCompileContract(IAlgodClient client, string tealPrecompiledSourcePath)
         {
-            //https://stackoverflow.com/questions/3259583/how-to-get-files-in-a-relative-path-in-c-sharp
             if (!System.IO.File.Exists(tealPrecompiledSourcePath))
             {
                 Debug.LogError($"[FullyCompileContract] {tealPrecompiledSourcePath} doesn't exist!");
@@ -107,7 +104,8 @@ namespace AlgoSdk.Examples.AuctionDemo
                     FixedString128Bytes decodedKey = default;
                     encodedKey.Base64ToUtf8(ref decodedKey);
                     return decodedKey.Value;
-                }, x => x.Value);
+                }, x => x.Value
+            );
         }
 
         public static async UniTask<Dictionary<ulong, ulong>> GetBalances(IAlgodClient client, Address account)

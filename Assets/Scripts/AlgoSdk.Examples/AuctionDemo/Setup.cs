@@ -1,22 +1,20 @@
-﻿using AlgoSdk;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace AlgoSdk.Examples.AuctionDemo
 {
     public class Setup
     {
-        static readonly string ALGOD_ADDRESS = "http://localhost:4001";
-        static readonly string ALGOD_TOKEN = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        const string ALGOD_ADDRESS = "http://localhost:4001";
+        const string ALGOD_TOKEN = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
-        static readonly string KMD_ADDRESS = "http://localhost:4002";
-        static readonly string KMD_TOKEN = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        const string KMD_ADDRESS = "http://localhost:4002";
+        const string KMD_TOKEN = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
-        static readonly string KMD_WALLET_NAME = "unencrypted-default-wallet";
-        static readonly string KMD_WALLET_PASSWORD = "";
+        const string KMD_WALLET_NAME = "unencrypted-default-wallet";
+        const string KMD_WALLET_PASSWORD = "";
 
         public AlgodClient AlgodClient = new AlgodClient(ALGOD_ADDRESS, ALGOD_TOKEN);
         public KmdClient KmdClient = new KmdClient(KMD_ADDRESS, KMD_TOKEN);

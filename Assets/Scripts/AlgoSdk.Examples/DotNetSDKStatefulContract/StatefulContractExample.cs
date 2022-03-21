@@ -1,5 +1,5 @@
 ﻿using AlgoSdk.Examples.AuctionDemo;
-using AlgoSdk;
+using AlgoSdk.LowLevel;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
@@ -7,12 +7,10 @@ using System.IO;
 using System.Linq;
 using Unity.Collections;
 using UnityEngine;
-using Account = AlgoSdk.Examples.AuctionDemo.Account;
-using Resources = AlgoSdk.Examples.AuctionDemo.Resources;
-using AlgoSdk.LowLevel;
 
 namespace AlgoSdk.Examples.StatefulContract
 {
+    //this example's origin is https://github.com/RileyGe/dotnet-algorand-sdk/blob/master/sdk-examples/V2/contract/StatefulContract.cs
     public class StatefulContractExample : MonoBehaviour
     {
         private void Start() => Run().Forget();
@@ -20,21 +18,22 @@ namespace AlgoSdk.Examples.StatefulContract
         public static async UniTask Run()
         {
             Debug.Log("Started stateful contract example!");
-            
-            Setup setup = new Setup();
+
+            AuctionDemo.Setup setup = new AuctionDemo.Setup();
             IAlgodClient client = setup.AlgodClient;
 
             Debug.Log("Generating temporary accounts...");
+
             //used to create and sign the smart contract
-            AuctionDemo.Account admin = AuctionDemo.Account.FromMnemonic(Mnemonic.FromString("place blouse sad pigeon wing warrior wild script problem team blouse camp soldier breeze twist mother vanish public glass code arrow execute convince ability there"));
+            AuctionDemo.Account admin = AuctionDemo.Account.FromMnemonic("place blouse sad pigeon wing warrior wild script problem team blouse camp soldier breeze twist mother vanish public glass code arrow execute convince ability there");
 
             // create two account to create and user the stateful contract
-            AuctionDemo.Account creator = AuctionDemo.Account.FromMnemonic(Mnemonic.FromString("benefit once mutual legal marble hurdle dress toe fuel country prepare canvas barrel divide major square name captain calm flock crumble receive economy abandon power"));
-            AuctionDemo.Account user = AuctionDemo.Account.FromMnemonic(Mnemonic.FromString("pledge become mouse fantasy matrix bunker ask tissue prepare vocal unit patient cliff index train network intact company across stage faculty master mom abstract above"));
+            AuctionDemo.Account creator = AuctionDemo.Account.FromMnemonic("benefit once mutual legal marble hurdle dress toe fuel country prepare canvas barrel divide major square name captain calm flock crumble receive economy abandon power");
+            AuctionDemo.Account user = AuctionDemo.Account.FromMnemonic("pledge become mouse fantasy matrix bunker ask tissue prepare vocal unit patient cliff index train network intact company across stage faculty master mom abstract above");
 
-            await Resources.FundAccount(client, admin.Address);
-            await Resources.FundAccount(client, creator.Address);
-            await Resources.FundAccount(client, user.Address);
+            await AuctionDemo.Resources.FundAccount(client, admin.Address);
+            await AuctionDemo.Resources.FundAccount(client, creator.Address);
+            await AuctionDemo.Resources.FundAccount(client, user.Address);
 
             Debug.Log($"admin account: {admin.Address}");
             Debug.Log($"creator account: {creator.Address}");
@@ -50,14 +49,14 @@ namespace AlgoSdk.Examples.StatefulContract
             string clearPath = Path.Combine(projectPath, @"Assets\Scripts\AlgoSdk.Examples\DotNetSDKStatefulContract\stateful_clear.teal");
 
             // user declared approval program (initial)
-            byte[] approvalProgram = await Util.FullyCompileContract(client, approvalPath);
+            byte[] approvalProgram = await AuctionDemo.Util.FullyCompileContract(client, approvalPath);
 
             // user declared approval program (refactored)
-            byte[] approvalProgramRefactored = await Util.FullyCompileContract(client, approvalRefactPath);
+            byte[] approvalProgramRefactored = await AuctionDemo.Util.FullyCompileContract(client, approvalRefactPath);
             // creator 53GNUYJSTKGEHAVYE5ZS65YTVJSYZSJ7KJBWNQT3MJESCOKNOWEBYTLVA4
             // user GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU
             // declare clear state program source
-            byte[] clearProgram = await Util.FullyCompileContract(client, clearPath);
+            byte[] clearProgram = await AuctionDemo.Util.FullyCompileContract(client, clearPath);
 
             // create new application
             ulong appId = await CreateApp(client, creator, approvalProgram, clearProgram, globalSchema, localSchema);
@@ -66,7 +65,7 @@ namespace AlgoSdk.Examples.StatefulContract
             await OptIn(client, user, appId);
 
             // call application without arguments
-            await CallApp(client, user, appId, null); //throws error because args are null???
+            await CallApp(client, user, appId, null);
 
             // read local state of application from user account
             await ReadLocalState(client, user, appId);
@@ -75,18 +74,12 @@ namespace AlgoSdk.Examples.StatefulContract
             await ReadGlobalState(client, creator, appId);
 
             // update application
-            await UpdateApp(client, creator, appId,
-                approvalProgramRefactored,
-                clearProgram);
+            await UpdateApp(client, creator, appId, approvalProgramRefactored, clearProgram);
 
             // call application with arguments
-            var date = DateTime.Now;
-            Debug.Log($"Sending app argument: {date.ToString("yyyy-MM-dd 'at' HH:mm:ss")}");
-            List<byte[]> appArgs = new List<byte[]>
-            {
-                System.Text.Encoding.UTF8.GetBytes(date.ToString("yyyy-MM-dd 'at' HH:mm:ss"))
-            };
-
+            string date = DateTime.Now.ToString("yyyy-MM-dd 'at' HH:mm:ss");
+            Debug.Log($"Sending app argument: {date}");
+            List<byte[]> appArgs = new List<byte[]> { System.Text.Encoding.UTF8.GetBytes(date) };
             await CallApp(client, user, appId, appArgs);
 
             // read local state of application from user account
@@ -141,7 +134,7 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[CreateApp] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[CreateApp] Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -183,7 +176,7 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[OptIn] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[OptIn] Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -219,7 +212,7 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[CloseOutApp] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[CloseOutApp] Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -257,7 +250,7 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[UpdateApp] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[UpdateApp] Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -293,7 +286,7 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[DeleteApp] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[DeleteApp] Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -329,7 +322,7 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[ClearApp] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[ClearApp] Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -348,20 +341,10 @@ namespace AlgoSdk.Examples.StatefulContract
                 return;
             }
 
-            CompiledTeal[] compiledTeals = null;
-            if(args != null && args.Count > 0)
-            {
-                compiledTeals = new CompiledTeal[args.Count];
-                for (int i = 0; i < compiledTeals.Length; i++)
-                {
-                    compiledTeals[i] = args[i];
-                }
-            }
-
             var txn = Transaction.AppCall(
                 sender: sender.Address,
                 applicationId: appId,
-                appArguments: compiledTeals,
+                appArguments: args.ToAppArgs(), //ToAppArgs is an extension in the auction demo example
                 txnParams: txnParams
             );
 
@@ -376,7 +359,7 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[CallApp] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[CallApp] Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -430,7 +413,7 @@ namespace AlgoSdk.Examples.StatefulContract
                 FixedString128Bytes encodedKey = v.Key;
                 FixedString128Bytes decodedKey = default;
                 encodedKey.Base64ToUtf8(ref decodedKey);
-                outStr += "key: " + decodedKey.ToString() + "; value: ";
+                outStr += "key: " + decodedKey.Value + "; value: ";
 
                 TealValue value = v.Value;
                 if (value.Type == TealValueType.Uint)
@@ -439,10 +422,7 @@ namespace AlgoSdk.Examples.StatefulContract
                 }
                 else if (value.Type == TealValueType.Bytes)
                 {
-                    //FixedString128Bytes encodedValue = value.Bytes.ToString();
-                    //FixedString128Bytes decodedValue = default;
-                    //encodedValue.Base64ToUtf8(ref decodedValue);
-                    //outStr += "(bytes) " + encodedValue;
+                    //this only works because UTF8 bytes were sent
                     outStr += "(bytes) " + System.Text.Encoding.UTF8.GetString(value.Bytes.ToArray());
                 }
                 else
@@ -464,7 +444,7 @@ namespace AlgoSdk.Examples.StatefulContract
                 FixedString64Bytes encodedKey = v.Key;
                 FixedString64Bytes decodedKey = default;
                 encodedKey.Base64ToUtf8(ref decodedKey);
-                outStr += "key: " + decodedKey.ToString() + "; value: ";
+                outStr += "key: " + decodedKey.Value + "; value: ";
 
                 EvalDelta value = v.Value;
                 if (value.Action == EvalDeltaAction.SetUInt)
@@ -473,13 +453,10 @@ namespace AlgoSdk.Examples.StatefulContract
                 }
                 else if (value.Action == EvalDeltaAction.SetBytes)
                 {
-                    //FixedString128Bytes encodedValue = value.Bytes.ToString();
-                    //FixedString128Bytes decodedValue = default;
-                    //encodedValue.Base64ToUtf8(ref decodedValue);
-                    //outStr += "(set bytes) " + encodedValue;
+                    //this only works because UTF8 bytes were sent
                     outStr += "(set bytes) " + System.Text.Encoding.UTF8.GetString(value.Bytes.ToArray());
                 }
-                else if(value.Action == EvalDeltaAction.Delete)
+                else if (value.Action == EvalDeltaAction.Delete)
                 {
                     outStr += "(delete)";
                 }

@@ -1,10 +1,10 @@
-﻿using AlgoSdk;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 
 namespace AlgoSdk.Examples.AuctionDemo
 {
+    //this example's origin is https://github.com/algorand/auction-demo and has been transcribed from the Python code 
     public class AuctionDemoExample : MonoBehaviour
     {
         private void Start() => Run().Forget();
@@ -34,11 +34,11 @@ namespace AlgoSdk.Examples.AuctionDemo
             Debug.Log($"Alice's balances: {sellerBalances.ToDebugString()}");
 
 
-            ulong startTime = (ulong) DateTimeOffset.Now.ToUnixTimeSeconds() + 30;  // start time is 30 seconds in the future
+            ulong startTime = (ulong)DateTimeOffset.Now.ToUnixTimeSeconds() + 30;  // start time is 30 seconds in the future
             ulong endTime = startTime + 30;  // end time is 30 seconds after start
             ulong reserve = 1_000_000;  // 1 Algo
             ulong increment = 100_000;  // 0.1 Algo
-            Debug.Log($"Bob is creating an auction that lasts 30 seconds to auction off the NFT... (start time is {startTime})");
+            Debug.Log($"Bob is creating an auction that lasts 30 seconds to auction off the NFT... (start time is {DateTimeOffset.FromUnixTimeSeconds((long)startTime).ToLocalTime():yyyy-MM-dd 'at' HH:mm:ss})");
 
             ulong appId = await Operations.CreateAuctionApp(
                 client: client,
@@ -61,7 +61,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             Address appAddress = appResponse.Payload.GetAddress();
             Debug.Log($"Done. The auction app ID is {appId} and the escrow account is {appAddress}");
 
-            Debug.Log("Alice is setting up and funding NFT auction...");
+            Debug.Log("Alice is setting up and funding the NFT auction...");
             await Operations.SetupAuctionApp(
                 client: client,
                 appId: appId,
@@ -90,12 +90,12 @@ namespace AlgoSdk.Examples.AuctionDemo
             ulong bidAmount = reserve;
             var bidderBalancesBefore = await Util.GetBalances(client, bidder.Address);
             ulong bidderAlgosBefore = bidderBalancesBefore[0];
-            Debug.Log($"Carla wants to bid on NFT, her balances: {bidderBalancesBefore.ToDebugString()}");
-            Debug.Log($"Carla is placing bid for { bidAmount } microAlgos");
+            Debug.Log($"Carla wants to bid on the NFT, her balances: {bidderBalancesBefore.ToDebugString()}");
+            Debug.Log($"Carla is placing a bid for { bidAmount } microAlgos");
 
             await Operations.PlaceBid(client, appId, bidder, bidAmount);
 
-            Debug.Log($"Carla is opting into NFT with ID { nftId}");
+            Debug.Log($"Carla is opting into the NFT with ID { nftId}");
 
             await Resources.EnsureOptedIn(client, nftId, bidder.PrivateKey);
 

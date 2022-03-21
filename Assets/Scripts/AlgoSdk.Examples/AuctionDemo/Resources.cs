@@ -1,5 +1,4 @@
-﻿using AlgoSdk;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -28,7 +27,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                 amount: amount
             );
 
-            var signedTxn = paymentTxn.Sign(sender.PrivateKey.ToKeyPair().SecretKey);
+            var signedTxn = paymentTxn.Sign(sender.SecretKey);
 
             var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
             if (sendTxnError.IsError)
@@ -83,8 +82,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                 ));
             }
 
-            var txnsArray = txns.Select(x => x.GetId()).ToArray();
-            var groupId = Transaction.GetGroupId(txnsArray);
+            var groupId = Transaction.GetGroupId(txns.Select(x => x.GetId()).ToArray());
 
             List<Signed<PaymentTxn>> signedTxns = new List<Signed<PaymentTxn>>();
             for (int i = 0; i < txns.Count; ++i)
@@ -92,7 +90,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                 Account fundingAccount = genesisAccounts[i % genesisAccounts.Count];
                 PaymentTxn txn = txns[i];
                 txn.Group = groupId;
-                signedTxns.Add(txn.Sign(fundingAccount.PrivateKey.ToKeyPair().SecretKey));
+                signedTxns.Add(txn.Sign(fundingAccount.SecretKey));
             }
 
             var signedTxnsArray = signedTxns.Select(x => x.ToUntyped()).ToArray();
@@ -187,7 +185,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             AssetConfigTxn txn = Transaction.AssetCreate(account.Address, txnParams, assetParams);
             txn.Note = randomNote;
 
-            var signedTxn = txn.Sign(account.PrivateKey.ToKeyPair().SecretKey);
+            var signedTxn = txn.Sign(account.SecretKey);
             var (txnErr, txid) = await client.SendTransaction(signedTxn);
             if (txnErr.IsError)
             {
@@ -202,7 +200,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                 return 0;
             }
 
-            if(pendingTxn.AssetIndex == 0)
+            if (pendingTxn.AssetIndex == 0)
             {
                 Debug.LogError("[CreateDummyAsset] Asset index is 0");
             }

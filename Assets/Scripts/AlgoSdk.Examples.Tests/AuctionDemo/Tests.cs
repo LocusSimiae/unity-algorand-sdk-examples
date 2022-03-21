@@ -17,7 +17,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             Setup setup = new Setup();
             IAlgodClient client = setup.AlgodClient;
 
-            ulong currentTime =(ulong) DateTimeOffset.Now.ToUnixTimeSeconds();
+            ulong currentTime = (ulong)DateTimeOffset.Now.ToUnixTimeSeconds();
             Debug.Log($"Current timestamp is {currentTime}");
 
             var (_, lastBlockTime) = await Util.GetLastBlockTimestamp(client);
@@ -27,7 +27,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             Debug.Log($"Timestamps are off by { difference } seconds");
 
             Assert.IsTrue(currentTime >= lastBlockTime, "Current timestamp should be bigger than last round!");
-            Assert.IsTrue(difference < 60, "The timestamps are off by more than 1 minute! Is the client synched to the latest block?");
+            Assert.IsTrue(difference < 60, "The timestamps are off by more than 1 minute! Is the client synched to the latest block? If you run the sandbox, then try to reset the sandbox.");
         });
 
         [UnityTest, Order(1)]
@@ -62,8 +62,7 @@ namespace AlgoSdk.Examples.AuctionDemo
 
             Assert.AreEqual(3, list.Count);
             //assert all(encoding.is_valid_address(account.getAddress()) for account in accounts)
-            //assert all(
-            //    len(base64.b64decode(account.getPrivateKey())) == 64 for account in accounts
+            //assert all(len(base64.b64decode(account.getPrivateKey())) == 64 for account in accounts)
         });
 
         [UnityTest, Order(4)]

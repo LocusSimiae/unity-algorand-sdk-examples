@@ -1,8 +1,6 @@
-﻿using AlgoSdk;
-using AlgoSdk.Crypto;
+﻿using AlgoSdk.Crypto;
 using AlgoSdk.LowLevel;
 using Cysharp.Threading.Tasks;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,6 +25,8 @@ namespace AlgoSdk.Examples.AuctionDemo
         {
             if (APPROVAL_PROGRAM == null || APPROVAL_PROGRAM.Length == 0)
             {
+                //https://stackoverflow.com/questions/3259583/how-to-get-files-in-a-relative-path-in-c-sharp
+                //path should be done better than this since this won't work with a build
                 string projectPath = Directory.GetCurrentDirectory();
                 APPROVAL_PROGRAM = await Util.FullyCompileContract(client, Path.Combine(projectPath, @"Assets\Scripts\AlgoSdk.Examples\AuctionDemo\auction_approval.teal"));
                 CLEAR_STATE_PROGRAM = await Util.FullyCompileContract(client, Path.Combine(projectPath, @"Assets\Scripts\AlgoSdk.Examples\AuctionDemo\auction_clear_state.teal"));
@@ -64,36 +64,19 @@ namespace AlgoSdk.Examples.AuctionDemo
             }
 
             AppCallTxn txn = Transaction.AppCreate(sender.Address, txnParams, approval, clear, globalSchema, localSchema);
-            txn.OnComplete = OnCompletion.NoOp;
 
-            List<byte[]> appArgs = new List<byte[]>();
-            appArgs.Add(seller.ToPublicKey().ToArray());
-            appArgs.Add(nftId.ToBytesBigEndian(Allocator.Temp).ToArray());
-            appArgs.Add(startTime.ToBytesBigEndian(Allocator.Temp).ToArray());
-            appArgs.Add(endTime.ToBytesBigEndian(Allocator.Temp).ToArray());
-            appArgs.Add(reserve.ToBytesBigEndian(Allocator.Temp).ToArray());
-            appArgs.Add(minBidIncrement.ToBytesBigEndian(Allocator.Temp).ToArray());
-
-            /*
-                app_args = [
-                encoding.decode_address(seller),
-                nftID.to_bytes(8, "big"),
-                startTime.to_bytes(8, "big"),
-                endTime.to_bytes(8, "big"),
-                reserve.to_bytes(8, "big"),
-                minBidIncrement.to_bytes(8, "big"),
-            ]
-            */
-
-            CompiledTeal[] compiledTeals = new CompiledTeal[appArgs.Count];
-            for(int i = 0; i < compiledTeals.Length; i++)
+            txn.AppArguments = new List<byte[]>()
             {
-                compiledTeals[i] = appArgs[i];
-            }
+                seller.ToPublicKey().ToArray(),
+                nftId.ToBytesBigEndian(Allocator.Temp).ToArray(),
+                startTime.ToBytesBigEndian(Allocator.Temp).ToArray(),
+                endTime.ToBytesBigEndian(Allocator.Temp).ToArray(),
+                reserve.ToBytesBigEndian(Allocator.Temp).ToArray(),
+                reserve.ToBytesBigEndian(Allocator.Temp).ToArray(),
+                minBidIncrement.ToBytesBigEndian(Allocator.Temp).ToArray()
+            }.ToAppArgs();
 
-            txn.AppArguments = compiledTeals;
-
-            var signedTxn = txn.Sign(sender.PrivateKey.ToKeyPair().SecretKey);
+            var signedTxn = txn.Sign(sender.SecretKey);
 
             var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
             if (sendTxnError.IsError)
@@ -169,15 +152,11 @@ namespace AlgoSdk.Examples.AuctionDemo
                 txnParams: txnParams
             );
 
-            CompiledTeal[] appArgs = new CompiledTeal[1];
-            appArgs[0].Bytes = System.Text.Encoding.UTF8.GetBytes("setup");
-
             AppCallTxn setupTxn = Transaction.AppCall(
                 sender: funder.Address,
                 applicationId: appId,
                 txnParams: txnParams,
-                onComplete: OnCompletion.NoOp,
-                appArguments: appArgs,
+                appArguments: "setup".ToAppArgs(),
                 foreignAssets: new ulong[] { nftId }
             );
 
@@ -194,9 +173,9 @@ namespace AlgoSdk.Examples.AuctionDemo
             setupTxn.Group = groupId;
             fundNftTxn.Group = groupId;
 
-            var signedFundAppTxn = fundAppTxn.Sign(funder.PrivateKey.ToKeyPair().SecretKey);
-            var signedSetupTxnn = setupTxn.Sign(funder.PrivateKey.ToKeyPair().SecretKey);
-            var signedFundNftTxn = fundNftTxn.Sign(nftHolder.PrivateKey.ToKeyPair().SecretKey);
+            var signedFundAppTxn = fundAppTxn.Sign(funder.SecretKey);
+            var signedSetupTxnn = setupTxn.Sign(funder.SecretKey);
+            var signedFundNftTxn = fundNftTxn.Sign(nftHolder.SecretKey);
 
             var (sendTxnError, txid) = await client.SendTransactions(signedFundAppTxn, signedSetupTxnn, signedFundNftTxn);
             if (sendTxnError.IsError)
@@ -233,7 +212,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             Address appAddress = appResponse.Payload.GetAddress();
             var appGlobalState = await Util.GetAppGlobalState(client, appId);
 
-            TealValue value = default;
+            TealValue value;
             if (!appGlobalState.TryGetValue("nft_id", out value))
             {
                 Debug.LogError($"[PlaceBid] Unable to get nft_id from app global state");
@@ -242,7 +221,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             ulong nftId = value.UintValue;
 
             Address? prevBidLeader = GetAddressFromAppState(appGlobalState, "bid_account");
-            if(!prevBidLeader.HasValue || prevBidLeader.Value == ZERO_ADDRESS)
+            if (!prevBidLeader.HasValue || prevBidLeader.Value == ZERO_ADDRESS)
             {
                 Debug.Log("No previous bidder found. Placing first bid!");
             }
@@ -265,14 +244,11 @@ namespace AlgoSdk.Examples.AuctionDemo
                 txnParams: txnParams
             );
 
-            CompiledTeal[] appArgs = new CompiledTeal[1];
-            appArgs[0].Bytes = System.Text.Encoding.UTF8.GetBytes("bid");
-
             AppCallTxn appCallTxn = Transaction.AppCall(
                 sender: bidder.Address,
                 applicationId: appId,
                 onComplete: OnCompletion.NoOp,
-                appArguments: appArgs,
+                appArguments: "bid".ToAppArgs(),
                 foreignAssets: new ulong[] { nftId },
                 accounts: prevBidLeader.HasValue ? new Address[] { prevBidLeader.Value } : null,
                 txnParams: txnParams
@@ -282,8 +258,8 @@ namespace AlgoSdk.Examples.AuctionDemo
             payTxn.Group = groupId;
             appCallTxn.Group = groupId;
 
-            var signedPayTxn = payTxn.Sign(bidder.PrivateKey.ToKeyPair().SecretKey);
-            var signedAppCallTxn = appCallTxn.Sign(bidder.PrivateKey.ToKeyPair().SecretKey);
+            var signedPayTxn = payTxn.Sign(bidder.SecretKey);
+            var signedAppCallTxn = appCallTxn.Sign(bidder.SecretKey);
 
             var (sendTxnError, txid) = await client.SendTransactions(signedPayTxn, signedAppCallTxn);
             if (sendTxnError.IsError)
@@ -326,10 +302,9 @@ namespace AlgoSdk.Examples.AuctionDemo
                 return;
             }
 
-            Address appAddress = appResponse.Payload.GetAddress();
             var appGlobalState = await Util.GetAppGlobalState(client, appId);
 
-            TealValue value = default;
+            TealValue value;
             if (!appGlobalState.TryGetValue("nft_id", out value))
             {
                 Debug.LogError($"[CloseAuction] Unable to get nft_id from app global state");
@@ -355,7 +330,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                 txnParams: txnParams
             );
 
-            var signedDeleteTxn = deleteTxn.Sign(closer.PrivateKey.ToKeyPair().SecretKey);
+            var signedDeleteTxn = deleteTxn.Sign(closer.SecretKey);
 
             var (sendTxnError, txid) = await client.SendTransaction(signedDeleteTxn);
             if (sendTxnError.IsError)

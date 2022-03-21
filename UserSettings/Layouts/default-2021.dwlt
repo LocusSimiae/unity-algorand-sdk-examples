@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 88
+  controlID: 48
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 454
     height: 1059
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -120,8 +120,8 @@ MonoBehaviour:
     y: 634
     width: 1466
     height: 425
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 13}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 16
+  controlID: 49
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 17
+  controlID: 85
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -268,8 +268,8 @@ MonoBehaviour:
     y: 0
     width: 1103
     height: 634
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 16}
@@ -306,7 +306,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 164
+    ID: 111
     splitterInitialOffset: 370
     currentActiveSplitter: -1
     realSizes:
@@ -389,9 +389,9 @@ MonoBehaviour:
       uniqueId: '[unity-algorand-sdk-examples][suite]'
       name: unity-algorand-sdk-examples
       fullName: unity-algorand-sdk-examples
-      resultStatus: 1
-      duration: 119.29763
-      messages: 
+      resultStatus: 2
+      duration: 59.158978
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -405,9 +405,9 @@ MonoBehaviour:
       uniqueId: '[AlgoSdk.Examples.Tests.dll][suite]'
       name: AlgoSdk.Examples.Tests.dll
       fullName: C:/Black Hole/Repositories/Alrogrand/unity-algorand-sdk-examples/Library/ScriptAssemblies/AlgoSdk.Examples.Tests.dll
-      resultStatus: 1
-      duration: 119.27772
-      messages: 
+      resultStatus: 2
+      duration: 59.136333
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -421,9 +421,9 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/[AlgoSdk][suite]
       name: AlgoSdk
       fullName: AlgoSdk
-      resultStatus: 1
-      duration: 119.277
-      messages: 
+      resultStatus: 2
+      duration: 59.13575
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -437,9 +437,9 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/[Examples][suite]
       name: Examples
       fullName: AlgoSdk.Examples
-      resultStatus: 1
-      duration: 119.276566
-      messages: 
+      resultStatus: 2
+      duration: 59.135468
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -453,9 +453,9 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo][suite]
       name: AuctionDemo
       fullName: AlgoSdk.Examples.AuctionDemo
-      resultStatus: 1
-      duration: 119.273
-      messages: 
+      resultStatus: 2
+      duration: 59.13169
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -469,9 +469,9 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests][suite]
       name: Tests
       fullName: AlgoSdk.Examples.AuctionDemo.Tests
-      resultStatus: 1
-      duration: 119.2685
-      messages: 
+      resultStatus: 2
+      duration: 59.12733
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -482,11 +482,35 @@ MonoBehaviour:
       parentId: 1014
       parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/[AuctionDemo][suite]
     - id: 1004
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.CheckCurrentAndLastBlockTimes]
+      name: CheckCurrentAndLastBlockTimes
+      fullName: AlgoSdk.Examples.AuctionDemo.Tests.CheckCurrentAndLastBlockTimes
+      resultStatus: 1
+      duration: 0.0684341
+      messages: 
+      output: 'Current timestamp is 1647896958
+
+        Last block timestamp is
+        1647896953
+
+        Timestamps are off by 5 seconds
+
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests][suite]
+    - id: 1004
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.GetAlgodClient]
       name: GetAlgodClient
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetAlgodClient
       resultStatus: 1
-      duration: 0.0486442
+      duration: 0.0445071
       messages: 
       output: 
       stacktrace: 
@@ -503,7 +527,7 @@ MonoBehaviour:
       name: GetGenesisAccounts
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetGenesisAccounts
       resultStatus: 1
-      duration: 0.7386147
+      duration: 0.7224927
       messages: 
       output: 
       stacktrace: 
@@ -520,33 +544,9 @@ MonoBehaviour:
       name: GetKmdClient
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetKmdClient
       resultStatus: 1
-      duration: 0.0259521
+      duration: 0.0188697
       messages: 
       output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests][suite]
-    - id: 1004
-      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.GetLastBlockTimestamp]
-      name: GetLastBlockTimestamp
-      fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetLastBlockTimestamp
-      resultStatus: 1
-      duration: 0.0223542
-      messages: 
-      output: 'Current timestamp is 1647796713
-
-        Last round timestamp is
-        1647796706
-
-        Timestamps are off by 7 seconds
-
-'
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
@@ -560,76 +560,46 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.RunAuctionDemo]
       name: RunAuctionDemo
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.RunAuctionDemo
-      resultStatus: 1
-      duration: 119.25594
-      messages: 
+      resultStatus: 2
+      duration: 0
+      messages: Cancelled by user
       output: 'Auction demo started!
 
         Generating temporary accounts...
 
         Alice
-        (seller account): LJHAQEAMKZCVC2H3GRKZK75SE475HKSZDA2IQBZPHXKYA6QWCEYNZQ4RXY
+        (seller account): YWQ4X5FDIBZX2OVRSMBSYUCG25DASBKQRHZEMALSHMQHCDWXDVW5YDAUME
 
         Bob
-        (auction creator account): 2RTEPA457ZAND3VRC5MHIE44BG3XB4XIE6B3NT32WCX5EIEXLQG2DCXXO4
+        (auction creator account): HHRLAIJBU6XGZH52W465652P3I6CFY3PYPBV6JFPPCFWVYOGDYTRZKI2IU
 
         Carla
-        (bidder account): KLF6DNBIIZEJDWEVMJX4DYVF5LQI4IH6AICWPPLIFTWFXJIR6AUMGEAEX4
+        (bidder account): 3XMQSBMGC3YO3SVUAKNAG3QTXTGLDOQ2HZSK5E55MSDKOGCO6OWIJMYR4U
 
         Alice
         is generating an example NFT...
 
-        The NFT ID is 29
+        The NFT ID is 58
 
         Alice''s
-        balances: {0=99999100,29=1}
+        balances: {0: 99999000,58: 1}
 
         Bob is creating an auction that lasts
-        30 seconds to auction off the NFT... (start time is 1647797044)
+        30 seconds to auction off the NFT... (start time is 2022-03-21 at 22:25:13)
 
         Done.
-        The auction app ID is 30 and the escrow account is JVKH57LFBSAZS5GMIJWRP6HCYO67YVKHEFUZACVW5HPEKT7YRP5HAWIIAU
+        The auction app ID is 59 and the escrow account is DUSQC7HQ3IF2MWZ6IE2DSJ5MQEDEPA7NFIR3QA7BMRUK3QFD46UHVC5XHE
 
         Alice
-        is setting up and funding NFT auction...
+        is setting up and funding the NFT auction...
 
         Done
 
         Alice''s
-        balances: {0=99998100,29=0}
+        balances: {0: 99998000,58: 0}
 
-        Last round timestamp is 1647797004
-
-        Now
-        waiting for 45 seconds!
-
-        Auction escrow balances: {0=202000,29=1}
-
-        Carla
-        wants to bid on NFT, her balances: {0=100000200}
-
-        Carla is placing
-        bid for 1000000 microAlgos
-
-        Carla is opting into NFT with ID 29
-
-        Done
-
-        Waiting
-        6 seconds for the auction to finish
-
-        Alice is closing the auction
-
-        The
-        auction escrow now holds the following: {0=0}
-
-        Alice''s balances
-        after auction: {0=101197199,29=0}
-
-        Carla''s balances after auction:
-        {0=98997200,29=1}
-
-        Auction demo finished!
+        Now waiting 15 seconds before bidding
+        begins!
 
 '
       stacktrace: 
@@ -646,7 +616,7 @@ MonoBehaviour:
       name: StatefulContract
       fullName: AlgoSdk.Examples.StatefulContract
       resultStatus: 1
-      duration: 156.09679
+      duration: 157.01808
       messages: 
       output: 
       stacktrace: 
@@ -662,7 +632,7 @@ MonoBehaviour:
       name: Tests
       fullName: AlgoSdk.Examples.StatefulContract.Tests
       resultStatus: 1
-      duration: 156.09485
+      duration: 157.01561
       messages: 
       output: 
       stacktrace: 
@@ -678,48 +648,47 @@ MonoBehaviour:
       name: RunStatefulContract
       fullName: AlgoSdk.Examples.StatefulContract.Tests.RunStatefulContract
       resultStatus: 1
-      duration: 156.08034
+      duration: 157.01471
       messages: 
       output: "Started stateful contract example!\r\nGenerating temporary accounts...\r\nadmin
         account: AJNNFQN7DSR7QEY766V7JDG35OPM53ZSNF7CU264AWOOUGSZBMLMSKCRIU\r\ncreator
         account: 53GNUYJSTKGEHAVYE5ZS65YTVJSYZSJ7KJBWNQT3MJESCOKNOWEBYTLVA4\r\nuser
         account: GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU\r\n[CreateApp]
         Signed transaction\r\n[CreateApp] Sent transaction\r\n[CreateApp] App id
-        is: 165\r\n[OptIn] Signed transaction\r\n[OptIn] Sent transaction\r\n[OptIn]
+        is: 32\r\n[OptIn] Signed transaction\r\n[OptIn] Sent transaction\r\n[OptIn]
         Address GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU optin
-        to Application with ID 165\r\n[CallApp] Signed transaction\r\n[CallApp] Sent
+        to Application with ID 32\r\n[CallApp] Signed transaction\r\n[CallApp] Sent
         transaction\r\nCould not recognize the field \"address\", for any fields
         on AlgoSdk.AccountStateDelta\r\nCould not recognize the field \"delta\",
         for any fields on AlgoSdk.AccountStateDelta\r\n[CallApp] Application (ID:
-        165 confirmed with round: 1095\r\n[CallApp] Global state delta: key: counter;
+        32 confirmed with round: 45\r\n[CallApp] Global state delta: key: counter;
         value: (set bytes) \r\n[ReadLocalState] User's application local state: key:
         counter; value: (uint) 1; \r\n[ReadGlobalState] Application global state:
         key: counter; value: (uint) 1; \r\n[UpdateApp] Signed transaction\r\n[UpdateApp]
-        Sent transaction\r\n[UpdateApp] Application (ID: 165 confirmed with round:
-        1098\r\nSending app argument: 2022-03-20 at 12:42:14\r\n[CallApp] Signed
-        transaction\r\n[CallApp] Sent transaction\r\nCould not recognize the field
-        \"address\", for any fields on AlgoSdk.AccountStateDelta\r\nCould not recognize
-        the field \"delta\", for any fields on AlgoSdk.AccountStateDelta\r\n[CallApp]
-        Application (ID: 165 confirmed with round: 1101\r\n[CallApp] Global state
-        delta: key: counter; value: (set bytes) \r\n[ReadLocalState] User's application
-        local state: key: counter; value: (uint) 2; key: timestamp; value: (bytes)
-        2022-03-20 at 12:42:14\r\n[ReadGlobalState] Application global state: key:
-        counter; value: (uint) 2; \r\n[CloseOutApp] Signed transaction\r\n[CloseOutApp]
-        Sent transaction\r\n[CloseOutApp] Application (ID: 165) close out confirmed
-        with round: 1104\r\n[OptIn] Signed transaction\r\n[OptIn] Sent transaction\r\n[OptIn]
-        Address GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU optin
-        to Application with ID 165\r\n[CallApp] Signed transaction\r\n[CallApp] Sent
-        transaction\r\nCould not recognize the field \"address\", for any fields
+        Sent transaction\r\n[UpdateApp] Application (ID: 32 confirmed with round:
+        48\r\nSending app argument: 2022-03-21 at 22:12:26\r\n[CallApp] Signed transaction\r\n[CallApp]
+        Sent transaction\r\nCould not recognize the field \"address\", for any fields
         on AlgoSdk.AccountStateDelta\r\nCould not recognize the field \"delta\",
         for any fields on AlgoSdk.AccountStateDelta\r\n[CallApp] Application (ID:
-        165 confirmed with round: 1110\r\n[CallApp] Global state delta: key: counter;
+        32 confirmed with round: 51\r\n[CallApp] Global state delta: key: counter;
         value: (set bytes) \r\n[ReadLocalState] User's application local state: key:
-        counter; value: (uint) 1; key: timestamp; value: (bytes) 2022-03-20 at 12:42:14\r\n[ReadGlobalState]
+        counter; value: (uint) 2; key: timestamp; value: (bytes) 2022-03-21 at 22:12:26\r\n[ReadGlobalState]
+        Application global state: key: counter; value: (uint) 2; \r\n[CloseOutApp]
+        Signed transaction\r\n[CloseOutApp] Sent transaction\r\n[CloseOutApp] Application
+        (ID: 32) close out confirmed with round: 54\r\n[OptIn] Signed transaction\r\n[OptIn]
+        Sent transaction\r\n[OptIn] Address GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU
+        optin to Application with ID 32\r\n[CallApp] Signed transaction\r\n[CallApp]
+        Sent transaction\r\nCould not recognize the field \"address\", for any fields
+        on AlgoSdk.AccountStateDelta\r\nCould not recognize the field \"delta\",
+        for any fields on AlgoSdk.AccountStateDelta\r\n[CallApp] Application (ID:
+        32 confirmed with round: 60\r\n[CallApp] Global state delta: key: counter;
+        value: (set bytes) \r\n[ReadLocalState] User's application local state: key:
+        counter; value: (uint) 1; key: timestamp; value: (bytes) 2022-03-21 at 22:12:26\r\n[ReadGlobalState]
         Application global state: key: counter; value: (uint) 3; \r\n[DeleteApp]
         Signed transaction\r\n[DeleteApp] Sent transaction\r\n[DeleteApp] Application
-        (ID: 165 confirmed with round: 1113\r\n[ClearApp] Signed transaction\r\n[ClearApp]
-        Sent transaction\r\n[ClearApp] Application (ID: 165 confirmed with round:
-        1116\r\nFinished stateful contract example!\r\n"
+        (ID: 32 confirmed with round: 63\r\n[ClearApp] Signed transaction\r\n[ClearApp]
+        Sent transaction\r\n[ClearApp] Application (ID: 32 confirmed with round:
+        66\r\nFinished stateful contract example!\r\n"
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
@@ -729,77 +698,52 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1001
       parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/StatefulContract/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract.Tests][suite]
-    m_ResultText: 'RunAuctionDemo (119.256s)
+    m_ResultText: 'RunAuctionDemo (0.000s)
 
       ---
 
-      Auction demo started!
+      Cancelled by user
 
-      Generating
-      temporary accounts...
+      ---
 
-      Alice (seller account): LJHAQEAMKZCVC2H3GRKZK75SE475HKSZDA2IQBZPHXKYA6QWCEYNZQ4RXY
+      Auction
+      demo started!
+
+      Generating temporary accounts...
+
+      Alice (seller
+      account): YWQ4X5FDIBZX2OVRSMBSYUCG25DASBKQRHZEMALSHMQHCDWXDVW5YDAUME
 
       Bob
-      (auction creator account): 2RTEPA457ZAND3VRC5MHIE44BG3XB4XIE6B3NT32WCX5EIEXLQG2DCXXO4
+      (auction creator account): HHRLAIJBU6XGZH52W465652P3I6CFY3PYPBV6JFPPCFWVYOGDYTRZKI2IU
 
       Carla
-      (bidder account): KLF6DNBIIZEJDWEVMJX4DYVF5LQI4IH6AICWPPLIFTWFXJIR6AUMGEAEX4
+      (bidder account): 3XMQSBMGC3YO3SVUAKNAG3QTXTGLDOQ2HZSK5E55MSDKOGCO6OWIJMYR4U
 
       Alice
       is generating an example NFT...
 
-      The NFT ID is 29
+      The NFT ID is 58
 
       Alice''s balances:
-      {0=99999100,29=1}
+      {0: 99999000,58: 1}
 
       Bob is creating an auction that lasts 30 seconds
-      to auction off the NFT... (start time is 1647797044)
+      to auction off the NFT... (start time is 2022-03-21 at 22:25:13)
 
-      Done. The auction
-      app ID is 30 and the escrow account is JVKH57LFBSAZS5GMIJWRP6HCYO67YVKHEFUZACVW5HPEKT7YRP5HAWIIAU
+      Done.
+      The auction app ID is 59 and the escrow account is DUSQC7HQ3IF2MWZ6IE2DSJ5MQEDEPA7NFIR3QA7BMRUK3QFD46UHVC5XHE
 
       Alice
-      is setting up and funding NFT auction...
+      is setting up and funding the NFT auction...
 
       Done
 
-      Alice''s balances:
-      {0=99998100,29=0}
+      Alice''s
+      balances: {0: 99998000,58: 0}
 
-      Last round timestamp is 1647797004
-
-      Now waiting
-      for 45 seconds!
-
-      Auction escrow balances: {0=202000,29=1}
-
-      Carla
-      wants to bid on NFT, her balances: {0=100000200}
-
-      Carla is placing bid
-      for 1000000 microAlgos
-
-      Carla is opting into NFT with ID 29
-
-      Done
-
-      Waiting
-      6 seconds for the auction to finish
-
-      Alice is closing the auction
-
-      The
-      auction escrow now holds the following: {0=0}
-
-      Alice''s balances after
-      auction: {0=101197199,29=0}
-
-      Carla''s balances after auction: {0=98997200,29=1}
-
-      Auction
-      demo finished!'
+      Now waiting 15 seconds before bidding
+      begins!'
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
@@ -872,22 +816,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 80670000
-    m_LastClickedID: 26496
-    m_ExpandedIDs: 00000000fe66000000ca9a3bffffff7f
+    m_SelectedIDs: 08670000
+    m_LastClickedID: 26376
+    m_ExpandedIDs: 0000000018670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -915,7 +859,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fe660000
+    m_ExpandedIDs: 0000000018670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -942,7 +886,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1045,7 +989,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1cf6fffffcf6ffff3ef7ffff80f7ffffc4f7ffff2cfbffff
+      m_ExpandedIDs: 9ef7ffff64f8ffff7efaffff2cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
