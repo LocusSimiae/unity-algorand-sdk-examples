@@ -65,16 +65,16 @@ namespace AlgoSdk.Examples.AuctionDemo
 
             AppCallTxn txn = Transaction.AppCreate(sender.Address, txnParams, approval, clear, globalSchema, localSchema);
 
-            txn.AppArguments = new List<byte[]>()
+            txn.AppArguments = new CompiledTeal[]
             {
                 seller.ToPublicKey().ToArray(),
-                nftId.ToBytesBigEndian(),
-                startTime.ToBytesBigEndian(),
-                endTime.ToBytesBigEndian(),
-                reserve.ToBytesBigEndian(),
-                reserve.ToBytesBigEndian(),
-                minBidIncrement.ToBytesBigEndian()
-            }.ToAppArgs();
+                nftId,
+                startTime,
+                endTime,
+                reserve,
+                reserve,
+                minBidIncrement
+            };
 
             var signedTxn = sender.SignTxn(txn);
 
@@ -156,7 +156,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                 sender: funder.Address,
                 applicationId: appId,
                 txnParams: txnParams,
-                appArguments: "setup".ToAppArgs(),
+                appArguments: new CompiledTeal[] { "setup" },
                 foreignAssets: new ulong[] { nftId }
             );
 
@@ -247,7 +247,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             AppCallTxn appCallTxn = Transaction.AppCall(
                 sender: bidder.Address,
                 applicationId: appId,
-                appArguments: "bid".ToAppArgs(),
+                appArguments: new CompiledTeal[] { "bid" },
                 foreignAssets: new ulong[] { nftId },
                 accounts: prevBidLeader.HasValue ? new Address[] { prevBidLeader.Value } : null,
                 txnParams: txnParams

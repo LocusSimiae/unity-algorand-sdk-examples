@@ -79,7 +79,7 @@ namespace AlgoSdk.Examples.StatefulContract
             // call application with arguments
             string date = DateTime.Now.ToString("yyyy-MM-dd 'at' HH:mm:ss");
             Debug.Log($"Sending app argument: {date}");
-            List<byte[]> appArgs = new List<byte[]> { System.Text.Encoding.UTF8.GetBytes(date) };
+            CompiledTeal[] appArgs = new CompiledTeal[] { System.Text.Encoding.UTF8.GetBytes(date) };
             await CallApp(client, user, appId, appArgs);
 
             // read local state of application from user account
@@ -332,7 +332,7 @@ namespace AlgoSdk.Examples.StatefulContract
             Debug.Log($"[ClearApp] Application (ID: { appId } confirmed with round: { pendingTxn.ConfirmedRound }");
         }
 
-        static async UniTask CallApp(IAlgodClient client, Account sender, ulong appId, List<byte[]> args)
+        static async UniTask CallApp(IAlgodClient client, Account sender, ulong appId, CompiledTeal[] args)
         {
             var (txnParamsError, txnParams) = await client.GetSuggestedParams();
             if (txnParamsError.IsError)
@@ -344,7 +344,7 @@ namespace AlgoSdk.Examples.StatefulContract
             var txn = Transaction.AppCall(
                 sender: sender.Address,
                 applicationId: appId,
-                appArguments: args.ToAppArgs(), //ToAppArgs is an extension in the auction demo example
+                appArguments: args,
                 txnParams: txnParams
             );
 

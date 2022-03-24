@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 1109
   m_ShowMode: 4
-  m_Title: Test Runner
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 50
+  controlID: 17
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -94,8 +94,8 @@ MonoBehaviour:
     y: 0
     width: 363
     height: 634
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -120,14 +120,14 @@ MonoBehaviour:
     y: 634
     width: 1466
     height: 425
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 18}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
   - {fileID: 18}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 51
+  controlID: 59
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 52
+  controlID: 60
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -389,9 +389,9 @@ MonoBehaviour:
       uniqueId: '[unity-algorand-sdk-examples][suite]'
       name: unity-algorand-sdk-examples
       fullName: unity-algorand-sdk-examples
-      resultStatus: 2
-      duration: 4.124726
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 259.92966
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -405,9 +405,9 @@ MonoBehaviour:
       uniqueId: '[AlgoSdk.Examples.Tests.dll][suite]'
       name: AlgoSdk.Examples.Tests.dll
       fullName: C:/Black Hole/Repositories/Alrogrand/unity-algorand-sdk-examples/Library/ScriptAssemblies/AlgoSdk.Examples.Tests.dll
-      resultStatus: 2
-      duration: 4.0970583
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 259.90344
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -421,9 +421,9 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/[AlgoSdk][suite]
       name: AlgoSdk
       fullName: AlgoSdk
-      resultStatus: 2
-      duration: 4.096272
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 259.90198
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -437,9 +437,9 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/[Examples][suite]
       name: Examples
       fullName: AlgoSdk.Examples
-      resultStatus: 2
-      duration: 4.095787
-      messages: Test cancelled by user
+      resultStatus: 1
+      duration: 259.90167
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -453,9 +453,9 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo][suite]
       name: AuctionDemo
       fullName: AlgoSdk.Examples.AuctionDemo
-      resultStatus: 2
-      duration: 4.0923653
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 102.8884
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -469,9 +469,9 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests][suite]
       name: Tests
       fullName: AlgoSdk.Examples.AuctionDemo.Tests
-      resultStatus: 2
-      duration: 4.088784
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 102.88618
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -485,47 +485,18 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.CheckCurrentAndLastBlockTimes]
       name: CheckCurrentAndLastBlockTimes
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.CheckCurrentAndLastBlockTimes
-      resultStatus: 2
-      duration: 0.0840937
-      messages: "  The timestamps are off by more than 1 minute! Is the client synched
-        to the latest block? If you run the sandbox, then try to reset the sandbox.\r\n 
-        Expected: True\r\n  But was:  False\r\n"
-      output: 'Current timestamp is 1648152148
+      resultStatus: 1
+      duration: 0.0784291
+      messages: 
+      output: 'Current timestamp is 1648154040
 
         Last block timestamp is
-        1648072673
+        1648154034
 
-        Timestamps are off by 79475 seconds
-
-'
-      stacktrace: 'at AlgoSdk.Examples.AuctionDemo.Tests+<>c.<CheckCurrentAndLastBlockTimes>b__0_0
-        () [0x0016e] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Assets\Scripts\AlgoSdk.Examples.Tests\AuctionDemo\Tests.cs:30
-
-        at
-        Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1[TResult].GetResult
-        (System.Int16 token) [0x00067] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTaskCompletionSource.cs:244
-
-        at
-        Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`1[TStateMachine].GetResult
-        (System.Int16 token) [0x00002] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\CompilerServices\StateMachineRunner.cs:218
-
-        at
-        Cysharp.Threading.Tasks.UniTask+Awaiter.GetResult () [0x00015] in C:\Black
-        Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTask.cs:312
-
-        at
-        Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.RunTask (Cysharp.Threading.Tasks.UniTask
-        task) [0x00024] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTaskExtensions.cs:805
-
-        at
-        Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.MoveNext
-        () [0x0003a] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTaskExtensions.cs:836
-
-        at
-        UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0004e]
-        in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.unity.test-framework@1.1.31\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
+        Timestamps are off by 6 seconds
 
 '
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -539,7 +510,7 @@ MonoBehaviour:
       name: GetAlgodClient
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetAlgodClient
       resultStatus: 1
-      duration: 0.0425636
+      duration: 0.0461126
       messages: 
       output: 
       stacktrace: 
@@ -556,7 +527,7 @@ MonoBehaviour:
       name: GetGenesisAccounts
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetGenesisAccounts
       resultStatus: 1
-      duration: 0.7221557
+      duration: 0.7511791
       messages: 
       output: 
       stacktrace: 
@@ -573,7 +544,7 @@ MonoBehaviour:
       name: GetKmdClient
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetKmdClient
       resultStatus: 1
-      duration: 0.0192755
+      duration: 0.0354888
       messages: 
       output: 
       stacktrace: 
@@ -589,12 +560,186 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.RunAuctionDemo]
       name: RunAuctionDemo
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.RunAuctionDemo
-      resultStatus: 2
-      duration: 0
-      messages: Cancelled by user
+      resultStatus: 1
+      duration: 101.957825
+      messages: 
       output: 'Auction demo started!
 
         Generating temporary accounts...
+
+        Alice
+        (seller account): VT5O5LXADGJPAMNFSGONGAMJAXZLFTW3QMABP7EHSZ6ICVRBTHHE2XJHIU
+
+        Bob
+        (auction creator account): DLOHOB7KWDZ7FT5T2Y4WSFPXIIU4IBWICQ5XMAQEDGJGRPTGKVWKQJ4RTE
+
+        Carla
+        (bidder account): A4MBF2DAD5NKS67KGUJ3YM5ETCHGRGMIQPEIMEWOK6OKCT2CEAGGUTBUPE
+
+        Alice
+        is generating an example NFT...
+
+        The NFT ID is 17
+
+        Could
+        not recognize the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+        Alice''s
+        balances: {0: 99999000,17: 1}
+
+        Bob is creating an auction that lasts
+        30 seconds to auction off the NFT... (start time is 2022-03-24 at 21:34:52)
+
+        Done.
+        The auction app ID is 18 and the escrow account is TYLKPGKW3Q2XA3WRE4VILV3SAJXBC2OIK37RMBO52Q6K4MAPMXKVXLNFCM
+
+        Alice
+        is setting up and funding the NFT auction...
+
+        Done
+
+        Could
+        not recognize the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+        Alice''s
+        balances: {0: 99998000,17: 0}
+
+        Now waiting 15 seconds before bidding
+        begins!
+
+        Could not recognize the field "total-apps-opted-in", for
+        any fields on AlgoSdk.AccountInfo
+
+        Could not recognize the field
+        "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+        Auction
+        escrow balances: {0: 202000,17: 1}
+
+        Could not recognize the field
+        "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+        Carla
+        wants to bid on the NFT, her balances: {0: 100000000}
+
+        Carla is
+        placing a bid for 1000000 microAlgos
+
+        No previous bidder found.
+        Placing first bid!
+
+        Carla is opting into the NFT with ID 17
+
+        Could
+        not recognize the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+        Done
+
+        Waiting
+        8 seconds for the auction to finish
+
+        Alice is closing the auction
+
+        Could
+        not recognize the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+        The
+        auction escrow now holds the following: {0: 0}
+
+        Could not recognize
+        the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+        Alice''s
+        balances after auction: {0: 101197000,17: 0}
+
+        Could not recognize
+        the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+        Could
+        not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+        Carla''s
+        balances after auction: {0: 98997000,17: 1}
+
+        Auction demo finished!
 
 '
       stacktrace: 
@@ -611,7 +756,7 @@ MonoBehaviour:
       name: StatefulContract
       fullName: AlgoSdk.Examples.StatefulContract
       resultStatus: 1
-      duration: 157.01808
+      duration: 157.01228
       messages: 
       output: 
       stacktrace: 
@@ -626,8 +771,8 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/StatefulContract/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract.Tests][suite]
       name: Tests
       fullName: AlgoSdk.Examples.StatefulContract.Tests
-      resultStatus: 0
-      duration: 157.01561
+      resultStatus: 1
+      duration: 157.00954
       messages: 
       output: 
       stacktrace: 
@@ -642,8 +787,8 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/StatefulContract/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract.Tests.RunStatefulContract]
       name: RunStatefulContract
       fullName: AlgoSdk.Examples.StatefulContract.Tests.RunStatefulContract
-      resultStatus: 0
-      duration: 157.01471
+      resultStatus: 1
+      duration: 157.00865
       messages: 
       output: "Started stateful contract example!\r\nGenerating temporary accounts...\r\nadmin
         account: AJNNFQN7DSR7QEY766V7JDG35OPM53ZSNF7CU264AWOOUGSZBMLMSKCRIU\r\ncreator
@@ -656,34 +801,60 @@ MonoBehaviour:
         transaction\r\nCould not recognize the field \"address\", for any fields
         on AlgoSdk.AccountStateDelta\r\nCould not recognize the field \"delta\",
         for any fields on AlgoSdk.AccountStateDelta\r\n[CallApp] Application (ID:
-        32 confirmed with round: 45\r\n[CallApp] Global state delta: key: counter;
-        value: (set bytes) \r\n[ReadLocalState] User's application local state: key:
-        counter; value: (uint) 1; \r\n[ReadGlobalState] Application global state:
-        key: counter; value: (uint) 1; \r\n[UpdateApp] Signed transaction\r\n[UpdateApp]
-        Sent transaction\r\n[UpdateApp] Application (ID: 32 confirmed with round:
-        48\r\nSending app argument: 2022-03-21 at 22:12:26\r\n[CallApp] Signed transaction\r\n[CallApp]
-        Sent transaction\r\nCould not recognize the field \"address\", for any fields
+        32 confirmed with round: 44\r\n[CallApp] Global state delta: key: counter;
+        value: (set bytes) \r\nCould not recognize the field \"total-apps-opted-in\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-assets-opted-in\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-created-apps\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-created-assets\",
+        for any fields on AlgoSdk.AccountInfo\r\n[ReadLocalState] User's application
+        local state: key: counter; value: (uint) 1; \r\nCould not recognize the field
+        \"total-apps-opted-in\", for any fields on AlgoSdk.AccountInfo\r\nCould not
+        recognize the field \"total-assets-opted-in\", for any fields on AlgoSdk.AccountInfo\r\nCould
+        not recognize the field \"total-created-apps\", for any fields on AlgoSdk.AccountInfo\r\nCould
+        not recognize the field \"total-created-assets\", for any fields on AlgoSdk.AccountInfo\r\n[ReadGlobalState]
+        Application global state: key: counter; value: (uint) 1; \r\n[UpdateApp]
+        Signed transaction\r\n[UpdateApp] Sent transaction\r\n[UpdateApp] Application
+        (ID: 32 confirmed with round: 47\r\nSending app argument: 2022-03-24 at 21:37:08\r\n[CallApp]
+        Signed transaction\r\n[CallApp] Sent transaction\r\nCould not recognize the
+        field \"address\", for any fields on AlgoSdk.AccountStateDelta\r\nCould not
+        recognize the field \"delta\", for any fields on AlgoSdk.AccountStateDelta\r\n[CallApp]
+        Application (ID: 32 confirmed with round: 50\r\n[CallApp] Global state delta:
+        key: counter; value: (set bytes) \r\nCould not recognize the field \"total-apps-opted-in\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-assets-opted-in\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-created-apps\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-created-assets\",
+        for any fields on AlgoSdk.AccountInfo\r\n[ReadLocalState] User's application
+        local state: key: counter; value: (uint) 2; key: timestamp; value: (bytes)
+        2022-03-24 at 21:37:08\r\nCould not recognize the field \"total-apps-opted-in\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-assets-opted-in\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-created-apps\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-created-assets\",
+        for any fields on AlgoSdk.AccountInfo\r\n[ReadGlobalState] Application global
+        state: key: counter; value: (uint) 2; \r\n[CloseOutApp] Signed transaction\r\n[CloseOutApp]
+        Sent transaction\r\n[CloseOutApp] Application (ID: 32) close out confirmed
+        with round: 53\r\n[OptIn] Signed transaction\r\n[OptIn] Sent transaction\r\n[OptIn]
+        Address GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU optin
+        to Application with ID 32\r\n[CallApp] Signed transaction\r\n[CallApp] Sent
+        transaction\r\nCould not recognize the field \"address\", for any fields
         on AlgoSdk.AccountStateDelta\r\nCould not recognize the field \"delta\",
         for any fields on AlgoSdk.AccountStateDelta\r\n[CallApp] Application (ID:
-        32 confirmed with round: 51\r\n[CallApp] Global state delta: key: counter;
-        value: (set bytes) \r\n[ReadLocalState] User's application local state: key:
-        counter; value: (uint) 2; key: timestamp; value: (bytes) 2022-03-21 at 22:12:26\r\n[ReadGlobalState]
-        Application global state: key: counter; value: (uint) 2; \r\n[CloseOutApp]
-        Signed transaction\r\n[CloseOutApp] Sent transaction\r\n[CloseOutApp] Application
-        (ID: 32) close out confirmed with round: 54\r\n[OptIn] Signed transaction\r\n[OptIn]
-        Sent transaction\r\n[OptIn] Address GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU
-        optin to Application with ID 32\r\n[CallApp] Signed transaction\r\n[CallApp]
-        Sent transaction\r\nCould not recognize the field \"address\", for any fields
-        on AlgoSdk.AccountStateDelta\r\nCould not recognize the field \"delta\",
-        for any fields on AlgoSdk.AccountStateDelta\r\n[CallApp] Application (ID:
-        32 confirmed with round: 60\r\n[CallApp] Global state delta: key: counter;
-        value: (set bytes) \r\n[ReadLocalState] User's application local state: key:
-        counter; value: (uint) 1; key: timestamp; value: (bytes) 2022-03-21 at 22:12:26\r\n[ReadGlobalState]
-        Application global state: key: counter; value: (uint) 3; \r\n[DeleteApp]
-        Signed transaction\r\n[DeleteApp] Sent transaction\r\n[DeleteApp] Application
-        (ID: 32 confirmed with round: 63\r\n[ClearApp] Signed transaction\r\n[ClearApp]
-        Sent transaction\r\n[ClearApp] Application (ID: 32 confirmed with round:
-        66\r\nFinished stateful contract example!\r\n"
+        32 confirmed with round: 59\r\n[CallApp] Global state delta: key: counter;
+        value: (set bytes) \r\nCould not recognize the field \"total-apps-opted-in\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-assets-opted-in\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-created-apps\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-created-assets\",
+        for any fields on AlgoSdk.AccountInfo\r\n[ReadLocalState] User's application
+        local state: key: counter; value: (uint) 1; key: timestamp; value: (bytes)
+        2022-03-24 at 21:37:08\r\nCould not recognize the field \"total-apps-opted-in\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-assets-opted-in\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-created-apps\",
+        for any fields on AlgoSdk.AccountInfo\r\nCould not recognize the field \"total-created-assets\",
+        for any fields on AlgoSdk.AccountInfo\r\n[ReadGlobalState] Application global
+        state: key: counter; value: (uint) 3; \r\n[DeleteApp] Signed transaction\r\n[DeleteApp]
+        Sent transaction\r\n[DeleteApp] Application (ID: 32 confirmed with round:
+        62\r\n[ClearApp] Signed transaction\r\n[ClearApp] Sent transaction\r\n[ClearApp]
+        Application (ID: 32 confirmed with round: 65\r\nFinished stateful contract
+        example!\r\n"
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
@@ -693,57 +864,192 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1001
       parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/StatefulContract/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract.Tests][suite]
-    m_ResultText: "CheckCurrentAndLastBlockTimes (0.084s)\n---\nThe timestamps are
-      off by more than 1 minute! Is the client synched to the latest block? If you
-      run the sandbox, then try to reset the sandbox.\r\n  Expected: True\r\n  But
-      was:  False\n---\nat AlgoSdk.Examples.AuctionDemo.Tests+<>c.<CheckCurrentAndLastBlockTimes>b__0_0
-      () [0x0016e] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Assets\\Scripts\\AlgoSdk.Examples.Tests\\AuctionDemo\\Tests.cs:30\r\nat
-      Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1[TResult].GetResult (System.Int16
-      token) [0x00067] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskCompletionSource.cs:244\r\nat
-      Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`1[TStateMachine].GetResult
-      (System.Int16 token) [0x00002] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\CompilerServices\\StateMachineRunner.cs:218\r\nat
-      Cysharp.Threading.Tasks.UniTask+Awaiter.GetResult () [0x00015] in C:\\Black
-      Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTask.cs:312\r\nat
-      Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.RunTask (Cysharp.Threading.Tasks.UniTask
-      task) [0x00024] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskExtensions.cs:805\r\nat
-      Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.MoveNext ()
-      [0x0003a] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskExtensions.cs:836\r\nat
-      UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0004e] in
-      C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.unity.test-framework@1.1.31\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:46\n---\nCurrent
-      timestamp is 1648152148\r\nLast block timestamp is 1648072673\r\nTimestamps
-      are off by 79475 seconds"
-    m_ResultStacktrace: 'at AlgoSdk.Examples.AuctionDemo.Tests+<>c.<CheckCurrentAndLastBlockTimes>b__0_0
-      () [0x0016e] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Assets\Scripts\AlgoSdk.Examples.Tests\AuctionDemo\Tests.cs:30
+    m_ResultText: 'RunAuctionDemo (101.958s)
 
-      at
-      Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1[TResult].GetResult (System.Int16
-      token) [0x00067] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTaskCompletionSource.cs:244
+      ---
 
-      at
-      Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`1[TStateMachine].GetResult
-      (System.Int16 token) [0x00002] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\CompilerServices\StateMachineRunner.cs:218
+      Auction demo started!
 
-      at
-      Cysharp.Threading.Tasks.UniTask+Awaiter.GetResult () [0x00015] in C:\Black
-      Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTask.cs:312
+      Generating
+      temporary accounts...
 
-      at
-      Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.RunTask (Cysharp.Threading.Tasks.UniTask
-      task) [0x00024] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTaskExtensions.cs:805
+      Alice (seller account): VT5O5LXADGJPAMNFSGONGAMJAXZLFTW3QMABP7EHSZ6ICVRBTHHE2XJHIU
 
-      at
-      Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.MoveNext ()
-      [0x0003a] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTaskExtensions.cs:836
+      Bob
+      (auction creator account): DLOHOB7KWDZ7FT5T2Y4WSFPXIIU4IBWICQ5XMAQEDGJGRPTGKVWKQJ4RTE
 
-      at
-      UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0004e] in
-      C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.unity.test-framework@1.1.31\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
+      Carla
+      (bidder account): A4MBF2DAD5NKS67KGUJ3YM5ETCHGRGMIQPEIMEWOK6OKCT2CEAGGUTBUPE
 
-'
+      Alice
+      is generating an example NFT...
+
+      The NFT ID is 17
+
+      Could not
+      recognize the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+      Alice''s
+      balances: {0: 99999000,17: 1}
+
+      Bob is creating an auction that lasts
+      30 seconds to auction off the NFT... (start time is 2022-03-24 at 21:34:52)
+
+      Done.
+      The auction app ID is 18 and the escrow account is TYLKPGKW3Q2XA3WRE4VILV3SAJXBC2OIK37RMBO52Q6K4MAPMXKVXLNFCM
+
+      Alice
+      is setting up and funding the NFT auction...
+
+      Done
+
+      Could not
+      recognize the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+      Alice''s
+      balances: {0: 99998000,17: 0}
+
+      Now waiting 15 seconds before bidding
+      begins!
+
+      Could not recognize the field "total-apps-opted-in", for any
+      fields on AlgoSdk.AccountInfo
+
+      Could not recognize the field "total-assets-opted-in",
+      for any fields on AlgoSdk.AccountInfo
+
+      Could not recognize the field
+      "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+      Could not
+      recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+      Auction
+      escrow balances: {0: 202000,17: 1}
+
+      Could not recognize the field "total-apps-opted-in",
+      for any fields on AlgoSdk.AccountInfo
+
+      Could not recognize the field
+      "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+      Carla
+      wants to bid on the NFT, her balances: {0: 100000000}
+
+      Carla is placing
+      a bid for 1000000 microAlgos
+
+      No previous bidder found. Placing first
+      bid!
+
+      Carla is opting into the NFT with ID 17
+
+      Could not recognize
+      the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+      Done
+
+      Waiting
+      8 seconds for the auction to finish
+
+      Alice is closing the auction
+
+      Could
+      not recognize the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+      The
+      auction escrow now holds the following: {0: 0}
+
+      Could not recognize
+      the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+      Alice''s
+      balances after auction: {0: 101197000,17: 0}
+
+      Could not recognize the
+      field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-apps", for any fields on AlgoSdk.AccountInfo
+
+      Could
+      not recognize the field "total-created-assets", for any fields on AlgoSdk.AccountInfo
+
+      Carla''s
+      balances after auction: {0: 98997000,17: 1}
+
+      Auction demo finished!'
+    m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a6c8ef58
-      m_LastClickedID: 1492109478
+      m_SelectedIDs: 04675c7d
+      m_LastClickedID: 2103207684
       m_ExpandedIDs: 9d688e871534ce929eaba6977f14949e85ebd59eafa2bca0b68a48bc71509dc511d5c7cbc0a7d8d1fd2468d649d4f9d9fe3ef2ed40dc38fff7bb4e027c8a9603fb97d01a43118221d982543942dc9956f6ac4361a019b87d1172b77fffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -824,9 +1130,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 08670000
-    m_LastClickedID: 26376
-    m_ExpandedIDs: 00000000fa660000
+    m_SelectedIDs: 86660000
+    m_LastClickedID: 26246
+    m_ExpandedIDs: 000000009465000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -854,7 +1160,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fa660000
+    m_ExpandedIDs: 0000000094650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -881,7 +1187,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -982,9 +1288,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 5afaffff
+      m_SelectedIDs: 3cf8ffff
       m_LastClickedID: 0
-      m_ExpandedIDs: aaf5ffff2cfbffff
+      m_ExpandedIDs: c4f6ffff92f7ffffbaf8ffff6cf9ffff3afaffff7efaffff2cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
