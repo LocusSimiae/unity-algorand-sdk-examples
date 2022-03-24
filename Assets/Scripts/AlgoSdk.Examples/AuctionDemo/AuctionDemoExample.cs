@@ -97,7 +97,7 @@ namespace AlgoSdk.Examples.AuctionDemo
 
             Debug.Log($"Carla is opting into the NFT with ID { nftId}");
 
-            await Resources.EnsureOptedIn(client, nftId, bidder.PrivateKey);
+            await Resources.EnsureOptedIn(client, nftId, bidder);
 
             Debug.Log("Done");
 

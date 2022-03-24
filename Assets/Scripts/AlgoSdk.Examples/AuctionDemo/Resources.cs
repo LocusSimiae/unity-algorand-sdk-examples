@@ -27,7 +27,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                 amount: amount
             );
 
-            var signedTxn = paymentTxn.Sign(sender.SecretKey);
+            var signedTxn = sender.SignTxn(paymentTxn);
 
             var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
             if (sendTxnError.IsError)
@@ -57,7 +57,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             List<Account> accounts = new List<Account>();
             for (int i = 0; i < TEMPORARY_ACCOUNTS; ++i)
             {
-                accountList.Push(AlgoSdk.Account.GenerateAccount().Item1);
+                accountList.Push(Account.GenerateAccount());
             }
 
             Setup setup = new Setup();
@@ -82,15 +82,15 @@ namespace AlgoSdk.Examples.AuctionDemo
                 ));
             }
 
-            var groupId = Transaction.GetGroupId(txns.Select(x => x.GetId()).ToArray());
+            var groupId = TransactionGroup.Of(txns.ToArray()).GetId();
 
-            List<Signed<PaymentTxn>> signedTxns = new List<Signed<PaymentTxn>>();
+            List<SignedTxn<PaymentTxn>> signedTxns = new List<SignedTxn<PaymentTxn>>();
             for (int i = 0; i < txns.Count; ++i)
             {
                 Account fundingAccount = genesisAccounts[i % genesisAccounts.Count];
                 PaymentTxn txn = txns[i];
                 txn.Group = groupId;
-                signedTxns.Add(txn.Sign(fundingAccount.SecretKey));
+                signedTxns.Add(fundingAccount.SignTxn(txn));
             }
 
             var signedTxnsArray = signedTxns.Select(x => x.ToUntyped()).ToArray();
@@ -113,9 +113,9 @@ namespace AlgoSdk.Examples.AuctionDemo
             return accountList.Pop();
         }
 
-        public static async UniTask<AlgoApiResponse<PendingTransaction>> EnsureOptedIn(IAlgodClient client, ulong assetId, PrivateKey account)
+        public static async UniTask<AlgoApiResponse<PendingTransaction>> EnsureOptedIn(IAlgodClient client, ulong assetId, Account account)
         {
-            var (err, accountInfo) = await client.GetAccountInformation(account.ToAddress());
+            var (err, accountInfo) = await client.GetAccountInformation(account.Address);
             if (err.IsError)
             {
                 Debug.LogError($"[EnsureOptedIn] Algod GetAccountInformation failed: {err.Message}");
@@ -128,15 +128,14 @@ namespace AlgoSdk.Examples.AuctionDemo
                 return default;
             }
 
-            using var kp = account.ToKeyPair();
             var (_, txnParams) = await client.GetSuggestedParams();
             var assetOptInTxn = Transaction.AssetAccept(
-                kp.PublicKey,
+                account.Address,
                 txnParams,
                 assetId
             );
 
-            var signedTxn = assetOptInTxn.Sign(kp.SecretKey);
+            var signedTxn = account.SignTxn(assetOptInTxn);
             var (txnErr, txid) = await client.SendTransaction(signedTxn);
             if (txnErr.IsError)
             {
@@ -185,7 +184,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             AssetConfigTxn txn = Transaction.AssetCreate(account.Address, txnParams, assetParams);
             txn.Note = randomNote;
 
-            var signedTxn = txn.Sign(account.SecretKey);
+            var signedTxn = account.SignTxn(txn);
             var (txnErr, txid) = await client.SendTransaction(signedTxn);
             if (txnErr.IsError)
             {

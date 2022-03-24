@@ -74,7 +74,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                     return kmdAccounts;
                 }
 
-                kmdAccounts.Add(exportKeyResponse.Payload.PrivateKey);
+                kmdAccounts.Add(new Account(exportKeyResponse.Payload.PrivateKey));
             }
 
             await KmdClient.ReleaseWalletHandleToken(walletHandleToken);

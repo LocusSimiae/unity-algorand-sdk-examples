@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 48
+  controlID: 50
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -94,8 +94,8 @@ MonoBehaviour:
     y: 0
     width: 363
     height: 634
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 49
+  controlID: 51
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 85
+  controlID: 52
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -390,7 +390,7 @@ MonoBehaviour:
       name: unity-algorand-sdk-examples
       fullName: unity-algorand-sdk-examples
       resultStatus: 2
-      duration: 59.158978
+      duration: 4.124726
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -406,7 +406,7 @@ MonoBehaviour:
       name: AlgoSdk.Examples.Tests.dll
       fullName: C:/Black Hole/Repositories/Alrogrand/unity-algorand-sdk-examples/Library/ScriptAssemblies/AlgoSdk.Examples.Tests.dll
       resultStatus: 2
-      duration: 59.136333
+      duration: 4.0970583
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -422,7 +422,7 @@ MonoBehaviour:
       name: AlgoSdk
       fullName: AlgoSdk
       resultStatus: 2
-      duration: 59.13575
+      duration: 4.096272
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -438,8 +438,8 @@ MonoBehaviour:
       name: Examples
       fullName: AlgoSdk.Examples
       resultStatus: 2
-      duration: 59.135468
-      messages: One or more child tests had errors
+      duration: 4.095787
+      messages: Test cancelled by user
       output: 
       stacktrace: 
       notRunnable: 0
@@ -454,7 +454,7 @@ MonoBehaviour:
       name: AuctionDemo
       fullName: AlgoSdk.Examples.AuctionDemo
       resultStatus: 2
-      duration: 59.13169
+      duration: 4.0923653
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -470,7 +470,7 @@ MonoBehaviour:
       name: Tests
       fullName: AlgoSdk.Examples.AuctionDemo.Tests
       resultStatus: 2
-      duration: 59.12733
+      duration: 4.088784
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -485,18 +485,47 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.CheckCurrentAndLastBlockTimes]
       name: CheckCurrentAndLastBlockTimes
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.CheckCurrentAndLastBlockTimes
-      resultStatus: 1
-      duration: 0.0684341
-      messages: 
-      output: 'Current timestamp is 1647896958
+      resultStatus: 2
+      duration: 0.0840937
+      messages: "  The timestamps are off by more than 1 minute! Is the client synched
+        to the latest block? If you run the sandbox, then try to reset the sandbox.\r\n 
+        Expected: True\r\n  But was:  False\r\n"
+      output: 'Current timestamp is 1648152148
 
         Last block timestamp is
-        1647896953
+        1648072673
 
-        Timestamps are off by 5 seconds
+        Timestamps are off by 79475 seconds
 
 '
-      stacktrace: 
+      stacktrace: 'at AlgoSdk.Examples.AuctionDemo.Tests+<>c.<CheckCurrentAndLastBlockTimes>b__0_0
+        () [0x0016e] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Assets\Scripts\AlgoSdk.Examples.Tests\AuctionDemo\Tests.cs:30
+
+        at
+        Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1[TResult].GetResult
+        (System.Int16 token) [0x00067] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTaskCompletionSource.cs:244
+
+        at
+        Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`1[TStateMachine].GetResult
+        (System.Int16 token) [0x00002] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\CompilerServices\StateMachineRunner.cs:218
+
+        at
+        Cysharp.Threading.Tasks.UniTask+Awaiter.GetResult () [0x00015] in C:\Black
+        Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTask.cs:312
+
+        at
+        Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.RunTask (Cysharp.Threading.Tasks.UniTask
+        task) [0x00024] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTaskExtensions.cs:805
+
+        at
+        Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.MoveNext
+        () [0x0003a] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTaskExtensions.cs:836
+
+        at
+        UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0004e]
+        in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.unity.test-framework@1.1.31\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
+
+'
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -510,7 +539,7 @@ MonoBehaviour:
       name: GetAlgodClient
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetAlgodClient
       resultStatus: 1
-      duration: 0.0445071
+      duration: 0.0425636
       messages: 
       output: 
       stacktrace: 
@@ -527,7 +556,7 @@ MonoBehaviour:
       name: GetGenesisAccounts
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetGenesisAccounts
       resultStatus: 1
-      duration: 0.7224927
+      duration: 0.7221557
       messages: 
       output: 
       stacktrace: 
@@ -544,7 +573,7 @@ MonoBehaviour:
       name: GetKmdClient
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetKmdClient
       resultStatus: 1
-      duration: 0.0188697
+      duration: 0.0192755
       messages: 
       output: 
       stacktrace: 
@@ -566,40 +595,6 @@ MonoBehaviour:
       output: 'Auction demo started!
 
         Generating temporary accounts...
-
-        Alice
-        (seller account): YWQ4X5FDIBZX2OVRSMBSYUCG25DASBKQRHZEMALSHMQHCDWXDVW5YDAUME
-
-        Bob
-        (auction creator account): HHRLAIJBU6XGZH52W465652P3I6CFY3PYPBV6JFPPCFWVYOGDYTRZKI2IU
-
-        Carla
-        (bidder account): 3XMQSBMGC3YO3SVUAKNAG3QTXTGLDOQ2HZSK5E55MSDKOGCO6OWIJMYR4U
-
-        Alice
-        is generating an example NFT...
-
-        The NFT ID is 58
-
-        Alice''s
-        balances: {0: 99999000,58: 1}
-
-        Bob is creating an auction that lasts
-        30 seconds to auction off the NFT... (start time is 2022-03-21 at 22:25:13)
-
-        Done.
-        The auction app ID is 59 and the escrow account is DUSQC7HQ3IF2MWZ6IE2DSJ5MQEDEPA7NFIR3QA7BMRUK3QFD46UHVC5XHE
-
-        Alice
-        is setting up and funding the NFT auction...
-
-        Done
-
-        Alice''s
-        balances: {0: 99998000,58: 0}
-
-        Now waiting 15 seconds before bidding
-        begins!
 
 '
       stacktrace: 
@@ -631,7 +626,7 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/StatefulContract/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract.Tests][suite]
       name: Tests
       fullName: AlgoSdk.Examples.StatefulContract.Tests
-      resultStatus: 1
+      resultStatus: 0
       duration: 157.01561
       messages: 
       output: 
@@ -647,7 +642,7 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/StatefulContract/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract.Tests.RunStatefulContract]
       name: RunStatefulContract
       fullName: AlgoSdk.Examples.StatefulContract.Tests.RunStatefulContract
-      resultStatus: 1
+      resultStatus: 0
       duration: 157.01471
       messages: 
       output: "Started stateful contract example!\r\nGenerating temporary accounts...\r\nadmin
@@ -698,57 +693,57 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1001
       parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/StatefulContract/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract.Tests][suite]
-    m_ResultText: 'RunAuctionDemo (0.000s)
+    m_ResultText: "CheckCurrentAndLastBlockTimes (0.084s)\n---\nThe timestamps are
+      off by more than 1 minute! Is the client synched to the latest block? If you
+      run the sandbox, then try to reset the sandbox.\r\n  Expected: True\r\n  But
+      was:  False\n---\nat AlgoSdk.Examples.AuctionDemo.Tests+<>c.<CheckCurrentAndLastBlockTimes>b__0_0
+      () [0x0016e] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Assets\\Scripts\\AlgoSdk.Examples.Tests\\AuctionDemo\\Tests.cs:30\r\nat
+      Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1[TResult].GetResult (System.Int16
+      token) [0x00067] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskCompletionSource.cs:244\r\nat
+      Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`1[TStateMachine].GetResult
+      (System.Int16 token) [0x00002] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\CompilerServices\\StateMachineRunner.cs:218\r\nat
+      Cysharp.Threading.Tasks.UniTask+Awaiter.GetResult () [0x00015] in C:\\Black
+      Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTask.cs:312\r\nat
+      Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.RunTask (Cysharp.Threading.Tasks.UniTask
+      task) [0x00024] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskExtensions.cs:805\r\nat
+      Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.MoveNext ()
+      [0x0003a] in C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.cysharp.unitask@2.3.1\\Runtime\\UniTaskExtensions.cs:836\r\nat
+      UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0004e] in
+      C:\\Black Hole\\Repositories\\Alrogrand\\unity-algorand-sdk-examples\\Library\\PackageCache\\com.unity.test-framework@1.1.31\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:46\n---\nCurrent
+      timestamp is 1648152148\r\nLast block timestamp is 1648072673\r\nTimestamps
+      are off by 79475 seconds"
+    m_ResultStacktrace: 'at AlgoSdk.Examples.AuctionDemo.Tests+<>c.<CheckCurrentAndLastBlockTimes>b__0_0
+      () [0x0016e] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Assets\Scripts\AlgoSdk.Examples.Tests\AuctionDemo\Tests.cs:30
 
-      ---
+      at
+      Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1[TResult].GetResult (System.Int16
+      token) [0x00067] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTaskCompletionSource.cs:244
 
-      Cancelled by user
+      at
+      Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`1[TStateMachine].GetResult
+      (System.Int16 token) [0x00002] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\CompilerServices\StateMachineRunner.cs:218
 
-      ---
+      at
+      Cysharp.Threading.Tasks.UniTask+Awaiter.GetResult () [0x00015] in C:\Black
+      Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTask.cs:312
 
-      Auction
-      demo started!
+      at
+      Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.RunTask (Cysharp.Threading.Tasks.UniTask
+      task) [0x00024] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTaskExtensions.cs:805
 
-      Generating temporary accounts...
+      at
+      Cysharp.Threading.Tasks.UniTaskExtensions+ToCoroutineEnumerator.MoveNext ()
+      [0x0003a] in C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.cysharp.unitask@2.3.1\Runtime\UniTaskExtensions.cs:836
 
-      Alice (seller
-      account): YWQ4X5FDIBZX2OVRSMBSYUCG25DASBKQRHZEMALSHMQHCDWXDVW5YDAUME
+      at
+      UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0004e] in
+      C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples\Library\PackageCache\com.unity.test-framework@1.1.31\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
 
-      Bob
-      (auction creator account): HHRLAIJBU6XGZH52W465652P3I6CFY3PYPBV6JFPPCFWVYOGDYTRZKI2IU
-
-      Carla
-      (bidder account): 3XMQSBMGC3YO3SVUAKNAG3QTXTGLDOQ2HZSK5E55MSDKOGCO6OWIJMYR4U
-
-      Alice
-      is generating an example NFT...
-
-      The NFT ID is 58
-
-      Alice''s balances:
-      {0: 99999000,58: 1}
-
-      Bob is creating an auction that lasts 30 seconds
-      to auction off the NFT... (start time is 2022-03-21 at 22:25:13)
-
-      Done.
-      The auction app ID is 59 and the escrow account is DUSQC7HQ3IF2MWZ6IE2DSJ5MQEDEPA7NFIR3QA7BMRUK3QFD46UHVC5XHE
-
-      Alice
-      is setting up and funding the NFT auction...
-
-      Done
-
-      Alice''s
-      balances: {0: 99998000,58: 0}
-
-      Now waiting 15 seconds before bidding
-      begins!'
-    m_ResultStacktrace: 
+'
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 04675c7d
-      m_LastClickedID: 2103207684
+      m_SelectedIDs: a6c8ef58
+      m_LastClickedID: 1492109478
       m_ExpandedIDs: 9d688e871534ce929eaba6977f14949e85ebd59eafa2bca0b68a48bc71509dc511d5c7cbc0a7d8d1fd2468d649d4f9d9fe3ef2ed40dc38fff7bb4e027c8a9603fb97d01a43118221d982543942dc9956f6ac4361a019b87d1172b77fffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -831,7 +826,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 08670000
     m_LastClickedID: 26376
-    m_ExpandedIDs: 0000000018670000
+    m_ExpandedIDs: 00000000fa660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -859,7 +854,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000018670000
+    m_ExpandedIDs: 00000000fa660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -987,9 +982,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 5afaffff
       m_LastClickedID: 0
-      m_ExpandedIDs: 9ef7ffff64f8ffff7efaffff2cfbffff
+      m_ExpandedIDs: aaf5ffff2cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

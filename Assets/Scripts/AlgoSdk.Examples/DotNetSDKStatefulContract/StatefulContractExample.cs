@@ -25,11 +25,11 @@ namespace AlgoSdk.Examples.StatefulContract
             Debug.Log("Generating temporary accounts...");
 
             //used to create and sign the smart contract
-            AuctionDemo.Account admin = AuctionDemo.Account.FromMnemonic("place blouse sad pigeon wing warrior wild script problem team blouse camp soldier breeze twist mother vanish public glass code arrow execute convince ability there");
+            Account admin = new Account(Mnemonic.FromString("place blouse sad pigeon wing warrior wild script problem team blouse camp soldier breeze twist mother vanish public glass code arrow execute convince ability there").ToPrivateKey());
 
             // create two account to create and user the stateful contract
-            AuctionDemo.Account creator = AuctionDemo.Account.FromMnemonic("benefit once mutual legal marble hurdle dress toe fuel country prepare canvas barrel divide major square name captain calm flock crumble receive economy abandon power");
-            AuctionDemo.Account user = AuctionDemo.Account.FromMnemonic("pledge become mouse fantasy matrix bunker ask tissue prepare vocal unit patient cliff index train network intact company across stage faculty master mom abstract above");
+            Account creator = new Account(Mnemonic.FromString("benefit once mutual legal marble hurdle dress toe fuel country prepare canvas barrel divide major square name captain calm flock crumble receive economy abandon power").ToPrivateKey());
+            Account user = new Account(Mnemonic.FromString("pledge become mouse fantasy matrix bunker ask tissue prepare vocal unit patient cliff index train network intact company across stage faculty master mom abstract above").ToPrivateKey());
 
             await AuctionDemo.Resources.FundAccount(client, admin.Address);
             await AuctionDemo.Resources.FundAccount(client, creator.Address);
@@ -112,7 +112,7 @@ namespace AlgoSdk.Examples.StatefulContract
             Debug.Log("Finished stateful contract example!");
         }
 
-        static async UniTask<ulong> CreateApp(IAlgodClient client, AuctionDemo.Account creator, byte[] approvalProgram, byte[] clearProgram, StateSchema globalSchema, StateSchema localSchema)
+        static async UniTask<ulong> CreateApp(IAlgodClient client, Account creator, byte[] approvalProgram, byte[] clearProgram, StateSchema globalSchema, StateSchema localSchema)
         {
             var (txnParamsError, txnParams) = await client.GetSuggestedParams();
             if (txnParamsError.IsError)
@@ -123,7 +123,7 @@ namespace AlgoSdk.Examples.StatefulContract
 
             AppCallTxn txn = Transaction.AppCreate(creator.Address, txnParams, approvalProgram, clearProgram, globalSchema, localSchema);
 
-            var signedTxn = txn.Sign(creator.PrivateKey.ToKeyPair().SecretKey);
+            var signedTxn = creator.SignTxn(txn);
             Debug.Log("[CreateApp] Signed transaction");
 
             var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
@@ -150,7 +150,7 @@ namespace AlgoSdk.Examples.StatefulContract
             return pendingTxn.ApplicationIndex;
         }
 
-        static async UniTask OptIn(IAlgodClient client, AuctionDemo.Account sender, ulong appId)
+        static async UniTask OptIn(IAlgodClient client, Account sender, ulong appId)
         {
             var (txnParamsError, txnParams) = await client.GetSuggestedParams();
             if (txnParamsError.IsError)
@@ -165,7 +165,7 @@ namespace AlgoSdk.Examples.StatefulContract
                 txnParams: txnParams
             );
 
-            var signedTxn = optInTnx.Sign(sender.PrivateKey.ToKeyPair().SecretKey);
+            var signedTxn = sender.SignTxn(optInTnx);
             Debug.Log("[OptIn] Signed transaction");
 
             var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
@@ -186,7 +186,7 @@ namespace AlgoSdk.Examples.StatefulContract
             Debug.Log($"[OptIn] Address { sender.Address } optin to Application with ID { appId }");
         }
 
-        static async UniTask CloseOutApp(IAlgodClient client, AuctionDemo.Account sender, ulong appId)
+        static async UniTask CloseOutApp(IAlgodClient client, Account sender, ulong appId)
         {
             var (txnParamsError, txnParams) = await client.GetSuggestedParams();
             if (txnParamsError.IsError)
@@ -201,7 +201,7 @@ namespace AlgoSdk.Examples.StatefulContract
                 txnParams: txnParams
             );
 
-            var signedTxn = txn.Sign(sender.PrivateKey.ToKeyPair().SecretKey);
+            var signedTxn = sender.SignTxn(txn);
             Debug.Log("[CloseOutApp] Signed transaction");
 
             var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
@@ -222,7 +222,7 @@ namespace AlgoSdk.Examples.StatefulContract
             Debug.Log($"[CloseOutApp] Application (ID: { appId }) close out confirmed with round: { pendingTxn.ConfirmedRound }");
         }
 
-        static async UniTask UpdateApp(IAlgodClient client, AuctionDemo.Account creator, ulong appId, byte[] approvalProgram, byte[] clearProgram)
+        static async UniTask UpdateApp(IAlgodClient client, Account creator, ulong appId, byte[] approvalProgram, byte[] clearProgram)
         {
             var (txnParamsError, txnParams) = await client.GetSuggestedParams();
             if (txnParamsError.IsError)
@@ -239,7 +239,7 @@ namespace AlgoSdk.Examples.StatefulContract
                 txnParams: txnParams
             );
 
-            var signedTxn = txn.Sign(creator.PrivateKey.ToKeyPair().SecretKey);
+            var signedTxn = creator.SignTxn(txn);
             Debug.Log("[UpdateApp] Signed transaction");
 
             var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
@@ -260,7 +260,7 @@ namespace AlgoSdk.Examples.StatefulContract
             Debug.Log($"[UpdateApp] Application (ID: { appId } confirmed with round: { pendingTxn.ConfirmedRound }");
         }
 
-        static async UniTask DeleteApp(IAlgodClient client, AuctionDemo.Account sender, ulong appId)
+        static async UniTask DeleteApp(IAlgodClient client, Account sender, ulong appId)
         {
             var (txnParamsError, txnParams) = await client.GetSuggestedParams();
             if (txnParamsError.IsError)
@@ -275,7 +275,7 @@ namespace AlgoSdk.Examples.StatefulContract
                 txnParams: txnParams
             );
 
-            var signedTxn = txn.Sign(sender.PrivateKey.ToKeyPair().SecretKey);
+            var signedTxn = sender.SignTxn(txn);
             Debug.Log("[DeleteApp] Signed transaction");
 
             var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
@@ -296,7 +296,7 @@ namespace AlgoSdk.Examples.StatefulContract
             Debug.Log($"[DeleteApp] Application (ID: { appId } confirmed with round: { pendingTxn.ConfirmedRound }");
         }
 
-        static async UniTask ClearApp(IAlgodClient client, AuctionDemo.Account sender, ulong appId)
+        static async UniTask ClearApp(IAlgodClient client, Account sender, ulong appId)
         {
             var (txnParamsError, txnParams) = await client.GetSuggestedParams();
             if (txnParamsError.IsError)
@@ -311,7 +311,7 @@ namespace AlgoSdk.Examples.StatefulContract
                 txnParams: txnParams
             );
 
-            var signedTxn = txn.Sign(sender.PrivateKey.ToKeyPair().SecretKey);
+            var signedTxn = sender.SignTxn(txn);
             Debug.Log("[ClearApp] Signed transaction");
 
             var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
@@ -332,7 +332,7 @@ namespace AlgoSdk.Examples.StatefulContract
             Debug.Log($"[ClearApp] Application (ID: { appId } confirmed with round: { pendingTxn.ConfirmedRound }");
         }
 
-        static async UniTask CallApp(IAlgodClient client, AuctionDemo.Account sender, ulong appId, List<byte[]> args)
+        static async UniTask CallApp(IAlgodClient client, Account sender, ulong appId, List<byte[]> args)
         {
             var (txnParamsError, txnParams) = await client.GetSuggestedParams();
             if (txnParamsError.IsError)
@@ -348,7 +348,7 @@ namespace AlgoSdk.Examples.StatefulContract
                 txnParams: txnParams
             );
 
-            var signedTxn = txn.Sign(sender.PrivateKey.ToKeyPair().SecretKey);
+            var signedTxn = sender.SignTxn(txn);
             Debug.Log("[CallApp] Signed transaction");
 
             var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
@@ -374,7 +374,7 @@ namespace AlgoSdk.Examples.StatefulContract
             }
         }
 
-        static async UniTask ReadLocalState(IAlgodClient client, AuctionDemo.Account account, ulong appId)
+        static async UniTask ReadLocalState(IAlgodClient client, Account account, ulong appId)
         {
             var (error, accountInfo) = await client.GetAccountInformation(account.Address);
             if (error.IsError)
@@ -389,7 +389,7 @@ namespace AlgoSdk.Examples.StatefulContract
             }
         }
 
-        static async UniTask ReadGlobalState(IAlgodClient client, AuctionDemo.Account account, ulong appId)
+        static async UniTask ReadGlobalState(IAlgodClient client, Account account, ulong appId)
         {
             var (error, accountInfo) = await client.GetAccountInformation(account.Address);
             if (error.IsError)

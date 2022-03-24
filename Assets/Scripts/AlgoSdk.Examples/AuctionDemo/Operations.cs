@@ -68,15 +68,15 @@ namespace AlgoSdk.Examples.AuctionDemo
             txn.AppArguments = new List<byte[]>()
             {
                 seller.ToPublicKey().ToArray(),
-                nftId.ToBytesBigEndian(Allocator.Temp).ToArray(),
-                startTime.ToBytesBigEndian(Allocator.Temp).ToArray(),
-                endTime.ToBytesBigEndian(Allocator.Temp).ToArray(),
-                reserve.ToBytesBigEndian(Allocator.Temp).ToArray(),
-                reserve.ToBytesBigEndian(Allocator.Temp).ToArray(),
-                minBidIncrement.ToBytesBigEndian(Allocator.Temp).ToArray()
+                nftId.ToBytesBigEndian(),
+                startTime.ToBytesBigEndian(),
+                endTime.ToBytesBigEndian(),
+                reserve.ToBytesBigEndian(),
+                reserve.ToBytesBigEndian(),
+                minBidIncrement.ToBytesBigEndian()
             }.ToAppArgs();
 
-            var signedTxn = txn.Sign(sender.SecretKey);
+            var signedTxn = sender.SignTxn(txn);
 
             var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
             if (sendTxnError.IsError)
@@ -167,15 +167,15 @@ namespace AlgoSdk.Examples.AuctionDemo
                 assetAmount: nftAmount,
                 txnParams: txnParams
             );
-
-            var groupId = Transaction.GetGroupId(fundAppTxn.GetId(), setupTxn.GetId(), fundNftTxn.GetId());
+            
+            var groupId = TransactionGroup.Of(fundAppTxn.GetId(), setupTxn.GetId(), fundNftTxn.GetId()).GetId();
             fundAppTxn.Group = groupId;
             setupTxn.Group = groupId;
             fundNftTxn.Group = groupId;
 
-            var signedFundAppTxn = fundAppTxn.Sign(funder.SecretKey);
-            var signedSetupTxnn = setupTxn.Sign(funder.SecretKey);
-            var signedFundNftTxn = fundNftTxn.Sign(nftHolder.SecretKey);
+            var signedFundAppTxn = funder.SignTxn(fundAppTxn);
+            var signedSetupTxnn = funder.SignTxn(setupTxn);
+            var signedFundNftTxn = nftHolder.SignTxn(fundNftTxn);
 
             var (sendTxnError, txid) = await client.SendTransactions(signedFundAppTxn, signedSetupTxnn, signedFundNftTxn);
             if (sendTxnError.IsError)
@@ -247,19 +247,18 @@ namespace AlgoSdk.Examples.AuctionDemo
             AppCallTxn appCallTxn = Transaction.AppCall(
                 sender: bidder.Address,
                 applicationId: appId,
-                onComplete: OnCompletion.NoOp,
                 appArguments: "bid".ToAppArgs(),
                 foreignAssets: new ulong[] { nftId },
                 accounts: prevBidLeader.HasValue ? new Address[] { prevBidLeader.Value } : null,
                 txnParams: txnParams
             );
 
-            var groupId = Transaction.GetGroupId(payTxn.GetId(), appCallTxn.GetId());
+            var groupId = TransactionGroup.Of(payTxn.GetId(), appCallTxn.GetId()).GetId();
             payTxn.Group = groupId;
             appCallTxn.Group = groupId;
 
-            var signedPayTxn = payTxn.Sign(bidder.SecretKey);
-            var signedAppCallTxn = appCallTxn.Sign(bidder.SecretKey);
+            var signedPayTxn = bidder.SignTxn(payTxn);
+            var signedAppCallTxn = bidder.SignTxn(appCallTxn);
 
             var (sendTxnError, txid) = await client.SendTransactions(signedPayTxn, signedAppCallTxn);
             if (sendTxnError.IsError)
@@ -330,7 +329,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                 txnParams: txnParams
             );
 
-            var signedDeleteTxn = deleteTxn.Sign(closer.SecretKey);
+            var signedDeleteTxn = closer.SignTxn(deleteTxn);
 
             var (sendTxnError, txid) = await client.SendTransaction(signedDeleteTxn);
             if (sendTxnError.IsError)
