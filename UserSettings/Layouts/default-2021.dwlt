@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 454
     height: 1059
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 59
+  controlID: 83
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 60
+  controlID: 84
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: TestRunnerWindow
+  m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -268,15 +268,15 @@ MonoBehaviour:
     y: 0
     width: 1103
     height: 634
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 12}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 16}
   - {fileID: 17}
   - {fileID: 12}
-  m_Selected: 2
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -306,7 +306,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 111
+    ID: 118
     splitterInitialOffset: 370
     currentActiveSplitter: -1
     realSizes:
@@ -490,10 +490,10 @@ MonoBehaviour:
       messages: 
       output: 'Current timestamp is 1648154040
 
-        Last block timestamp is
-        1648154034
+        Last block timestamp is 1648154034
 
-        Timestamps are off by 6 seconds
+        Timestamps
+        are off by 6 seconds
 
 '
       stacktrace: 
@@ -655,16 +655,16 @@ MonoBehaviour:
         Carla
         wants to bid on the NFT, her balances: {0: 100000000}
 
-        Carla is
-        placing a bid for 1000000 microAlgos
+        Carla is placing
+        a bid for 1000000 microAlgos
 
-        No previous bidder found.
-        Placing first bid!
+        No previous bidder found. Placing first
+        bid!
 
         Carla is opting into the NFT with ID 17
 
-        Could
-        not recognize the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+        Could not
+        recognize the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
 
         Could
         not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
@@ -886,8 +886,8 @@ MonoBehaviour:
 
       The NFT ID is 17
 
-      Could not
-      recognize the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+      Could not recognize
+      the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
 
       Could
       not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
@@ -912,8 +912,8 @@ MonoBehaviour:
 
       Done
 
-      Could not
-      recognize the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+      Could not recognize
+      the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
 
       Could
       not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
@@ -1002,8 +1002,8 @@ MonoBehaviour:
       The
       auction escrow now holds the following: {0: 0}
 
-      Could not recognize
-      the field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
+      Could not recognize the
+      field "total-apps-opted-in", for any fields on AlgoSdk.AccountInfo
 
       Could
       not recognize the field "total-assets-opted-in", for any fields on AlgoSdk.AccountInfo
@@ -1117,22 +1117,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Scripts/AlgoSdk.Examples/RockPaperScissors/python
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Scripts/AlgoSdk.Examples/RockPaperScissors/python
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Black Hole\Repositories\Alrogrand\unity-algorand-sdk-examples
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 86660000
-    m_LastClickedID: 26246
-    m_ExpandedIDs: 000000009465000000ca9a3b
+    m_SelectedIDs: c6650000
+    m_LastClickedID: 26054
+    m_ExpandedIDs: 0000000088650000926500009a6500009c650000b065000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1160,7 +1160,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000094650000
+    m_ExpandedIDs: 0000000088650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1187,7 +1187,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1288,9 +1288,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3cf8ffff
+      m_SelectedIDs: c6650000
       m_LastClickedID: 0
-      m_ExpandedIDs: c4f6ffff92f7ffffbaf8ffff6cf9ffff3afaffff7efaffff2cfbffff
+      m_ExpandedIDs: 26fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
