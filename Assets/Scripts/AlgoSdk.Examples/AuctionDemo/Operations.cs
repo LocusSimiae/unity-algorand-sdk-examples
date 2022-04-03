@@ -56,7 +56,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             StateSchema globalSchema = new StateSchema() { NumUints = 7, NumByteSlices = 2 };
             StateSchema localSchema = new StateSchema() { NumUints = 0, NumByteSlices = 0 };
 
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[CreateAuctionApp] Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -78,14 +78,14 @@ namespace AlgoSdk.Examples.AuctionDemo
 
             var signedTxn = sender.SignTxn(txn);
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
+            var (sendTxnError, txid) = await client.RawTransaction(AlgoApiSerializer.SerializeMessagePack(signedTxn));
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"[CreateAuctionApp] Algod SendTransaction error: {sendTxnError.Message}");
                 return 0;
             }
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[CreateAuctionApp] Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -121,7 +121,7 @@ namespace AlgoSdk.Examples.AuctionDemo
         /// <returns></returns>
         public static async UniTask SetupAuctionApp(IAlgodClient client, ulong appId, Account funder, Account nftHolder, ulong nftId, ulong nftAmount)
         {
-            var appResponse = await client.GetApplication(appId);
+            var appResponse = await client.GetApplicationByID(appId);
             if (appResponse.Error.IsError)
             {
                 Debug.LogError($"[SetupAuctionApp] Algod GetApplication failed: {appResponse.Error.Message}");
@@ -130,7 +130,7 @@ namespace AlgoSdk.Examples.AuctionDemo
 
             Address appAddress = appResponse.Payload.GetAddress();
 
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[SetupAuctionApp] Algod GetSuggestedParams error: {txnParamsError.Message}");

@@ -35,7 +35,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                 return kmdAccounts;
             }
 
-            Wallet[] wallets = walletsResponse.Payload.Wallets;
+            Kmd.Wallet[] wallets = walletsResponse.Payload.Wallets;
             if (wallets == null || wallets.Length == 0)
             {
                 Debug.LogError($"[GetGenesisAccounts] KMD ListWallets couldn't find any wallets!");

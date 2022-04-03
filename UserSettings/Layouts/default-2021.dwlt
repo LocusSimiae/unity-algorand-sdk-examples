@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 69
+  controlID: 84
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 20
+  controlID: 85
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 21
+  controlID: 86
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -306,7 +306,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 133
+    ID: 111
     splitterInitialOffset: 370
     currentActiveSplitter: -1
     realSizes:
@@ -389,9 +389,9 @@ MonoBehaviour:
       uniqueId: '[unity-algorand-sdk-examples][suite]'
       name: unity-algorand-sdk-examples
       fullName: unity-algorand-sdk-examples
-      resultStatus: 2
-      duration: 0.054726
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 108.53014
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -405,9 +405,9 @@ MonoBehaviour:
       uniqueId: '[AlgoSdk.Examples.Tests.dll][suite]'
       name: AlgoSdk.Examples.Tests.dll
       fullName: C:/Black Hole/Repositories/Alrogrand/unity-algorand-sdk-examples/Library/ScriptAssemblies/AlgoSdk.Examples.Tests.dll
-      resultStatus: 2
-      duration: 0.0416021
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 108.51071
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -421,9 +421,9 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/[AlgoSdk][suite]
       name: AlgoSdk
       fullName: AlgoSdk
-      resultStatus: 2
-      duration: 0.0402532
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 108.50748
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -437,9 +437,9 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/[Examples][suite]
       name: Examples
       fullName: AlgoSdk.Examples
-      resultStatus: 2
-      duration: 0.0392882
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 108.50244
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -454,7 +454,7 @@ MonoBehaviour:
       name: AuctionDemo
       fullName: AlgoSdk.Examples.AuctionDemo
       resultStatus: 1
-      duration: 89.23744
+      duration: 92.31236
       messages: 
       output: 
       stacktrace: 
@@ -470,7 +470,7 @@ MonoBehaviour:
       name: Tests
       fullName: AlgoSdk.Examples.AuctionDemo.Tests
       resultStatus: 1
-      duration: 89.23601
+      duration: 92.310555
       messages: 
       output: 
       stacktrace: 
@@ -486,14 +486,14 @@ MonoBehaviour:
       name: CheckCurrentAndLastBlockTimes
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.CheckCurrentAndLastBlockTimes
       resultStatus: 1
-      duration: 0.0399057
+      duration: 0.0379859
       messages: 
-      output: 'Current timestamp is 1649008110
+      output: 'Current timestamp is 1649011583
 
-        Last block timestamp is
-        1649008102
+        Last block timestamp is 1649011578
 
-        Timestamps are off by 8 seconds
+        Timestamps
+        are off by 5 seconds
 
 '
       stacktrace: 
@@ -510,7 +510,7 @@ MonoBehaviour:
       name: GetAlgodClient
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetAlgodClient
       resultStatus: 1
-      duration: 0.0117141
+      duration: 0.0327536
       messages: 
       output: 
       stacktrace: 
@@ -527,7 +527,7 @@ MonoBehaviour:
       name: GetGenesisAccounts
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetGenesisAccounts
       resultStatus: 1
-      duration: 0.0095146
+      duration: 0.0057559
       messages: 
       output: 
       stacktrace: 
@@ -544,7 +544,7 @@ MonoBehaviour:
       name: GetKmdClient
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetKmdClient
       resultStatus: 1
-      duration: 0.0203187
+      duration: 0.0267554
       messages: 
       output: 
       stacktrace: 
@@ -561,34 +561,34 @@ MonoBehaviour:
       name: RunAuctionDemo
       fullName: AlgoSdk.Examples.AuctionDemo.Tests.RunAuctionDemo
       resultStatus: 1
-      duration: 89.15116
+      duration: 92.20283
       messages: 
       output: 'Auction demo started!
 
         Generating temporary accounts...
 
         Alice
-        (seller account): SYZQIMBYOBZZWNS375LRGCT3O5IOCA7WXIZKSOOL4I7C3AJV2EXI5YIVEQ
+        (seller account): QJI3ARL7PRGBD7BZZRQD3BPL34ZGRFGI4KTN3G3BK2GJXDBDMB3KYBRG4U
 
         Bob
-        (auction creator account): HAAUXW5QCCVIIREETOKJ7UMPBEQYSXULE5EU7OBVOLSCZN6X42DBX4AEQY
+        (auction creator account): Q65HDJJ72OSAMVQ6K2CHDMQC5NX5IAHO3DPRY6GL2MQPBKEGCZGLZBJVCE
 
         Carla
-        (bidder account): WCZIROJIENLVVB2PYND53RHQVSFX6RIVSXIIQTZENIHY6BAYUTXR56QFPY
+        (bidder account): TDXLRCL3ZP26IS3VW2IFYP2P7BGRUQDIMJXEX2SARBCCHSC3EKU5W6ORDU
 
         Alice
         is generating an example NFT...
 
-        The NFT ID is 27
+        The NFT ID is 39
 
         Alice''s
-        balances: {0: 99999000,27: 1}
+        balances: {0: 99999300,39: 1}
 
         Bob is creating an auction that lasts
-        30 seconds to auction off the NFT... (start time is 2022-04-03 at 19:49:08)
+        30 seconds to auction off the NFT... (start time is 2022-04-03 at 20:47:05)
 
         Done.
-        The auction app ID is 28 and the escrow account is SE3CCJOIJHPD7JYBXI3OWJ2JUUNP3ZQ2H7VZT7NXGBSY4FZXGSKP67DBIQ
+        The auction app ID is 40 and the escrow account is UGXES2XHGCB4SR6VYO4G4SWOQU4JXC4T6X6XUFHNGGSO7EGIIZ5QYQA4RY
 
         Alice
         is setting up and funding the NFT auction...
@@ -596,28 +596,28 @@ MonoBehaviour:
         Done
 
         Alice''s
-        balances: {0: 99998000,27: 0}
+        balances: {0: 99998300,39: 0}
 
         Now waiting 15 seconds before bidding
         begins!
 
-        Auction escrow balances: {0: 202000,27: 1}
+        Auction escrow balances: {0: 202000,39: 1}
 
         Carla
-        wants to bid on the NFT, her balances: {0: 100000000}
+        wants to bid on the NFT, her balances: {0: 100000300}
 
-        Carla is
-        placing a bid for 1000000 microAlgos
+        Carla is placing
+        a bid for 1000000 microAlgos
 
-        No previous bidder found.
-        Placing first bid!
+        No previous bidder found. Placing first
+        bid!
 
-        Carla is opting into the NFT with ID 27
+        Carla is opting into the NFT with ID 39
 
         Done
 
         Waiting
-        8 seconds for the auction to finish
+        9 seconds for the auction to finish
 
         Alice is closing the auction
 
@@ -625,10 +625,10 @@ MonoBehaviour:
         auction escrow now holds the following: {0: 0}
 
         Alice''s balances
-        after auction: {0: 101197099,27: 0}
+        after auction: {0: 101197400,39: 0}
 
         Carla''s balances after auction:
-        {0: 98997100,27: 1}
+        {0: 98997398,39: 1}
 
         Auction demo finished!
 
@@ -646,9 +646,9 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.RockPaperScissors][suite]
       name: RockPaperScissors
       fullName: AlgoSdk.Examples.RockPaperScissors
-      resultStatus: 2
-      duration: 0.0388593
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 108.50162
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -662,9 +662,9 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/RockPaperScissors/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.RockPaperScissors.Tests][suite]
       name: Tests
       fullName: AlgoSdk.Examples.RockPaperScissors.Tests
-      resultStatus: 2
-      duration: 0.0373779
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 108.499794
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -678,83 +678,138 @@ MonoBehaviour:
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/RockPaperScissors/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.RockPaperScissors.Tests.RunRockPaperScissors]
       name: RunRockPaperScissors
       fullName: AlgoSdk.Examples.RockPaperScissors.Tests.RunRockPaperScissors
-      resultStatus: 2
-      duration: 0.0364774
-      messages: 'Unhandled log message: ''[Error] Algod SendTransaction error: TransactionPool.Remember:
-        transaction STSXEDRVJI6WUDRNEWO7XPACJ4FS2VUDTSJPPEQMLHMZ2YPAWWTA: overspend
-        (account TIIRIJTMMCD3ZT6PVL4ZX6LFVBGGIEYBS4TYKRDXWZRRDM543WE37AONOE, data
-        {AccountBaseData:{Status:Offline MicroAlgos:{Raw:0} RewardsBase:0 RewardedMicroAlgos:{Raw:0}
-        AuthAddr:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ TotalAppSchema:{_struct:{}
-        NumUint:0 NumByteSlice:0} TotalExtraAppPages:0 TotalAppParams:0 TotalAppLocalStates:0
-        TotalAssetParams:0 TotalAssets:0} VotingData:{VoteID:[0 0 0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] SelectionID:[0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] StateProofID:[0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] VoteFirstValid:0 VoteLastValid:0
-        VoteKeyDilution:0}}, tried to spend {1000})''. Use UnityEngine.TestTools.LogAssert.Expect'
+      resultStatus: 1
+      duration: 108.48576
+      messages: 
       output: 'Rock Paper Scissors demo started!
 
         Generating temporary accounts...
 
         Alice
-        (challenger account): TIIRIJTMMCD3ZT6PVL4ZX6LFVBGGIEYBS4TYKRDXWZRRDM543WE37AONOE
+        (challenger account): USUZ6BFBR23YDEM7WRS6LYKF7EW4ZGE6DLAITL7EKHXZXWADCRPXOX45YM
 
         Bob
-        (opponent account): AAOBZ3CTJBZHMH76VAEEK5TJUC2SZDLPSTIKEB6XWUJUQSD4HPHPB5BN6Y
+        (opponent account): L4WCUSDK4ICOW4QIW5Z7Y6JALMKRVO3FWZSEHVXGPOHW65WXNYSAOMYMUM
 
         Alice
         is creating the rock paper scissors app
 
-        Algod SendTransaction error:
-        TransactionPool.Remember: transaction STSXEDRVJI6WUDRNEWO7XPACJ4FS2VUDTSJPPEQMLHMZ2YPAWWTA:
-        overspend (account TIIRIJTMMCD3ZT6PVL4ZX6LFVBGGIEYBS4TYKRDXWZRRDM543WE37AONOE,
-        data {AccountBaseData:{Status:Offline MicroAlgos:{Raw:0} RewardsBase:0 RewardedMicroAlgos:{Raw:0}
-        AuthAddr:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ TotalAppSchema:{_struct:{}
-        NumUint:0 NumByteSlice:0} TotalExtraAppPages:0 TotalAppParams:0 TotalAppLocalStates:0
-        TotalAssetParams:0 TotalAssets:0} VotingData:{VoteID:[0 0 0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] SelectionID:[0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] StateProofID:[0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] VoteFirstValid:0 VoteLastValid:0
-        VoteKeyDilution:0}}, tried to spend {1000})
+        Done. The app ID is 119
+        and the escrow account is BMG32UDWNWZT5UYVW2XOCKG4QA325NPH5FUSOX6GEFX5XNC3Z5VF5LGE2Q
 
-        Algod GetApplication
-        failed: application does not exist
+        Both
+        Alice and Bob are opting in to the app.
+
+        Could not recognize the
+        msgpack field "address" for any fields on AlgoSdk.AccountStateDelta.
+
+        msgpack
+        base64: 2VVTVVo2QkZCUjIzWURFTTdXUlM2TFlLRjdFVzRaR0U2RExBSVRMN0VLSFhaWFdBRENSUFhPWDQ1WU0=
+
+        Could
+        not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
+
+        msgpack
+        base64: lIKja2V5sFkyOXRiV2wwYldWdWRBPT2ldmFsdWWBpmFjdGlvbgGCo2tleaxiM0J3YjI1bGJuUT2ldmFsdWWBpmFjdGlvbgGCo2tleahjbVYyWldGc6V2YWx1ZYGmYWN0aW9uAYKja2V5qGQyRm5aWEk9pXZhbHVlgaZhY3Rpb24C
+
+        Could
+        not recognize the msgpack field "address" for any fields on AlgoSdk.AccountStateDelta.
+
+        msgpack
+        base64: 2Uw0V0NVU0RLNElDT1c0UUlXNVo3WTZKQUxNS1JWTzNGV1pTRUhWWEdQT0hXNjVXWE5ZU0FPTVlNVU0=
+
+        Could
+        not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
+
+        msgpack
+        base64: lIKja2V5sFkyOXRiV2wwYldWdWRBPT2ldmFsdWWBpmFjdGlvbgGCo2tleaxiM0J3YjI1bGJuUT2ldmFsdWWBpmFjdGlvbgGCo2tleahjbVYyWldGc6V2YWx1ZYGmYWN0aW9uAYKja2V5qGQyRm5aWEk9pXZhbHVlgaZhY3Rpb24C
+
+        All
+        participants balances before the game:
+
+        Bob''s balances: {0: 99999100}
+
+        Alice''s
+        balances: {0: 99998100}
+
+        App/Escrow''s balances: {0: 0}
+
+        Alice
+        is creating and setting up the challenge between her and Bob!
+
+        Could
+        not recognize the msgpack field "address" for any fields on AlgoSdk.AccountStateDelta.
+
+        msgpack
+        base64: 2VVTVVo2QkZCUjIzWURFTTdXUlM2TFlLRjdFVzRaR0U2RExBSVRMN0VLSFhaWFdBRENSUFhPWDQ1WU0=
+
+        Could
+        not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
+
+        msgpack
+        base64: k4Kja2V5sFkyOXRiV2wwYldWdWRBPT2ldmFsdWWCpmFjdGlvbgGlYnl0ZXPZMWZLOGJpYXpqWWVvR2hDUHJVRTVNWFJwT01wMmZ2Um44d25mdm9UdE01QT2Co2tleaxiM0J3YjI1bGJuUT2ldmFsdWWCpmFjdGlvbgGlYnl0ZXPZWHl3cVNHcmlCT3R5Q0xkei9Ia2dXeFVhdTJXMlpFUFc1bnVQYjNiWGJpUT2Co2tleahkMkZuWlhJPaV2YWx1ZYKmYWN0aW9uAqR1aW50zgAB4kA=
+
+        Bob
+        accepts the challenge and sends his play!
+
+        Could not recognize the
+        msgpack field "address" for any fields on AlgoSdk.AccountStateDelta.
+
+        msgpack
+        base64: 2Uw0V0NVU0RLNElDT1c0UUlXNVo3WTZKQUxNS1JWTzNGV1pTRUhWWEdQT0hXNjVXWE5ZU0FPTVlNVU0=
+
+        Could
+        not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
+
+        msgpack
+        base64: k4Kja2V5rGIzQndiMjVsYm5RPaV2YWx1ZYKmYWN0aW9uAaVieXRlc9lwS21mQktHT3Q0R1JuN1JsNWVGRitTM01tSjRhd0ltdjVGSHZtOWdERkY4PYKja2V5qGNtVjJaV0ZzpXZhbHVlgqZhY3Rpb24BpWJ5dGVzpGNnPT2Co2tleahkMkZuWlhJPaV2YWx1ZYKmYWN0aW9uAqR1aW50zgAB4kA=
+
+        Alice
+        reveals her play!
+
+        Could not recognize the msgpack field "address"
+        for any fields on AlgoSdk.AccountStateDelta.
+
+        msgpack base64: 2Uw0V0NVU0RLNElDT1c0UUlXNVo3WTZKQUxNS1JWTzNGV1pTRUhWWEdQT0hXNjVXWE5ZU0FPTVlNVU0=
+
+        Could
+        not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
+
+        msgpack
+        base64: k4Kja2V5rGIzQndiMjVsYm5RPaV2YWx1ZYGmYWN0aW9uAYKja2V5qGNtVjJaV0ZzpXZhbHVlgaZhY3Rpb24BgqNrZXmoZDJGblpYST2ldmFsdWWBpmFjdGlvbgI=
+
+        Could
+        not recognize the msgpack field "address" for any fields on AlgoSdk.AccountStateDelta.
+
+        msgpack
+        base64: 2VVTVVo2QkZCUjIzWURFTTdXUlM2TFlLRjdFVzRaR0U2RExBSVRMN0VLSFhaWFdBRENSUFhPWDQ1WU0=
+
+        Could
+        not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
+
+        msgpack
+        base64: k4Kja2V5qGQyRm5aWEk9pXZhbHVlgaZhY3Rpb24CgqNrZXmwWTI5dGJXbDBiV1Z1ZEE9PaV2YWx1ZYGmYWN0aW9uAYKja2V5rGIzQndiMjVsYm5RPaV2YWx1ZYGmYWN0aW9uAQ==
+
+        Bob
+        wins the game!
+
+        All participants balances after the game:
+
+        Bob''s
+        balances: {0: 100120556}
+
+        Alice''s balances: {0: 99768644}
+
+        App/Escrow''s
+        balances: {0: 100000}
+
+        Alices cleans up the challenge!
+
+        Rock
+        Paper Scissors demo finished!
 
 '
-      stacktrace: 'AlgoSdk.Examples.RockPaperScissors.RockPaperScissorsExample/<CreateApp>d__2:MoveNext
-        () (at Assets/Scripts/AlgoSdk.Examples/RockPaperScissors/RockPaperScissorsExample.cs:112)
-
-        Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`2<AlgoSdk.Examples.RockPaperScissors.RockPaperScissorsExample/<CreateApp>d__2,
-        ulong>:Run () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/CompilerServices/StateMachineRunner.cs:313)
-
-        Cysharp.Threading.Tasks.AwaiterActions:Continuation
-        (object) (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/UniTask.cs:21)
-
-        Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1<UnityEngine.Networking.UnityWebRequest>:TrySetException
-        (System.Exception) (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/UniTaskCompletionSource.cs:167)
-
-        Cysharp.Threading.Tasks.UnityAsyncExtensions/UnityWebRequestAsyncOperationConfiguredSource:MoveNext
-        () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/UnityAsyncExtensions.cs:901)
-
-        Cysharp.Threading.Tasks.Internal.PlayerLoopRunner:RunCore
-        () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/Internal/PlayerLoopRunner.cs:175)
-
-        Cysharp.Threading.Tasks.Internal.PlayerLoopRunner:Update
-        () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/Internal/PlayerLoopRunner.cs:145)
-
-        Cysharp.Threading.Tasks.Internal.PlayerLoopRunner:Run
-        () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/Internal/PlayerLoopRunner.cs:104)
-
-        Cysharp.Threading.Tasks.PlayerLoopHelper:ForceEditorPlayerLoopUpdate
-        () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/PlayerLoopHelper.cs:356)
-
-        UnityEditor.EditorApplication:Internal_CallUpdateFunctions
-        ()
-
-        
-
-'
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -768,11 +823,9 @@ MonoBehaviour:
       name: StatefulContract
       fullName: AlgoSdk.Examples.StatefulContract
       resultStatus: 1
-      duration: 157.04509
+      duration: 156.81705
       messages: 
-      output: 'Alice''s balances: {0: 99872644}
-
-'
+      output: 
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
@@ -786,14 +839,9 @@ MonoBehaviour:
       name: Tests
       fullName: AlgoSdk.Examples.StatefulContract.Tests
       resultStatus: 1
-      duration: 157.0408
+      duration: 156.81424
       messages: 
-      output: 'App/Escrow''s balances: {0: 246912}
-
-        Alices cleans up the
-        challenge!
-
-'
+      output: 
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
@@ -807,51 +855,51 @@ MonoBehaviour:
       name: RunStatefulContract
       fullName: AlgoSdk.Examples.StatefulContract.Tests.RunStatefulContract
       resultStatus: 1
-      duration: 157.035
+      duration: 156.81305
       messages: 
-      output: "Started stateful contract example!\r\nGenerating temporary accounts...\r\nRock
-        Paper Scissors demo finished!\r\nadmin account: AJNNFQN7DSR7QEY766V7JDG35OPM53ZSNF7CU264AWOOUGSZBMLMSKCRIU\r\ncreator
+      output: "Started stateful contract example!\r\nGenerating temporary accounts...\r\nadmin
+        account: AJNNFQN7DSR7QEY766V7JDG35OPM53ZSNF7CU264AWOOUGSZBMLMSKCRIU\r\ncreator
         account: 53GNUYJSTKGEHAVYE5ZS65YTVJSYZSJ7KJBWNQT3MJESCOKNOWEBYTLVA4\r\nuser
         account: GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU\r\n[CreateApp]
         Signed transaction\r\n[CreateApp] Sent transaction\r\n[CreateApp] App id
-        is: 50\r\n[OptIn] Signed transaction\r\n[OptIn] Sent transaction\r\n[OptIn]
+        is: 65\r\n[OptIn] Signed transaction\r\n[OptIn] Sent transaction\r\n[OptIn]
         Address GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU optin
-        to Application with ID 50\r\n[CallApp] Signed transaction\r\n[CallApp] Sent
+        to Application with ID 65\r\n[CallApp] Signed transaction\r\n[CallApp] Sent
         transaction\r\nCould not recognize the msgpack field \"address\" for any
         fields on AlgoSdk.AccountStateDelta.\nmsgpack base64: 2UdHN1VEQ1RYTkhBREtTSjIyR0c2NEJaTktYWExYTVNZV1ZaREQyVUdIQlo2UkxWWFdHUkxNVzUyRFU=\r\nCould
         not recognize the msgpack field \"delta\" for any fields on AlgoSdk.AccountStateDelta.\nmsgpack
         base64: kYKja2V5rFkyOTFiblJsY2c9PaV2YWx1ZYKmYWN0aW9uAqR1aW50AQ==\r\n[CallApp]
-        Application (ID: 50 confirmed with round: 82\r\n[CallApp] Global state delta:
+        Application (ID: 65 confirmed with round: 247\r\n[CallApp] Global state delta:
         key: counter; value: (set bytes) \r\n[ReadLocalState] User's application
         local state: key: counter; value: (uint) 1; \r\n[ReadGlobalState] Application
         global state: key: counter; value: (uint) 1; \r\n[UpdateApp] Signed transaction\r\n[UpdateApp]
-        Sent transaction\r\n[UpdateApp] Application (ID: 50 confirmed with round:
-        85\r\nSending app argument: 2022-04-03 at 19:52:24\r\n[CallApp] Signed transaction\r\n[CallApp]
+        Sent transaction\r\n[UpdateApp] Application (ID: 65 confirmed with round:
+        250\r\nSending app argument: 2022-04-03 at 20:50:56\r\n[CallApp] Signed transaction\r\n[CallApp]
         Sent transaction\r\nCould not recognize the msgpack field \"address\" for
         any fields on AlgoSdk.AccountStateDelta.\nmsgpack base64: 2UdHN1VEQ1RYTkhBREtTSjIyR0c2NEJaTktYWExYTVNZV1ZaREQyVUdIQlo2UkxWWFdHUkxNVzUyRFU=\r\nCould
         not recognize the msgpack field \"delta\" for any fields on AlgoSdk.AccountStateDelta.\nmsgpack
-        base64: koKja2V5rFkyOTFiblJsY2c9PaV2YWx1ZYKmYWN0aW9uAqR1aW50AoKja2V5rGRHbHRaWE4wWVcxd6V2YWx1ZYKmYWN0aW9uAaVieXRlc9lNakF5TWkwd05DMHdNeUJoZENBeE9UbzFNam95TkE9PQ==\r\n[CallApp]
-        Application (ID: 50 confirmed with round: 88\r\n[CallApp] Global state delta:
+        base64: koKja2V5rFkyOTFiblJsY2c9PaV2YWx1ZYKmYWN0aW9uAqR1aW50AoKja2V5rGRHbHRaWE4wWVcxd6V2YWx1ZYKmYWN0aW9uAaVieXRlc9lNakF5TWkwd05DMHdNeUJoZENBeU1EbzFNRG8xTmc9PQ==\r\n[CallApp]
+        Application (ID: 65 confirmed with round: 253\r\n[CallApp] Global state delta:
         key: counter; value: (set bytes) \r\n[ReadLocalState] User's application
         local state: key: counter; value: (uint) 2; key: timestamp; value: (bytes)
-        2022-04-03 at 19:52:24\r\n[ReadGlobalState] Application global state: key:
+        2022-04-03 at 20:50:56\r\n[ReadGlobalState] Application global state: key:
         counter; value: (uint) 2; \r\n[CloseOutApp] Signed transaction\r\n[CloseOutApp]
-        Sent transaction\r\n[CloseOutApp] Application (ID: 50) close out confirmed
-        with round: 91\r\n[OptIn] Signed transaction\r\n[OptIn] Sent transaction\r\n[OptIn]
+        Sent transaction\r\n[CloseOutApp] Application (ID: 65) close out confirmed
+        with round: 256\r\n[OptIn] Signed transaction\r\n[OptIn] Sent transaction\r\n[OptIn]
         Address GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU optin
-        to Application with ID 50\r\n[CallApp] Signed transaction\r\n[CallApp] Sent
+        to Application with ID 65\r\n[CallApp] Signed transaction\r\n[CallApp] Sent
         transaction\r\nCould not recognize the msgpack field \"address\" for any
         fields on AlgoSdk.AccountStateDelta.\nmsgpack base64: 2UdHN1VEQ1RYTkhBREtTSjIyR0c2NEJaTktYWExYTVNZV1ZaREQyVUdIQlo2UkxWWFdHUkxNVzUyRFU=\r\nCould
         not recognize the msgpack field \"delta\" for any fields on AlgoSdk.AccountStateDelta.\nmsgpack
-        base64: koKja2V5rFkyOTFiblJsY2c9PaV2YWx1ZYKmYWN0aW9uAqR1aW50AYKja2V5rGRHbHRaWE4wWVcxd6V2YWx1ZYKmYWN0aW9uAaVieXRlc9lNakF5TWkwd05DMHdNeUJoZENBeE9UbzFNam95TkE9PQ==\r\n[CallApp]
-        Application (ID: 50 confirmed with round: 97\r\n[CallApp] Global state delta:
+        base64: koKja2V5rFkyOTFiblJsY2c9PaV2YWx1ZYKmYWN0aW9uAqR1aW50AYKja2V5rGRHbHRaWE4wWVcxd6V2YWx1ZYKmYWN0aW9uAaVieXRlc9lNakF5TWkwd05DMHdNeUJoZENBeU1EbzFNRG8xTmc9PQ==\r\n[CallApp]
+        Application (ID: 65 confirmed with round: 262\r\n[CallApp] Global state delta:
         key: counter; value: (set bytes) \r\n[ReadLocalState] User's application
         local state: key: counter; value: (uint) 1; key: timestamp; value: (bytes)
-        2022-04-03 at 19:52:24\r\n[ReadGlobalState] Application global state: key:
+        2022-04-03 at 20:50:56\r\n[ReadGlobalState] Application global state: key:
         counter; value: (uint) 3; \r\n[DeleteApp] Signed transaction\r\n[DeleteApp]
-        Sent transaction\r\n[DeleteApp] Application (ID: 50 confirmed with round:
-        100\r\n[ClearApp] Signed transaction\r\n[ClearApp] Sent transaction\r\n[ClearApp]
-        Application (ID: 50 confirmed with round: 103\r\nFinished stateful contract
+        Sent transaction\r\n[DeleteApp] Application (ID: 65 confirmed with round:
+        265\r\n[ClearApp] Signed transaction\r\n[ClearApp] Sent transaction\r\n[ClearApp]
+        Application (ID: 65 confirmed with round: 268\r\nFinished stateful contract
         example!\r\n"
       stacktrace: 
       notRunnable: 0
@@ -862,118 +910,138 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1001
       parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/StatefulContract/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract.Tests][suite]
-    m_ResultText: 'RunRockPaperScissors (0.036s)
+    m_ResultText: 'RunRockPaperScissors (108.486s)
 
       ---
 
-      Unhandled log
-      message: ''[Error] Algod SendTransaction error: TransactionPool.Remember: transaction
-      STSXEDRVJI6WUDRNEWO7XPACJ4FS2VUDTSJPPEQMLHMZ2YPAWWTA: overspend (account TIIRIJTMMCD3ZT6PVL4ZX6LFVBGGIEYBS4TYKRDXWZRRDM543WE37AONOE,
-      data {AccountBaseData:{Status:Offline MicroAlgos:{Raw:0} RewardsBase:0 RewardedMicroAlgos:{Raw:0}
-      AuthAddr:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ TotalAppSchema:{_struct:{}
-      NumUint:0 NumByteSlice:0} TotalExtraAppPages:0 TotalAppParams:0 TotalAppLocalStates:0
-      TotalAssetParams:0 TotalAssets:0} VotingData:{VoteID:[0 0 0 0 0 0 0 0 0 0 0
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] SelectionID:[0 0 0 0 0 0 0 0 0 0
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] StateProofID:[0 0 0 0 0 0 0 0
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] VoteFirstValid:0 VoteLastValid:0 VoteKeyDilution:0}},
-      tried to spend {1000})''. Use UnityEngine.TestTools.LogAssert.Expect
+      Rock Paper Scissors
+      demo started!
 
-      ---
+      Generating temporary accounts...
 
-      AlgoSdk.Examples.RockPaperScissors.RockPaperScissorsExample/<CreateApp>d__2:MoveNext
-      () (at Assets/Scripts/AlgoSdk.Examples/RockPaperScissors/RockPaperScissorsExample.cs:112)
-
-      Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`2<AlgoSdk.Examples.RockPaperScissors.RockPaperScissorsExample/<CreateApp>d__2,
-      ulong>:Run () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/CompilerServices/StateMachineRunner.cs:313)
-
-      Cysharp.Threading.Tasks.AwaiterActions:Continuation
-      (object) (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/UniTask.cs:21)
-
-      Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1<UnityEngine.Networking.UnityWebRequest>:TrySetException
-      (System.Exception) (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/UniTaskCompletionSource.cs:167)
-
-      Cysharp.Threading.Tasks.UnityAsyncExtensions/UnityWebRequestAsyncOperationConfiguredSource:MoveNext
-      () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/UnityAsyncExtensions.cs:901)
-
-      Cysharp.Threading.Tasks.Internal.PlayerLoopRunner:RunCore
-      () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/Internal/PlayerLoopRunner.cs:175)
-
-      Cysharp.Threading.Tasks.Internal.PlayerLoopRunner:Update
-      () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/Internal/PlayerLoopRunner.cs:145)
-
-      Cysharp.Threading.Tasks.Internal.PlayerLoopRunner:Run
-      () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/Internal/PlayerLoopRunner.cs:104)
-
-      Cysharp.Threading.Tasks.PlayerLoopHelper:ForceEditorPlayerLoopUpdate
-      () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/PlayerLoopHelper.cs:356)
-
-      UnityEditor.EditorApplication:Internal_CallUpdateFunctions
-      ()
-
-      ---
-
-      Rock Paper Scissors demo started!
-
-      Generating temporary
-      accounts...
-
-      Alice (challenger account): TIIRIJTMMCD3ZT6PVL4ZX6LFVBGGIEYBS4TYKRDXWZRRDM543WE37AONOE
+      Alice (challenger
+      account): USUZ6BFBR23YDEM7WRS6LYKF7EW4ZGE6DLAITL7EKHXZXWADCRPXOX45YM
 
       Bob
-      (opponent account): AAOBZ3CTJBZHMH76VAEEK5TJUC2SZDLPSTIKEB6XWUJUQSD4HPHPB5BN6Y
+      (opponent account): L4WCUSDK4ICOW4QIW5Z7Y6JALMKRVO3FWZSEHVXGPOHW65WXNYSAOMYMUM
 
       Alice
       is creating the rock paper scissors app
 
-      Algod SendTransaction error:
-      TransactionPool.Remember: transaction STSXEDRVJI6WUDRNEWO7XPACJ4FS2VUDTSJPPEQMLHMZ2YPAWWTA:
-      overspend (account TIIRIJTMMCD3ZT6PVL4ZX6LFVBGGIEYBS4TYKRDXWZRRDM543WE37AONOE,
-      data {AccountBaseData:{Status:Offline MicroAlgos:{Raw:0} RewardsBase:0 RewardedMicroAlgos:{Raw:0}
-      AuthAddr:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ TotalAppSchema:{_struct:{}
-      NumUint:0 NumByteSlice:0} TotalExtraAppPages:0 TotalAppParams:0 TotalAppLocalStates:0
-      TotalAssetParams:0 TotalAssets:0} VotingData:{VoteID:[0 0 0 0 0 0 0 0 0 0 0
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] SelectionID:[0 0 0 0 0 0 0 0 0 0
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] StateProofID:[0 0 0 0 0 0 0 0
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] VoteFirstValid:0 VoteLastValid:0 VoteKeyDilution:0}},
-      tried to spend {1000})
+      Done. The app ID is 119 and
+      the escrow account is BMG32UDWNWZT5UYVW2XOCKG4QA325NPH5FUSOX6GEFX5XNC3Z5VF5LGE2Q
 
-      Algod GetApplication failed: application does
-      not exist'
-    m_ResultStacktrace: 'AlgoSdk.Examples.RockPaperScissors.RockPaperScissorsExample/<CreateApp>d__2:MoveNext
-      () (at Assets/Scripts/AlgoSdk.Examples/RockPaperScissors/RockPaperScissorsExample.cs:112)
+      Both
+      Alice and Bob are opting in to the app.
 
-      Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask`2<AlgoSdk.Examples.RockPaperScissors.RockPaperScissorsExample/<CreateApp>d__2,
-      ulong>:Run () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/CompilerServices/StateMachineRunner.cs:313)
+      Could not recognize the msgpack
+      field "address" for any fields on AlgoSdk.AccountStateDelta.
 
-      Cysharp.Threading.Tasks.AwaiterActions:Continuation
-      (object) (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/UniTask.cs:21)
+      msgpack
+      base64: 2VVTVVo2QkZCUjIzWURFTTdXUlM2TFlLRjdFVzRaR0U2RExBSVRMN0VLSFhaWFdBRENSUFhPWDQ1WU0=
 
-      Cysharp.Threading.Tasks.UniTaskCompletionSourceCore`1<UnityEngine.Networking.UnityWebRequest>:TrySetException
-      (System.Exception) (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/UniTaskCompletionSource.cs:167)
+      Could
+      not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
 
-      Cysharp.Threading.Tasks.UnityAsyncExtensions/UnityWebRequestAsyncOperationConfiguredSource:MoveNext
-      () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/UnityAsyncExtensions.cs:901)
+      msgpack
+      base64: lIKja2V5sFkyOXRiV2wwYldWdWRBPT2ldmFsdWWBpmFjdGlvbgGCo2tleaxiM0J3YjI1bGJuUT2ldmFsdWWBpmFjdGlvbgGCo2tleahjbVYyWldGc6V2YWx1ZYGmYWN0aW9uAYKja2V5qGQyRm5aWEk9pXZhbHVlgaZhY3Rpb24C
 
-      Cysharp.Threading.Tasks.Internal.PlayerLoopRunner:RunCore
-      () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/Internal/PlayerLoopRunner.cs:175)
+      Could
+      not recognize the msgpack field "address" for any fields on AlgoSdk.AccountStateDelta.
 
-      Cysharp.Threading.Tasks.Internal.PlayerLoopRunner:Update
-      () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/Internal/PlayerLoopRunner.cs:145)
+      msgpack
+      base64: 2Uw0V0NVU0RLNElDT1c0UUlXNVo3WTZKQUxNS1JWTzNGV1pTRUhWWEdQT0hXNjVXWE5ZU0FPTVlNVU0=
 
-      Cysharp.Threading.Tasks.Internal.PlayerLoopRunner:Run
-      () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/Internal/PlayerLoopRunner.cs:104)
+      Could
+      not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
 
-      Cysharp.Threading.Tasks.PlayerLoopHelper:ForceEditorPlayerLoopUpdate
-      () (at Library/PackageCache/com.cysharp.unitask@2.3.1/Runtime/PlayerLoopHelper.cs:356)
+      msgpack
+      base64: lIKja2V5sFkyOXRiV2wwYldWdWRBPT2ldmFsdWWBpmFjdGlvbgGCo2tleaxiM0J3YjI1bGJuUT2ldmFsdWWBpmFjdGlvbgGCo2tleahjbVYyWldGc6V2YWx1ZYGmYWN0aW9uAYKja2V5qGQyRm5aWEk9pXZhbHVlgaZhY3Rpb24C
 
-      UnityEditor.EditorApplication:Internal_CallUpdateFunctions
-      ()
+      All
+      participants balances before the game:
 
-      
+      Bob''s balances: {0: 99999100}
 
-'
+      Alice''s
+      balances: {0: 99998100}
+
+      App/Escrow''s balances: {0: 0}
+
+      Alice
+      is creating and setting up the challenge between her and Bob!
+
+      Could
+      not recognize the msgpack field "address" for any fields on AlgoSdk.AccountStateDelta.
+
+      msgpack
+      base64: 2VVTVVo2QkZCUjIzWURFTTdXUlM2TFlLRjdFVzRaR0U2RExBSVRMN0VLSFhaWFdBRENSUFhPWDQ1WU0=
+
+      Could
+      not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
+
+      msgpack
+      base64: k4Kja2V5sFkyOXRiV2wwYldWdWRBPT2ldmFsdWWCpmFjdGlvbgGlYnl0ZXPZMWZLOGJpYXpqWWVvR2hDUHJVRTVNWFJwT01wMmZ2Um44d25mdm9UdE01QT2Co2tleaxiM0J3YjI1bGJuUT2ldmFsdWWCpmFjdGlvbgGlYnl0ZXPZWHl3cVNHcmlCT3R5Q0xkei9Ia2dXeFVhdTJXMlpFUFc1bnVQYjNiWGJpUT2Co2tleahkMkZuWlhJPaV2YWx1ZYKmYWN0aW9uAqR1aW50zgAB4kA=
+
+      Bob
+      accepts the challenge and sends his play!
+
+      Could not recognize the msgpack
+      field "address" for any fields on AlgoSdk.AccountStateDelta.
+
+      msgpack
+      base64: 2Uw0V0NVU0RLNElDT1c0UUlXNVo3WTZKQUxNS1JWTzNGV1pTRUhWWEdQT0hXNjVXWE5ZU0FPTVlNVU0=
+
+      Could
+      not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
+
+      msgpack
+      base64: k4Kja2V5rGIzQndiMjVsYm5RPaV2YWx1ZYKmYWN0aW9uAaVieXRlc9lwS21mQktHT3Q0R1JuN1JsNWVGRitTM01tSjRhd0ltdjVGSHZtOWdERkY4PYKja2V5qGNtVjJaV0ZzpXZhbHVlgqZhY3Rpb24BpWJ5dGVzpGNnPT2Co2tleahkMkZuWlhJPaV2YWx1ZYKmYWN0aW9uAqR1aW50zgAB4kA=
+
+      Alice
+      reveals her play!
+
+      Could not recognize the msgpack field "address" for
+      any fields on AlgoSdk.AccountStateDelta.
+
+      msgpack base64: 2Uw0V0NVU0RLNElDT1c0UUlXNVo3WTZKQUxNS1JWTzNGV1pTRUhWWEdQT0hXNjVXWE5ZU0FPTVlNVU0=
+
+      Could
+      not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
+
+      msgpack
+      base64: k4Kja2V5rGIzQndiMjVsYm5RPaV2YWx1ZYGmYWN0aW9uAYKja2V5qGNtVjJaV0ZzpXZhbHVlgaZhY3Rpb24BgqNrZXmoZDJGblpYST2ldmFsdWWBpmFjdGlvbgI=
+
+      Could
+      not recognize the msgpack field "address" for any fields on AlgoSdk.AccountStateDelta.
+
+      msgpack
+      base64: 2VVTVVo2QkZCUjIzWURFTTdXUlM2TFlLRjdFVzRaR0U2RExBSVRMN0VLSFhaWFdBRENSUFhPWDQ1WU0=
+
+      Could
+      not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
+
+      msgpack
+      base64: k4Kja2V5qGQyRm5aWEk9pXZhbHVlgaZhY3Rpb24CgqNrZXmwWTI5dGJXbDBiV1Z1ZEE9PaV2YWx1ZYGmYWN0aW9uAYKja2V5rGIzQndiMjVsYm5RPaV2YWx1ZYGmYWN0aW9uAQ==
+
+      Bob
+      wins the game!
+
+      All participants balances after the game:
+
+      Bob''s
+      balances: {0: 100120556}
+
+      Alice''s balances: {0: 99768644}
+
+      App/Escrow''s
+      balances: {0: 100000}
+
+      Alices cleans up the challenge!
+
+      Rock Paper
+      Scissors demo finished!'
+    m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 30a16640
@@ -1060,7 +1128,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 88660000
     m_LastClickedID: 26248
-    m_ExpandedIDs: 000000006466000066660000686600006a6600006c6600006e66000000ca9a3b
+    m_ExpandedIDs: 0000000066660000686600006a6600006c6600006e66000070660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1088,7 +1156,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000006466000066660000686600006a6600006c6600006e660000
+    m_ExpandedIDs: 0000000066660000686600006a6600006c6600006e66000070660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1216,9 +1284,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 3efaffff
       m_LastClickedID: 0
-      m_ExpandedIDs: ccdaffff10dbffff48dbffff8cdbffffc4dbffff08dcffff44dcffff88dcffff52ddffff96ddffff84deffffc8deffff92dfffffd6dfffff0ee0ffff6ae0ffffa2e0ffffe6e0ffff38e2ffff7ce2ffffcee3ffff12e4ffffd6e5ffff1ae6ffff88e8ffffcce8ffff92e9ffffd8e9ffff2cfbffff
+      m_ExpandedIDs: 2cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1620,8 +1688,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -550.5
     m_HBaseRangeMax: 550.5
-    m_VBaseRangeMin: -296
-    m_VBaseRangeMax: 296
+    m_VBaseRangeMin: -306.5
+    m_VBaseRangeMax: 306.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -1638,11 +1706,11 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 21
+      y: 0
       width: 1101
-      height: 592
+      height: 613
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 550.5, y: 296}
+    m_Translation: {x: 550.5, y: 306.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -1650,9 +1718,9 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -550.5
-      y: -296
+      y: -306.5
       width: 1101
-      height: 592
+      height: 613
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1101, y: 613}

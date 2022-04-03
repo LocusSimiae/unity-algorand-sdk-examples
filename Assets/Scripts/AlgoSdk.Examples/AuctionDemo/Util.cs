@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using AlgoSdk.Algod;
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,30 +10,30 @@ namespace AlgoSdk.Examples.AuctionDemo
 {
     public static class Util
     {
-        public static async UniTask<AlgoApiResponse<PendingTransaction>> WaitForTransaction(IAlgodClient client, TransactionId txid, ulong timeout = 10)
+        public static async UniTask<AlgoApiResponse<PendingTransactionResponse>> WaitForTransaction(IAlgodClient client, TransactionId txid, ulong timeout = 10)
         {
-            AlgoApiResponse<PendingTransaction> response = await client.GetPendingTransaction(txid);
+            AlgoApiResponse<PendingTransactionResponse> response = await client.PendingTransactionInformation(txid);
 
-            var (lastStatusError, lastStatus) = await client.GetCurrentStatus();
+            var (lastStatusError, lastStatus) = await client.GetStatus();
             ulong lastRound = lastStatus.LastRound;
             ulong startRound = lastRound;
 
             while (lastRound < (startRound + timeout) && response.Payload.ConfirmedRound == 0)
             {
-                response = await client.GetPendingTransaction(txid);
+                response = await client.PendingTransactionInformation(txid);
                 if (response.Error.IsError)
                 {
                     Debug.LogError($"[WaitForTransaction] Algod GetPendingTransaction failed: {response.Error.Message}");
                     return response;
                 }
-                if (!response.Payload.PoolError.IsEmpty)
+                if (!string.IsNullOrEmpty(response.Payload.PoolError))
                 {
                     Debug.LogError($"[WaitForTransaction] Algod GetPendingTransaction error: {response.Payload.PoolError}");
                     return response;
                 }
 
                 ++lastRound;
-                (lastStatusError, lastStatus) = await client.GetStatusAfterWaitingForRound(lastRound);
+                (lastStatusError, lastStatus) = await client.WaitForBlock(lastRound);
             }
 
             if (response.Payload.ConfirmedRound == 0)
@@ -51,7 +52,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                 return null;
             }
 
-            string contract = System.IO.File.ReadAllText(tealPrecompiledSourcePath);
+            byte[] contract = System.IO.File.ReadAllBytes(tealPrecompiledSourcePath);
 
             var (error, compilationResult) = await client.TealCompile(contract);
             if (error.IsError)
@@ -60,7 +61,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                 return null;
             }
 
-            return Convert.FromBase64String(compilationResult.CompiledBytesBase64);
+            return Convert.FromBase64String(compilationResult.Result);
         }
 
         /*
@@ -87,9 +88,9 @@ namespace AlgoSdk.Examples.AuctionDemo
             return state
         */
 
-        public static async UniTask<Dictionary<string, TealValue>> GetAppGlobalState(IAlgodClient client, ulong appId)
+        public static async UniTask<Dictionary<string, Algod.TealValue>> GetAppGlobalState(IAlgodClient client, ulong appId)
         {
-            var (error, application) = await client.GetApplication(appId);
+            var (error, application) = await client.GetApplicationByID(appId);
             if (error.IsError)
             {
                 Debug.LogError($"[GetAppGlobalState] Algod GetApplication failed: {error.Message}");
@@ -97,7 +98,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             }
 
             //uses decodeState func in Python (see above)
-            return application.Params.GlobalState.ToDictionary(
+            return application.WrappedValue.Params.GlobalState.WrappedValue.ToDictionary(
                 x =>
                 {
                     FixedString128Bytes encodedKey = x.Key;
@@ -112,22 +113,22 @@ namespace AlgoSdk.Examples.AuctionDemo
         {
             var balances = new Dictionary<ulong, ulong>();
 
-            var (error, accountInfo) = await client.GetAccountInformation(account);
+            var (error, accountInfo) = await client.AccountInformation(account);
             if (error.IsError)
             {
                 Debug.LogError($"[GetBalances] Algod GetAccountInformation failed: {error.Message}");
                 return balances;
             }
 
-            balances.Add(0, accountInfo.Amount);
-            Array.ForEach(accountInfo.Assets, x => balances.Add(x.AssetId, x.Amount));
+            balances.Add(0, accountInfo.WrappedValue.Amount);
+            Array.ForEach(accountInfo.WrappedValue.Assets, x => balances.Add(x.AssetId, x.Amount));
 
             return balances;
         }
 
         public static async UniTask<(ulong, ulong)> GetLastBlockTimestamp(IAlgodClient client)
         {
-            var (statusError, status) = await client.GetCurrentStatus();
+            var (statusError, status) = await client.GetStatus();
             if (statusError.IsError)
             {
                 Debug.LogError($"[GetLastBlockTimestamp] Algod GetCurrentStatus failed: {statusError.Message}");

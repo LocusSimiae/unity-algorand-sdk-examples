@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using AlgoSdk.Algod;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,9 +12,9 @@ namespace AlgoSdk.Examples.AuctionDemo
         const int TEMPORARY_ACCOUNTS = 16;
         static Stack<Account> accountList = new Stack<Account>(TEMPORARY_ACCOUNTS);
 
-        public static async UniTask<AlgoApiResponse<PendingTransaction>> PayAccount(IAlgodClient client, Account sender, Address to, ulong amount)
+        public static async UniTask<AlgoApiResponse<PendingTransactionResponse>> PayAccount(IAlgodClient client, Account sender, Address to, ulong amount)
         {
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[PayAccount] Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -29,17 +30,17 @@ namespace AlgoSdk.Examples.AuctionDemo
 
             var signedTxn = sender.SignTxn(paymentTxn);
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
+            var (sendTxnError, txResponse) = await client.RawTransaction(AlgoApiSerializer.SerializeMessagePack(signedTxn));
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"[PayAccount] Algod SendTransaction error: {sendTxnError.Message}");
                 return default;
             }
 
-            return await Util.WaitForTransaction(client, txid);
+            return await Util.WaitForTransaction(client, txResponse.TxId);
         }
 
-        public static async UniTask<AlgoApiResponse<PendingTransaction>> FundAccount(IAlgodClient client, Address address, ulong amount = FUNDING_AMOUNT)
+        public static async UniTask<AlgoApiResponse<PendingTransactionResponse>> FundAccount(IAlgodClient client, Address address, ulong amount = FUNDING_AMOUNT)
         {
             Setup setup = new Setup();
             List<Account> genesisAccounts = await setup.GetGenesisAccounts();
@@ -62,7 +63,7 @@ namespace AlgoSdk.Examples.AuctionDemo
 
             Setup setup = new Setup();
             List<Account> genesisAccounts = await setup.GetGenesisAccounts();
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[GetTemporaryAccount] Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -92,9 +93,9 @@ namespace AlgoSdk.Examples.AuctionDemo
                 txn.Group = groupId;
                 signedTxns.Add(fundingAccount.SignTxn(txn));
             }
-
-            var signedTxnsArray = signedTxns.Select(x => x.ToUntyped()).ToArray();
-            var (txnErr, txid) = await client.SendTransactions(signedTxnsArray);
+            
+            var signedTxnsArray = signedTxns.SelectMany(x => AlgoApiSerializer.SerializeMessagePack(x)).ToArray();
+            var (txnErr, pendingTx) = await client.RawTransaction(signedTxnsArray);
             if (txnErr.IsError)
             {
                 Debug.LogError($"[GetTemporaryAccount] Algod SendTransactions failed: {txnErr.Message}");
@@ -102,7 +103,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                 return default;
             }
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, pendingTx.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[GetTemporaryAccount] Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -113,22 +114,22 @@ namespace AlgoSdk.Examples.AuctionDemo
             return accountList.Pop();
         }
 
-        public static async UniTask<AlgoApiResponse<PendingTransaction>> EnsureOptedIn(IAlgodClient client, ulong assetId, Account account)
+        public static async UniTask<AlgoApiResponse<PendingTransactionResponse>> EnsureOptedIn(IAlgodClient client, ulong assetId, Account account)
         {
-            var (err, accountInfo) = await client.GetAccountInformation(account.Address);
+            var (err, accountInfo) = await client.AccountInformation(account.Address);
             if (err.IsError)
             {
                 Debug.LogError($"[EnsureOptedIn] Algod GetAccountInformation failed: {err.Message}");
                 return default;
             }
 
-            if (accountInfo.Assets?.Any(a => a.AssetId == assetId) ?? false)
+            if (accountInfo.WrappedValue.Assets?.Any(a => a.AssetId == assetId) ?? false)
             {
                 Debug.Log($"[EnsureOptedIn] Account already opted in to assetId {assetId}");
                 return default;
             }
 
-            var (_, txnParams) = await client.GetSuggestedParams();
+            var (_, txnParams) = await client.TransactionParams();
             var assetOptInTxn = Transaction.AssetAccept(
                 account.Address,
                 txnParams,
@@ -136,14 +137,14 @@ namespace AlgoSdk.Examples.AuctionDemo
             );
 
             var signedTxn = account.SignTxn(assetOptInTxn);
-            var (txnErr, txid) = await client.SendTransaction(signedTxn);
+            var (txnErr, pendingTx) = await client.RawTransaction(AlgoApiSerializer.SerializeMessagePack(signedTxn));
             if (txnErr.IsError)
             {
                 Debug.LogError($"[EnsureOptedIn] Algod SendTransaction failed: {txnErr.Message}");
                 return default;
             }
 
-            return await Util.WaitForTransaction(client, txid);
+            return await Util.WaitForTransaction(client, pendingTx.TxId);
         }
 
         public static async UniTask<ulong> CreateDummyAsset(IAlgodClient client, ulong total, Account account = default)
@@ -159,7 +160,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             byte[] randomNote = new byte[20];
             rnd.NextBytes(randomNote);
 
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[CreateDummyAsset] Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -168,7 +169,6 @@ namespace AlgoSdk.Examples.AuctionDemo
 
             AssetParams assetParams = new AssetParams()
             {
-                Creator = account.Address,
                 Total = total,
                 Decimals = 0,
                 DefaultFrozen = false,
@@ -185,14 +185,14 @@ namespace AlgoSdk.Examples.AuctionDemo
             txn.Note = randomNote;
 
             var signedTxn = account.SignTxn(txn);
-            var (txnErr, txid) = await client.SendTransaction(signedTxn);
+            var (txnErr, txid) = await client.RawTransaction(AlgoApiSerializer.SerializeMessagePack(signedTxn));
             if (txnErr.IsError)
             {
                 Debug.LogError($"[CreateDummyAsset] Algod SendTransaction failed: {txnErr.Message}");
                 return 0;
             }
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[CreateDummyAsset] Algod WaitForTransaction failed: {pendingErr.Message}");
