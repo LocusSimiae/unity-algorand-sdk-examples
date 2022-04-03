@@ -1,0 +1,462 @@
+#pragma version 5
+txn ApplicationID
+int 0
+==
+bnz main_l19
+txn OnCompletion
+int DeleteApplication
+==
+bnz main_l18
+txn OnCompletion
+int UpdateApplication
+==
+bnz main_l17
+txn OnCompletion
+int OptIn
+==
+bnz main_l16
+txn OnCompletion
+int CloseOut
+==
+bnz main_l15
+txn OnCompletion
+int NoOp
+==
+bnz main_l7
+err
+main_l7:
+txna ApplicationArgs 0
+byte "challenge"
+==
+bnz main_l14
+txna ApplicationArgs 0
+byte "accept"
+==
+bnz main_l13
+txna ApplicationArgs 0
+byte "reveal"
+==
+bnz main_l11
+err
+main_l11:
+callsub sub8
+main_l12:
+int 0
+return
+main_l13:
+callsub sub4
+b main_l12
+main_l14:
+callsub sub3
+b main_l12
+main_l15:
+int 0
+return
+main_l16:
+int 0
+callsub sub0
+int 1
+return
+main_l17:
+int 0
+return
+main_l18:
+txn Fee
+global MinTxnFee
+int 2
+*
+>=
+assert
+txn Sender
+global CreatorAddress
+==
+assert
+txn Sender
+callsub sub9
+int 1
+return
+main_l19:
+int 1
+return
+sub0: // reset
+store 0
+load 0
+byte "opponent"
+byte ""
+app_local_put
+load 0
+byte "wager"
+int 0
+app_local_put
+load 0
+byte "commitment"
+byte ""
+app_local_put
+load 0
+byte "reveal"
+byte ""
+app_local_put
+retsub
+sub1: // is_empty
+store 1
+load 1
+byte "opponent"
+app_local_get
+byte ""
+==
+load 1
+byte "wager"
+app_local_get
+int 0
+==
+&&
+load 1
+byte "commitment"
+app_local_get
+byte ""
+==
+&&
+load 1
+byte "reveal"
+app_local_get
+byte ""
+==
+&&
+retsub
+sub2: // is_valid_play
+store 2
+load 2
+int 0
+int 1
+substring3
+store 3
+load 3
+byte "r"
+==
+load 3
+byte "p"
+==
+||
+load 3
+byte "s"
+==
+||
+retsub
+sub3: // create_challenge
+global GroupSize
+int 2
+==
+txn GroupIndex
+int 0
+==
+&&
+assert
+gtxn 0 RekeyTo
+global ZeroAddress
+==
+gtxn 1 RekeyTo
+global ZeroAddress
+==
+&&
+assert
+gtxn 1 TypeEnum
+int pay
+==
+gtxn 1 Receiver
+global CurrentApplicationAddress
+==
+&&
+gtxn 1 CloseRemainderTo
+global ZeroAddress
+==
+&&
+int 1
+int 0
+app_opted_in
+&&
+int 1
+callsub sub1
+&&
+txn NumAppArgs
+int 2
+==
+&&
+assert
+txn Sender
+byte "opponent"
+txna Accounts 1
+app_local_put
+txn Sender
+byte "wager"
+gtxn 1 Amount
+app_local_put
+txn Sender
+byte "commitment"
+txna ApplicationArgs 1
+app_local_put
+int 1
+return
+sub4: // accept_challenge
+global GroupSize
+int 2
+==
+txn GroupIndex
+int 0
+==
+&&
+assert
+gtxn 0 RekeyTo
+global ZeroAddress
+==
+gtxn 1 RekeyTo
+global ZeroAddress
+==
+&&
+assert
+int 1
+int 0
+app_opted_in
+int 1
+byte "opponent"
+app_local_get
+txn Sender
+==
+&&
+gtxn 1 TypeEnum
+int pay
+==
+&&
+gtxn 1 Receiver
+global CurrentApplicationAddress
+==
+&&
+gtxn 1 CloseRemainderTo
+global ZeroAddress
+==
+&&
+gtxn 1 Amount
+int 1
+byte "wager"
+app_local_get
+==
+&&
+txn NumAppArgs
+int 2
+==
+&&
+txna ApplicationArgs 1
+callsub sub2
+&&
+assert
+int 0
+byte "opponent"
+txna Accounts 1
+app_local_put
+int 0
+byte "wager"
+gtxn 1 Amount
+app_local_put
+int 0
+byte "reveal"
+txna ApplicationArgs 1
+app_local_put
+int 1
+return
+sub5: // play_value
+store 6
+load 6
+int 0
+int 1
+substring3
+store 7
+load 7
+byte "r"
+==
+bnz sub5_l6
+load 7
+byte "p"
+==
+bnz sub5_l5
+load 7
+byte "s"
+==
+bnz sub5_l4
+err
+sub5_l4:
+int 2
+b sub5_l7
+sub5_l5:
+int 1
+b sub5_l7
+sub5_l6:
+int 0
+sub5_l7:
+retsub
+sub6: // winner_account_index
+store 9
+store 8
+load 8
+load 9
+==
+bnz sub6_l6
+load 8
+int 1
++
+int 3
+%
+load 9
+==
+bnz sub6_l5
+load 9
+int 1
++
+int 3
+%
+load 8
+==
+bnz sub6_l4
+err
+sub6_l4:
+int 0
+b sub6_l7
+sub6_l5:
+int 1
+b sub6_l7
+sub6_l6:
+int 2
+sub6_l7:
+retsub
+sub7: // send_reward
+store 11
+store 10
+itxn_begin
+int pay
+itxn_field TypeEnum
+load 10
+txnas Accounts
+itxn_field Receiver
+load 11
+itxn_field Amount
+int 0
+itxn_field Fee
+itxn_submit
+retsub
+sub8: // reveal
+global GroupSize
+int 1
+==
+txn GroupIndex
+int 0
+==
+&&
+assert
+gtxn 0 RekeyTo
+global ZeroAddress
+==
+assert
+int 0
+byte "opponent"
+app_local_get
+txna Accounts 1
+==
+int 1
+byte "opponent"
+app_local_get
+txn Sender
+==
+&&
+int 0
+byte "wager"
+app_local_get
+int 1
+byte "wager"
+app_local_get
+==
+&&
+int 0
+byte "commitment"
+app_local_get
+byte ""
+!=
+&&
+int 1
+byte "reveal"
+app_local_get
+byte ""
+!=
+&&
+txn NumAppArgs
+int 2
+==
+&&
+txna ApplicationArgs 1
+sha256
+int 0
+byte "commitment"
+app_local_get
+==
+&&
+assert
+int 0
+byte "wager"
+app_local_get
+store 5
+txna ApplicationArgs 1
+callsub sub5
+int 1
+byte "reveal"
+app_local_get
+callsub sub5
+callsub sub6
+store 4
+load 4
+int 2
+==
+bnz sub8_l2
+txn Fee
+global MinTxnFee
+int 2
+*
+>=
+assert
+load 4
+load 5
+int 2
+*
+callsub sub7
+b sub8_l3
+sub8_l2:
+txn Fee
+global MinTxnFee
+int 3
+*
+>=
+assert
+int 0
+load 5
+callsub sub7
+int 1
+load 5
+callsub sub7
+sub8_l3:
+int 0
+callsub sub0
+int 1
+callsub sub0
+int 1
+return
+sub9: // closeAccountTo
+store 12
+global CurrentApplicationAddress
+balance
+int 0
+!=
+bz sub9_l2
+itxn_begin
+int pay
+itxn_field TypeEnum
+load 12
+itxn_field CloseRemainderTo
+itxn_submit
+sub9_l2:
+retsub

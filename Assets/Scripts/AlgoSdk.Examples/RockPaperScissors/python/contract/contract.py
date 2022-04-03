@@ -216,6 +216,35 @@ def approval():
             Approve(),
         )
 
+    #not part of the original pyteal class (copy from auction demo)
+    @Subroutine(TealType.none)
+    def closeAccountTo(account: Expr) -> Expr:
+        return If(Balance(Global.current_application_address()) != Int(0)).Then(
+            Seq(
+                InnerTxnBuilder.Begin(),
+                InnerTxnBuilder.SetFields(
+                    {
+                        TxnField.type_enum: TxnType.Payment,
+                        TxnField.close_remainder_to: account,
+                    }
+                ),
+                InnerTxnBuilder.Submit(),
+            )
+        )
+
+    #not part of the original pyteal class
+    on_delete = Seq(
+                # require first transaction fee to cover:
+                # - own transaction fee
+                # - close out payment transaction fee
+                Assert(Txn.fee() >= Global.min_txn_fee() * Int(2)),
+                Assert(Txn.sender() == Global.creator_address()),
+                # if the contract still has funds, send them all to the creator
+                closeAccountTo(Txn.sender()),
+                Approve()
+            )
+
+
     return program.event(
         init=Approve(),
         opt_in=Seq(
@@ -239,6 +268,7 @@ def approval():
             ),
             Reject(),
         ),
+        delete=on_delete
     )
 
 

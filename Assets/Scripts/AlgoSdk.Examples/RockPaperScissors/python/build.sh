@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-mkdir -p ./build/
+mkdir -p ./compiled/
 # clean
-rm -f ./build/*.teal
+rm -f ./compiled/*.teal
 
 set -e # die on error
 
