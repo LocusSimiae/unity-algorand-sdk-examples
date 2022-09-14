@@ -1,10 +1,12 @@
-﻿using AlgoSdk.Examples.AuctionDemo;
+﻿using AlgoSdk.Algod;
+using AlgoSdk.Examples.AuctionDemo;
 using AlgoSdk.LowLevel;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Unity.Collections;
 using UnityEngine;
 
@@ -20,7 +22,7 @@ namespace AlgoSdk.Examples.StatefulContract
             Debug.Log("Started stateful contract example!");
 
             AuctionDemo.Setup setup = new AuctionDemo.Setup();
-            IAlgodClient client = setup.AlgodClient;
+            AlgodClient client = setup.AlgodClient;
 
             Debug.Log("Generating temporary accounts...");
 
@@ -112,9 +114,10 @@ namespace AlgoSdk.Examples.StatefulContract
             Debug.Log("Finished stateful contract example!");
         }
 
-        static async UniTask<ulong> CreateApp(IAlgodClient client, Account creator, byte[] approvalProgram, byte[] clearProgram, StateSchema globalSchema, StateSchema localSchema)
+        static async UniTask<ulong> CreateApp(AlgodClient client, Account creator, byte[] approvalProgram, byte[] clearProgram, StateSchema globalSchema, StateSchema localSchema)
         {
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[CreateApp] Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -126,7 +129,7 @@ namespace AlgoSdk.Examples.StatefulContract
             var signedTxn = creator.SignTxn(txn);
             Debug.Log("[CreateApp] Signed transaction");
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
+            var (sendTxnError, response) = await client.SendTransaction(signedTxn);
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"[CreateApp] Algod SendTransaction error: {sendTxnError.Message}");
@@ -134,7 +137,7 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[CreateApp] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, response.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[CreateApp] Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -145,14 +148,14 @@ namespace AlgoSdk.Examples.StatefulContract
             {
                 Debug.LogError($"[CreateApp] Application index is 0!");
             }
-            Debug.Log("[CreateApp] App id is: " + pendingTxn.ApplicationIndex);
+            Debug.Log("[CreateApp] App id is: " + pendingTxn.ApplicationIndex.Value);
 
             return pendingTxn.ApplicationIndex;
         }
 
-        static async UniTask OptIn(IAlgodClient client, Account sender, ulong appId)
+        static async UniTask OptIn(AlgodClient client, Account sender, ulong appId)
         {
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[OptIn] Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -168,7 +171,7 @@ namespace AlgoSdk.Examples.StatefulContract
             var signedTxn = sender.SignTxn(optInTnx);
             Debug.Log("[OptIn] Signed transaction");
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
+            var (sendTxnError, response) = await client.SendTransaction(signedTxn);
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"[OptIn] Algod SendTransaction error: {sendTxnError.Message}");
@@ -176,7 +179,7 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[OptIn] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, response.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[OptIn] Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -186,9 +189,9 @@ namespace AlgoSdk.Examples.StatefulContract
             Debug.Log($"[OptIn] Address { sender.Address } optin to Application with ID { appId }");
         }
 
-        static async UniTask CloseOutApp(IAlgodClient client, Account sender, ulong appId)
+        static async UniTask CloseOutApp(AlgodClient client, Account sender, ulong appId)
         {
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[CloseOutApp] Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -204,7 +207,7 @@ namespace AlgoSdk.Examples.StatefulContract
             var signedTxn = sender.SignTxn(txn);
             Debug.Log("[CloseOutApp] Signed transaction");
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
+            var (sendTxnError, response) = await client.SendTransaction(signedTxn);
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"[CloseOutApp] Algod SendTransaction error: {sendTxnError.Message}");
@@ -212,19 +215,19 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[CloseOutApp] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, response.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[CloseOutApp] Algod WaitForTransaction failed: {pendingErr.Message}");
                 return;
             }
 
-            Debug.Log($"[CloseOutApp] Application (ID: { appId }) close out confirmed with round: { pendingTxn.ConfirmedRound }");
+            Debug.Log($"[CloseOutApp] Application (ID: { appId }) close out confirmed with round: { pendingTxn.ConfirmedRound.Value }");
         }
 
-        static async UniTask UpdateApp(IAlgodClient client, Account creator, ulong appId, byte[] approvalProgram, byte[] clearProgram)
+        static async UniTask UpdateApp(AlgodClient client, Account creator, ulong appId, byte[] approvalProgram, byte[] clearProgram)
         {
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[UpdateApp] Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -242,7 +245,7 @@ namespace AlgoSdk.Examples.StatefulContract
             var signedTxn = creator.SignTxn(txn);
             Debug.Log("[UpdateApp] Signed transaction");
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
+            var (sendTxnError, response) = await client.SendTransaction(signedTxn);
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"[UpdateApp] Algod SendTransaction error: {sendTxnError.Message}");
@@ -250,19 +253,19 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[UpdateApp] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, response.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[UpdateApp] Algod WaitForTransaction failed: {pendingErr.Message}");
                 return;
             }
 
-            Debug.Log($"[UpdateApp] Application (ID: { appId } confirmed with round: { pendingTxn.ConfirmedRound }");
+            Debug.Log($"[UpdateApp] Application (ID: { appId } confirmed with round: { pendingTxn.ConfirmedRound.Value }");
         }
 
-        static async UniTask DeleteApp(IAlgodClient client, Account sender, ulong appId)
+        static async UniTask DeleteApp(AlgodClient client, Account sender, ulong appId)
         {
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[DeleteApp] Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -278,7 +281,7 @@ namespace AlgoSdk.Examples.StatefulContract
             var signedTxn = sender.SignTxn(txn);
             Debug.Log("[DeleteApp] Signed transaction");
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
+            var (sendTxnError, response) = await client.SendTransaction(signedTxn);
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"[DeleteApp] Algod SendTransaction error: {sendTxnError.Message}");
@@ -286,19 +289,19 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[DeleteApp] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, response.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[DeleteApp] Algod WaitForTransaction failed: {pendingErr.Message}");
                 return;
             }
 
-            Debug.Log($"[DeleteApp] Application (ID: { appId } confirmed with round: { pendingTxn.ConfirmedRound }");
+            Debug.Log($"[DeleteApp] Application (ID: { appId } confirmed with round: { pendingTxn.ConfirmedRound.Value }");
         }
 
-        static async UniTask ClearApp(IAlgodClient client, Account sender, ulong appId)
+        static async UniTask ClearApp(AlgodClient client, Account sender, ulong appId)
         {
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[ClearApp] Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -314,7 +317,7 @@ namespace AlgoSdk.Examples.StatefulContract
             var signedTxn = sender.SignTxn(txn);
             Debug.Log("[ClearApp] Signed transaction");
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
+            var (sendTxnError, response) = await client.SendTransaction(signedTxn);
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"[ClearApp] Algod SendTransaction error: {sendTxnError.Message}");
@@ -322,19 +325,19 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[ClearApp] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, response.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[ClearApp] Algod WaitForTransaction failed: {pendingErr.Message}");
                 return;
             }
 
-            Debug.Log($"[ClearApp] Application (ID: { appId } confirmed with round: { pendingTxn.ConfirmedRound }");
+            Debug.Log($"[ClearApp] Application (ID: { appId } confirmed with round: { pendingTxn.ConfirmedRound.Value }");
         }
 
-        static async UniTask CallApp(IAlgodClient client, Account sender, ulong appId, CompiledTeal[] args)
+        static async UniTask CallApp(AlgodClient client, Account sender, ulong appId, CompiledTeal[] args)
         {
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[CallApp] Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -351,7 +354,7 @@ namespace AlgoSdk.Examples.StatefulContract
             var signedTxn = sender.SignTxn(txn);
             Debug.Log("[CallApp] Signed transaction");
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
+            var (sendTxnError, response) = await client.SendTransaction(signedTxn);
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"[CallApp] Algod SendTransaction error: {sendTxnError.Message}");
@@ -359,46 +362,46 @@ namespace AlgoSdk.Examples.StatefulContract
             }
             Debug.Log("[CallApp] Sent transaction");
 
-            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await AuctionDemo.Util.WaitForTransaction(client, response.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[CallApp] Algod WaitForTransaction failed: {pendingErr.Message}");
                 return;
             }
-            Debug.Log($"[CallApp] Application (ID: { appId } confirmed with round: { pendingTxn.ConfirmedRound }");
+            Debug.Log($"[CallApp] Application (ID: { appId } confirmed with round: { pendingTxn.ConfirmedRound.Value }");
 
-            Debug.Log($"[CallApp] Global state delta: { GetDeltaStateValues(pendingTxn.GlobalStateDelta) }");
+            Debug.Log($"[CallApp] Global state delta: { GetDeltaStateValues(pendingTxn.GlobalStateDelta.WrappedValue) }");
             foreach (var accountDelta in pendingTxn.LocalStateDelta?.Where(x => x.Address == sender.Address))
             {
-                Debug.Log($"[CallApp] Local state delta: { GetDeltaStateValues(accountDelta.Delta) }");
+                Debug.Log($"[CallApp] Local state delta: { GetDeltaStateValues(accountDelta.Delta.WrappedValue) }");
             }
         }
 
-        static async UniTask ReadLocalState(IAlgodClient client, Account account, ulong appId)
+        static async UniTask ReadLocalState(AlgodClient client, Account account, ulong appId)
         {
-            var (error, accountInfo) = await client.GetAccountInformation(account.Address);
+            var (error, accountInfo) = await client.AccountInformation(account.Address);
             if (error.IsError)
             {
                 Debug.LogError($"[ReadLocalState] Algod GetAccountInformation failed: {error.Message}");
                 return;
             }
 
-            foreach (var state in accountInfo.ApplicationsLocalState.Where(x => x.Id == appId))
+            foreach (var state in accountInfo.Account.AppsLocalState.Where(x => x.Id == appId))
             {
-                Debug.Log($"[ReadLocalState] User's application local state: { GetAppStateValues(state.KeyValues) }");
+                Debug.Log($"[ReadLocalState] User's application local state: { GetAppStateValues(state.KeyValue.WrappedValue) }");
             }
         }
 
-        static async UniTask ReadGlobalState(IAlgodClient client, Account account, ulong appId)
+        static async UniTask ReadGlobalState(AlgodClient client, Account account, ulong appId)
         {
-            var (error, accountInfo) = await client.GetAccountInformation(account.Address);
+            var (error, accountInfo) = await client.AccountInformation(account.Address);
             if (error.IsError)
             {
                 Debug.LogError($"[ReadGlobalState] Algod GetAccountInformation failed: {error.Message}");
                 return;
             }
 
-            foreach (var app in accountInfo.CreatedApplications.Where(x => x.Id == appId))
+            foreach (var app in accountInfo.Account.CreatedApps.Where(x => x.Id == appId))
             {
                 Debug.Log($"[ReadGlobalState] Application global state: { GetAppStateValues(app.Params.GlobalState) }");
             }
@@ -415,15 +418,18 @@ namespace AlgoSdk.Examples.StatefulContract
                 encodedKey.Base64ToUtf8(ref decodedKey);
                 outStr += "key: " + decodedKey.Value + "; value: ";
 
-                TealValue value = v.Value;
-                if (value.Type == TealValueType.Uint)
+                Algod.TealValue value = v.Value;
+                if (value.Type == (ulong)TealValueType.Uint)
                 {
-                    outStr += "(uint) " + value.UintValue;
+                    outStr += "(uint) " + value.Uint;
                 }
-                else if (value.Type == TealValueType.Bytes)
+                else if (value.Type == (ulong)TealValueType.Bytes)
                 {
                     //this only works because UTF8 bytes were sent
-                    outStr += "(bytes) " + System.Text.Encoding.UTF8.GetString(value.Bytes.ToArray());
+                    FixedString128Bytes bytes = value.Bytes;
+                    FixedString128Bytes decodedBytes = default;
+                    bytes.Base64ToUtf8(ref decodedBytes);
+                    outStr += "(bytes) " + decodedBytes.Value;
                 }
                 else
                 {
@@ -447,16 +453,19 @@ namespace AlgoSdk.Examples.StatefulContract
                 outStr += "key: " + decodedKey.Value + "; value: ";
 
                 EvalDelta value = v.Value;
-                if (value.Action == EvalDeltaAction.SetUInt)
+                if (value.Action == (ulong)DeltaAction.SetUInt)
                 {
-                    outStr += "(set uint) " + value.UInt;
+                    outStr += "(set uint) " + value.Uint.Value;
                 }
-                else if (value.Action == EvalDeltaAction.SetBytes)
+                else if (value.Action == (ulong)DeltaAction.SetBytes && !string.IsNullOrEmpty(value.Bytes))
                 {
                     //this only works because UTF8 bytes were sent
-                    outStr += "(set bytes) " + System.Text.Encoding.UTF8.GetString(value.Bytes.ToArray());
+                    FixedString128Bytes bytes = value.Bytes;
+                    FixedString128Bytes decodedBytes = default;
+                    bytes.Base64ToUtf8(ref decodedBytes);
+                    outStr += "(set bytes) " + decodedBytes.Value;
                 }
-                else if (value.Action == EvalDeltaAction.Delete)
+                else if (value.Action == (ulong)DeltaAction.Delete)
                 {
                     outStr += "(delete)";
                 }
