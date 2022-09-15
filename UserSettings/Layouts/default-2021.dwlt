@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 1109
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Test Runner
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -94,8 +94,8 @@ MonoBehaviour:
     y: 0
     width: 363
     height: 634
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 45
+  controlID: 22
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 46
+  controlID: 23
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -306,7 +306,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 116
+    ID: 111
     splitterInitialOffset: 370
     currentActiveSplitter: -1
     realSizes:
@@ -390,7 +390,7 @@ MonoBehaviour:
       name: unity-algorand-sdk-examples
       fullName: unity-algorand-sdk-examples
       resultStatus: 1
-      duration: 108.53014
+      duration: 1.8121113
       messages: 
       output: 
       stacktrace: 
@@ -401,142 +401,143 @@ MonoBehaviour:
       categories: []
       parentId: 
       parentUniqueId: 
-    m_ResultText: 'RunRockPaperScissors (108.486s)
-
-      ---
-
-      Rock Paper Scissors
-      demo started!
-
-      Generating temporary accounts...
-
-      Alice (challenger
-      account): USUZ6BFBR23YDEM7WRS6LYKF7EW4ZGE6DLAITL7EKHXZXWADCRPXOX45YM
-
-      Bob
-      (opponent account): L4WCUSDK4ICOW4QIW5Z7Y6JALMKRVO3FWZSEHVXGPOHW65WXNYSAOMYMUM
-
-      Alice
-      is creating the rock paper scissors app
-
-      Done. The app ID is 119 and
-      the escrow account is BMG32UDWNWZT5UYVW2XOCKG4QA325NPH5FUSOX6GEFX5XNC3Z5VF5LGE2Q
-
-      Both
-      Alice and Bob are opting in to the app.
-
-      Could not recognize the msgpack
-      field "address" for any fields on AlgoSdk.AccountStateDelta.
-
-      msgpack
-      base64: 2VVTVVo2QkZCUjIzWURFTTdXUlM2TFlLRjdFVzRaR0U2RExBSVRMN0VLSFhaWFdBRENSUFhPWDQ1WU0=
-
-      Could
-      not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
-
-      msgpack
-      base64: lIKja2V5sFkyOXRiV2wwYldWdWRBPT2ldmFsdWWBpmFjdGlvbgGCo2tleaxiM0J3YjI1bGJuUT2ldmFsdWWBpmFjdGlvbgGCo2tleahjbVYyWldGc6V2YWx1ZYGmYWN0aW9uAYKja2V5qGQyRm5aWEk9pXZhbHVlgaZhY3Rpb24C
-
-      Could
-      not recognize the msgpack field "address" for any fields on AlgoSdk.AccountStateDelta.
-
-      msgpack
-      base64: 2Uw0V0NVU0RLNElDT1c0UUlXNVo3WTZKQUxNS1JWTzNGV1pTRUhWWEdQT0hXNjVXWE5ZU0FPTVlNVU0=
-
-      Could
-      not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
-
-      msgpack
-      base64: lIKja2V5sFkyOXRiV2wwYldWdWRBPT2ldmFsdWWBpmFjdGlvbgGCo2tleaxiM0J3YjI1bGJuUT2ldmFsdWWBpmFjdGlvbgGCo2tleahjbVYyWldGc6V2YWx1ZYGmYWN0aW9uAYKja2V5qGQyRm5aWEk9pXZhbHVlgaZhY3Rpb24C
-
-      All
-      participants balances before the game:
-
-      Bob''s balances: {0: 99999100}
-
-      Alice''s
-      balances: {0: 99998100}
-
-      App/Escrow''s balances: {0: 0}
-
-      Alice
-      is creating and setting up the challenge between her and Bob!
-
-      Could
-      not recognize the msgpack field "address" for any fields on AlgoSdk.AccountStateDelta.
-
-      msgpack
-      base64: 2VVTVVo2QkZCUjIzWURFTTdXUlM2TFlLRjdFVzRaR0U2RExBSVRMN0VLSFhaWFdBRENSUFhPWDQ1WU0=
-
-      Could
-      not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
-
-      msgpack
-      base64: k4Kja2V5sFkyOXRiV2wwYldWdWRBPT2ldmFsdWWCpmFjdGlvbgGlYnl0ZXPZMWZLOGJpYXpqWWVvR2hDUHJVRTVNWFJwT01wMmZ2Um44d25mdm9UdE01QT2Co2tleaxiM0J3YjI1bGJuUT2ldmFsdWWCpmFjdGlvbgGlYnl0ZXPZWHl3cVNHcmlCT3R5Q0xkei9Ia2dXeFVhdTJXMlpFUFc1bnVQYjNiWGJpUT2Co2tleahkMkZuWlhJPaV2YWx1ZYKmYWN0aW9uAqR1aW50zgAB4kA=
-
-      Bob
-      accepts the challenge and sends his play!
-
-      Could not recognize the msgpack
-      field "address" for any fields on AlgoSdk.AccountStateDelta.
-
-      msgpack
-      base64: 2Uw0V0NVU0RLNElDT1c0UUlXNVo3WTZKQUxNS1JWTzNGV1pTRUhWWEdQT0hXNjVXWE5ZU0FPTVlNVU0=
-
-      Could
-      not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
-
-      msgpack
-      base64: k4Kja2V5rGIzQndiMjVsYm5RPaV2YWx1ZYKmYWN0aW9uAaVieXRlc9lwS21mQktHT3Q0R1JuN1JsNWVGRitTM01tSjRhd0ltdjVGSHZtOWdERkY4PYKja2V5qGNtVjJaV0ZzpXZhbHVlgqZhY3Rpb24BpWJ5dGVzpGNnPT2Co2tleahkMkZuWlhJPaV2YWx1ZYKmYWN0aW9uAqR1aW50zgAB4kA=
-
-      Alice
-      reveals her play!
-
-      Could not recognize the msgpack field "address" for
-      any fields on AlgoSdk.AccountStateDelta.
-
-      msgpack base64: 2Uw0V0NVU0RLNElDT1c0UUlXNVo3WTZKQUxNS1JWTzNGV1pTRUhWWEdQT0hXNjVXWE5ZU0FPTVlNVU0=
-
-      Could
-      not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
-
-      msgpack
-      base64: k4Kja2V5rGIzQndiMjVsYm5RPaV2YWx1ZYGmYWN0aW9uAYKja2V5qGNtVjJaV0ZzpXZhbHVlgaZhY3Rpb24BgqNrZXmoZDJGblpYST2ldmFsdWWBpmFjdGlvbgI=
-
-      Could
-      not recognize the msgpack field "address" for any fields on AlgoSdk.AccountStateDelta.
-
-      msgpack
-      base64: 2VVTVVo2QkZCUjIzWURFTTdXUlM2TFlLRjdFVzRaR0U2RExBSVRMN0VLSFhaWFdBRENSUFhPWDQ1WU0=
-
-      Could
-      not recognize the msgpack field "delta" for any fields on AlgoSdk.AccountStateDelta.
-
-      msgpack
-      base64: k4Kja2V5qGQyRm5aWEk9pXZhbHVlgaZhY3Rpb24CgqNrZXmwWTI5dGJXbDBiV1Z1ZEE9PaV2YWx1ZYGmYWN0aW9uAYKja2V5rGIzQndiMjVsYm5RPaV2YWx1ZYGmYWN0aW9uAQ==
-
-      Bob
-      wins the game!
-
-      All participants balances after the game:
-
-      Bob''s
-      balances: {0: 100120556}
-
-      Alice''s balances: {0: 99768644}
-
-      App/Escrow''s
-      balances: {0: 100000}
-
-      Alices cleans up the challenge!
-
-      Rock Paper
-      Scissors demo finished!'
+    - id: 1003
+      uniqueId: '[AlgoSdk.Examples.Tests.dll][suite]'
+      name: AlgoSdk.Examples.Tests.dll
+      fullName: C:/Black Hole/Repositories/Alrogrand/unity-algorand-sdk-examples/Library/ScriptAssemblies/AlgoSdk.Examples.Tests.dll
+      resultStatus: 1
+      duration: 1.7929829
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1000
+      parentUniqueId: '[unity-algorand-sdk-examples][suite]'
+    - id: 1004
+      uniqueId: AlgoSdk.Examples.Tests.dll/[AlgoSdk][suite]
+      name: AlgoSdk
+      fullName: AlgoSdk
+      resultStatus: 1
+      duration: 1.7917566
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1003
+      parentUniqueId: '[AlgoSdk.Examples.Tests.dll][suite]'
+    - id: 1005
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/[Examples][suite]
+      name: Examples
+      fullName: AlgoSdk.Examples
+      resultStatus: 1
+      duration: 1.7913079
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1004
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/[AlgoSdk][suite]
+    - id: 1006
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract][suite]
+      name: StatefulContract
+      fullName: AlgoSdk.Examples.StatefulContract
+      resultStatus: 1
+      duration: 1.7908009
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1005
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/[Examples][suite]
+    - id: 1001
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/StatefulContract/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract.Tests][suite]
+      name: Tests
+      fullName: AlgoSdk.Examples.StatefulContract.Tests
+      resultStatus: 1
+      duration: 1.7882806
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1006
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract][suite]
+    - id: 1002
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/StatefulContract/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract.Tests.RunStatefulContract]
+      name: RunStatefulContract
+      fullName: AlgoSdk.Examples.StatefulContract.Tests.RunStatefulContract
+      resultStatus: 1
+      duration: 1.7742311
+      messages: 
+      output: "Started stateful contract example!\r\nGenerating temporary accounts...\r\nadmin
+        account: AJNNFQN7DSR7QEY766V7JDG35OPM53ZSNF7CU264AWOOUGSZBMLMSKCRIU\r\ncreator
+        account: 53GNUYJSTKGEHAVYE5ZS65YTVJSYZSJ7KJBWNQT3MJESCOKNOWEBYTLVA4\r\nuser
+        account: GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU\r\n[CreateApp]
+        Signed transaction\r\n[CreateApp] Sent transaction\r\n[CreateApp] App id
+        is: 176\r\n[OptIn] Signed transaction\r\n[OptIn] Sent transaction\r\n[OptIn]
+        Address GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU optin
+        to Application with ID 176\r\n[CallApp] Signed transaction\r\n[CallApp] Sent
+        transaction\r\n[CallApp] Application (ID: 176 confirmed with round: 178\r\n[CallApp]
+        Global state delta: key: counter; value: (none); \r\n[CallApp] Local state
+        delta: key: counter; value: (none); \r\n[ReadLocalState] User's application
+        local state: key: counter; value: (uint) 1; \r\n[ReadGlobalState] Application
+        global state: key: counter; value: (uint) 1; \r\n[UpdateApp] Signed transaction\r\n[UpdateApp]
+        Sent transaction\r\n[UpdateApp] Application (ID: 176 confirmed with round:
+        179\r\nSending app argument: 2022-09-14 at 23:55:05\r\n[CallApp] Signed transaction\r\n[CallApp]
+        Sent transaction\r\n[CallApp] Application (ID: 176 confirmed with round:
+        180\r\n[CallApp] Global state delta: key: counter; value: (none); \r\n[CallApp]
+        Local state delta: key: counter; value: (none); key: timestamp; value: (set
+        uint) 0; \r\n[ReadLocalState] User's application local state: key: counter;
+        value: (uint) 2; key: timestamp; value: (bytes) 2022-09-14 at 23:55:05; \r\n[ReadGlobalState]
+        Application global state: key: counter; value: (uint) 2; \r\n[CloseOutApp]
+        Signed transaction\r\n[CloseOutApp] Sent transaction\r\n[CloseOutApp] Application
+        (ID: 176) close out confirmed with round: 181\r\n[OptIn] Signed transaction\r\n[OptIn]
+        Sent transaction\r\n[OptIn] Address GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU
+        optin to Application with ID 176\r\n[CallApp] Signed transaction\r\n[CallApp]
+        Sent transaction\r\n[CallApp] Application (ID: 176 confirmed with round:
+        183\r\n[CallApp] Global state delta: key: counter; value: (none); \r\n[CallApp]
+        Local state delta: key: counter; value: (none); key: timestamp; value: (set
+        uint) 0; \r\n[ReadLocalState] User's application local state: key: counter;
+        value: (uint) 1; key: timestamp; value: (bytes) 2022-09-14 at 23:55:05; \r\n[ReadGlobalState]
+        Application global state: key: counter; value: (uint) 3; \r\n[DeleteApp]
+        Signed transaction\r\n[DeleteApp] Sent transaction\r\n[DeleteApp] Application
+        (ID: 176 confirmed with round: 184\r\n[ClearApp] Signed transaction\r\n[ClearApp]
+        Sent transaction\r\n[ClearApp] Application (ID: 176 confirmed with round:
+        185\r\nFinished stateful contract example!\r\n"
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/StatefulContract/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract.Tests][suite]
+    m_ResultText: unity-algorand-sdk-examples (1.812s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 30a16640
-      m_LastClickedID: 1080467760
+      m_SelectedIDs: 43118221
+      m_LastClickedID: 562172227
       m_ExpandedIDs: 9d688e871534ce929eaba6977f14949e85ebd59eafa2bca0914bc7a3b68a48bc71509dc511d5c7cbc0a7d8d1fd2468d649d4f9d9fe3ef2ed40dc38fff7bb4e027c8a9603fb97d01a43118221d9825439b1752b4e42dc9956f6ac4361a019b87d1172b77fffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -619,7 +620,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 1c710000
     m_LastClickedID: 28956
-    m_ExpandedIDs: 00000000fe6700000068000002680000
+    m_ExpandedIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -647,7 +648,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fe6700000068000002680000
+    m_ExpandedIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -777,7 +778,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 28fbffff
+      m_ExpandedIDs: 8683ffffca83ffff7284ffffb684ffff7e85ffffc285ffff8886ffffcc86ffff9287ffffd687ffff2889ffff6c89ffffa489ffffe889ffff1c8bffff608bffffb48cfffff88cffffbe8dffff028effff3a8effff7e8effff468fffff8a8fffff7490ffffb890ffff1a92ffff5e92ffff9692ffffda92ffff1293ffff5693ffff8e93ffffd293ffff3e96ffff8296ffffba96ffff0097ffffe898ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

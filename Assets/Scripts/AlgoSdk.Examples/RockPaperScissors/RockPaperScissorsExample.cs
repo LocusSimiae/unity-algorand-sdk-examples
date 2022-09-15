@@ -1,3 +1,4 @@
+using AlgoSdk.Algod;
 using AlgoSdk.Examples.AuctionDemo;
 using Cysharp.Threading.Tasks;
 using System;
@@ -15,7 +16,7 @@ namespace AlgoSdk.Examples.RockPaperScissors
             Debug.Log("Rock Paper Scissors demo started!");
 
             Setup setup = new Setup();
-            IAlgodClient client = setup.AlgodClient;
+            AlgodClient client = setup.AlgodClient;
 
             Debug.Log("Generating temporary accounts...");
             Account challenger = await AuctionDemo.Resources.GetTemporaryAccount(client);
@@ -24,26 +25,19 @@ namespace AlgoSdk.Examples.RockPaperScissors
             Debug.Log($"Bob (opponent account): {opponent.Address}");
 
             Debug.Log($"Alice is creating the rock paper scissors app");
-            ulong appId = await CreateApp(
+            AppIndex appId = await CreateApp(
                 client: client,
                 sender: challenger
             );
 
-            var appResponse = await client.GetApplication(appId);
-            if (appResponse.Error.IsError)
-            {
-                Debug.LogError($"Algod GetApplication failed: {appResponse.Error.Message}");
-                return;
-            }
-
-            Address appAddress = appResponse.Payload.GetAddress();
+            Address appAddress = appId.GetAppAddress();
             Debug.Log($"Done. The app ID is {appId} and the escrow account is {appAddress}");
 
             Debug.Log("Both Alice and Bob are opting in to the app.");
             await Optin(client, challenger, appId);
             await Optin(client, opponent, appId);
 
-            Func<UniTask> logBalances = async () => 
+            Func<UniTask> logBalances = async () =>
             {
                 var bobBalances = await Util.GetBalances(client, opponent.Address);
                 Debug.Log($"Bob's balances: {bobBalances.ToDebugString()}");
@@ -79,14 +73,14 @@ namespace AlgoSdk.Examples.RockPaperScissors
             Debug.Log("Rock Paper Scissors demo finished!");
         }
 
-        private static async UniTask<ulong> CreateApp(IAlgodClient client, Account sender)
+        private static async UniTask<AppIndex> CreateApp(AlgodClient client, Account sender)
         {
             var (approval, clear) = await GetContracts(client);
 
             StateSchema globalSchema = new StateSchema() { NumUints = 0, NumByteSlices = 0 };
             StateSchema localSchema = new StateSchema() { NumUints = 1, NumByteSlices = 3 };
 
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -94,24 +88,24 @@ namespace AlgoSdk.Examples.RockPaperScissors
             }
 
             AppCallTxn txn = Transaction.AppCreate(
-                sender: sender.Address, 
-                txnParams: txnParams, 
-                approvalProgram: approval, 
-                clearStateProgram: clear, 
-                globalStateSchema: globalSchema, 
+                sender: sender.Address,
+                txnParams: txnParams,
+                approvalProgram: approval,
+                clearStateProgram: clear,
+                globalStateSchema: globalSchema,
                 localStateSchema: localSchema
             );
 
             var signedTxn = sender.SignTxn(txn);
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedTxn);
+            var (sendTxnError, response) = await client.SendTransaction(signedTxn);
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"Algod SendTransaction error: {sendTxnError.Message}");
                 return 0;
             }
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, response.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -123,7 +117,7 @@ namespace AlgoSdk.Examples.RockPaperScissors
                 Debug.LogError($"Application index is 0!");
             }
 
-            return pendingTxn.ApplicationIndex;
+            return (AppIndex)pendingTxn.ApplicationIndex.Value;
         }
 
         public static async UniTask<(byte[], byte[])> GetContracts(IAlgodClient client)
@@ -134,9 +128,9 @@ namespace AlgoSdk.Examples.RockPaperScissors
             return (approval, clear);
         }
 
-        static async UniTask Optin(IAlgodClient client, Account sender, ulong appId)
+        static async UniTask Optin(AlgodClient client, Account sender, ulong appId)
         {
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -151,14 +145,14 @@ namespace AlgoSdk.Examples.RockPaperScissors
 
             var signedTxn = sender.SignTxn(txn);
 
-            var (txnErr, txid) = await client.SendTransaction(signedTxn);
+            var (txnErr, txnResponse) = await client.SendTransaction(signedTxn);
             if (txnErr.IsError)
             {
                 Debug.LogError($"[EnsureOptedIn] Algod SendTransaction failed: {txnErr.Message}");
                 return;
             }
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txnResponse.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -166,9 +160,9 @@ namespace AlgoSdk.Examples.RockPaperScissors
             }
         }
 
-        private static async UniTask SetupChallenge(IAlgodClient client, Account challenger, Account opponent, ulong appId, Address appAddress, ulong wager)
+        private static async UniTask SetupChallenge(AlgodClient client, Account challenger, Account opponent, ulong appId, Address appAddress, ulong wager)
         {
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -187,14 +181,14 @@ namespace AlgoSdk.Examples.RockPaperScissors
 
             var signedFundAppTxn = challenger.SignTxn(fundAppTxn);
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedFundAppTxn);
+            var (sendTxnError, txnResponse) = await client.SendTransaction(signedFundAppTxn);
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"Algod SendTransaction error: {sendTxnError.Message}");
                 return;
             }
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txnResponse.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -222,31 +216,24 @@ namespace AlgoSdk.Examples.RockPaperScissors
                 txnParams: txnParams
             );
 
-            var groupId = TransactionGroup.Of(callTxn.GetId(), challengeWagerTxn.GetId()).GetId();
-            callTxn.Group = groupId;
-            challengeWagerTxn.Group = groupId;
-
-            var signedCallTxn = challenger.SignTxn(callTxn);
-            var signedChallengeWagerTxn = challenger.SignTxn(challengeWagerTxn);
-
-            (sendTxnError, txid) = await client.SendTransactions(signedCallTxn, signedChallengeWagerTxn);
-            if (sendTxnError.IsError)
+            var atomic = Transaction.Atomic();
+            atomic.AddTxn(callTxn);
+            atomic.AddTxn(challengeWagerTxn);
+            var signedTxns = atomic.Build().SignWith(challenger);
+            try
             {
-                Debug.LogError($"Algod SendTransaction error: {sendTxnError.Message}");
-                return;
+                var response = await signedTxns.Submit(client);
+                await response.Confirm(10);
             }
-
-            (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
-            if (pendingErr.IsError)
+            catch(AlgoApiException error)
             {
-                Debug.LogError($"Algod WaitForTransaction failed: {pendingErr.Message}");
-                return;
+                Debug.LogError($"Algod WaitForTransaction failed: {error.Message}");
             }
         }
 
-        private static async UniTask AcceptChallenge(IAlgodClient client, Account challenger, Account opponent, ulong appId, Address appAddress, ulong wager)
+        private static async UniTask AcceptChallenge(AlgodClient client, Account challenger, Account opponent, ulong appId, Address appAddress, ulong wager)
         {
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -273,31 +260,25 @@ namespace AlgoSdk.Examples.RockPaperScissors
                 txnParams: txnParams
             );
 
-            var groupId = TransactionGroup.Of(callTxn.GetId(), fundAppTxn.GetId()).GetId();
-            callTxn.Group = groupId;
-            fundAppTxn.Group = groupId;
 
-            var signedCallTxn = opponent.SignTxn(callTxn);
-            var signedFundTxn = opponent.SignTxn(fundAppTxn);
-
-            var (sendTxnError, txid) = await client.SendTransactions(signedCallTxn, signedFundTxn);
-            if (sendTxnError.IsError)
+            var atomic = Transaction.Atomic();
+            atomic.AddTxn(callTxn);
+            atomic.AddTxn(fundAppTxn);
+            var signedTxns = atomic.Build().SignWith(opponent);
+            try
             {
-                Debug.LogError($"Algod SendTransaction error: {sendTxnError.Message}");
-                return;
+                var response = await signedTxns.Submit(client);
+                await response.Confirm(10);
             }
-
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
-            if (pendingErr.IsError)
+            catch(AlgoApiException error)
             {
-                Debug.LogError($"Algod WaitForTransaction failed: {pendingErr.Message}");
-                return;
+                Debug.LogError($"Algod WaitForTransaction failed: {error.Message}");
             }
         }
 
-        private static async UniTask RevealChallengerPlay(IAlgodClient client, Account challenger, Account opponent, ulong appId)
+        private static async UniTask RevealChallengerPlay(AlgodClient client, Account challenger, Account opponent, ulong appId)
         {
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -322,14 +303,14 @@ namespace AlgoSdk.Examples.RockPaperScissors
 
             var signedCallTxn = challenger.SignTxn(callTxn);
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedCallTxn);
+            var (sendTxnError, txnResponse) = await client.SendTransaction(signedCallTxn);
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"Algod SendTransaction error: {sendTxnError.Message}");
                 return;
             }
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txnResponse.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -337,9 +318,9 @@ namespace AlgoSdk.Examples.RockPaperScissors
             }
         }
 
-        public static async UniTask Cleanup(IAlgodClient client, ulong appId, Account closer)
+        public static async UniTask Cleanup(AlgodClient client, ulong appId, Account closer)
         {
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -356,14 +337,14 @@ namespace AlgoSdk.Examples.RockPaperScissors
 
             var signedDeleteTxn = closer.SignTxn(deleteTxn);
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedDeleteTxn);
+            var (sendTxnError, txnResponse) = await client.SendTransaction(signedDeleteTxn);
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"Algod SendTransaction error: {sendTxnError.Message}");
                 return;
             }
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txnResponse.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"Algod WaitForTransaction failed: {pendingErr.Message}");
