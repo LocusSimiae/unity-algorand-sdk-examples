@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 1109
   m_ShowMode: 4
-  m_Title: Test Runner
+  m_Title: Console
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 17
+  controlID: 79
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 454
     height: 1059
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -93,9 +93,9 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 363
-    height: 634
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    height: 626
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -117,9 +117,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 634
+    y: 626
     width: 1466
-    height: 425
+    height: 433
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 22
+  controlID: 51
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,11 +244,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1466
-    height: 634
+    height: 626
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 23
+  controlID: 52
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -267,7 +267,7 @@ MonoBehaviour:
     x: 363
     y: 0
     width: 1103
-    height: 634
+    height: 626
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 12}
@@ -300,7 +300,7 @@ MonoBehaviour:
     x: 363
     y: 73
     width: 1101
-    height: 613
+    height: 605
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -310,8 +310,8 @@ MonoBehaviour:
     splitterInitialOffset: 370
     currentActiveSplitter: -1
     realSizes:
-    - 301
-    - 242
+    - 297
+    - 238
     relativeSizes:
     - 0.5543278
     - 0.4456722
@@ -321,7 +321,7 @@ MonoBehaviour:
     maxSizes:
     - 0
     - 0
-    lastTotalSize: 543
+    lastTotalSize: 535
     splitSize: 6
     xOffset: 0
     m_Version: 1
@@ -390,7 +390,7 @@ MonoBehaviour:
       name: unity-algorand-sdk-examples
       fullName: unity-algorand-sdk-examples
       resultStatus: 1
-      duration: 1.8121113
+      duration: 295.20853
       messages: 
       output: 
       stacktrace: 
@@ -406,7 +406,7 @@ MonoBehaviour:
       name: AlgoSdk.Examples.Tests.dll
       fullName: C:/Black Hole/Repositories/Alrogrand/unity-algorand-sdk-examples/Library/ScriptAssemblies/AlgoSdk.Examples.Tests.dll
       resultStatus: 1
-      duration: 1.7929829
+      duration: 295.19803
       messages: 
       output: 
       stacktrace: 
@@ -422,7 +422,7 @@ MonoBehaviour:
       name: AlgoSdk
       fullName: AlgoSdk
       resultStatus: 1
-      duration: 1.7917566
+      duration: 295.1972
       messages: 
       output: 
       stacktrace: 
@@ -438,7 +438,7 @@ MonoBehaviour:
       name: Examples
       fullName: AlgoSdk.Examples
       resultStatus: 1
-      duration: 1.7913079
+      duration: 295.1964
       messages: 
       output: 
       stacktrace: 
@@ -449,12 +449,263 @@ MonoBehaviour:
       categories: []
       parentId: 1004
       parentUniqueId: AlgoSdk.Examples.Tests.dll/[AlgoSdk][suite]
+    - id: 1016
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo][suite]
+      name: AuctionDemo
+      fullName: AlgoSdk.Examples.AuctionDemo
+      resultStatus: 1
+      duration: 86.454796
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1013
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/[Examples][suite]
+    - id: 1005
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests][suite]
+      name: Tests
+      fullName: AlgoSdk.Examples.AuctionDemo.Tests
+      resultStatus: 1
+      duration: 86.45415
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1016
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo][suite]
+    - id: 1006
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.CheckCurrentAndLastBlockTimes]
+      name: CheckCurrentAndLastBlockTimes
+      fullName: AlgoSdk.Examples.AuctionDemo.Tests.CheckCurrentAndLastBlockTimes
+      resultStatus: 1
+      duration: 0.0161101
+      messages: 
+      output: "Current timestamp is 1663272998\r\ntmp: HN442FGKWAQEBDIUYW73JE5N7AZGMVUNUPXFKESNVPG6PMC7TZKQ\r\ns:
+        blk-HN442FGKWAQEBDIUYW73JE5N7AZGMVUNUPXFKESNVPG6PMC7TZKQ\r\nCould not recognize
+        the field \"spt\", for any fields on AlgoSdk.BlockHeader.\njson: : {\n     
+        \"0\": {\n        \"n\": 512\n      }\n    }\r\nCould not recognize the field
+        \"txn256\", for any fields on AlgoSdk.BlockHeader.\njson: : \"HQn2+iMjWIFRTaDl+PeJdn5rKOch+otqMK5/Gao+puc=\"\r\nLast
+        block timestamp is 1663272992\r\nTimestamps are off by 6 seconds\r\n"
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1005
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests][suite]
+    - id: 1007
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.GetAlgodClient]
+      name: GetAlgodClient
+      fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetAlgodClient
+      resultStatus: 1
+      duration: 0.0133114
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1005
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests][suite]
+    - id: 1009
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.GetGenesisAccounts]
+      name: GetGenesisAccounts
+      fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetGenesisAccounts
+      resultStatus: 1
+      duration: 0.0048516
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1005
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests][suite]
+    - id: 1008
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.GetKmdClient]
+      name: GetKmdClient
+      fullName: AlgoSdk.Examples.AuctionDemo.Tests.GetKmdClient
+      resultStatus: 1
+      duration: 0.0176102
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1005
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests][suite]
+    - id: 1010
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests.RunAuctionDemo]
+      name: RunAuctionDemo
+      fullName: AlgoSdk.Examples.AuctionDemo.Tests.RunAuctionDemo
+      resultStatus: 1
+      duration: 86.3991
+      messages: 
+      output: "Auction demo started!\r\nGenerating temporary accounts...\r\nAlice
+        (seller account): TWLJOQV2CRVHAFOVALD2FWQ5LIMR32NKGTR4J4B3M3FIZUJCCN4WGUDFGQ\r\nBob
+        (auction creator account): TDS2QUIYJLDPL7GYPVBBYPWOMDFGXGYFD62HAZNVM2XTGNTIB6HIUX2K6M\r\nCarla
+        (bidder account): SWPQMX7SMULNG7LIHQUKXPDWCDLUD5QWW3LFIEDQUECC7SR73XX55RRMLA\r\nAlice
+        is generating an example NFT...\r\nThe NFT ID is 55\r\nAlice's balances:
+        {0: 99999000,55: 1}\r\nBob is creating an auction that lasts 30 seconds to
+        auction off the NFT... (start time is 2022-09-15 at 22:17:16)\r\nDone. The
+        auction app ID is 56 and the escrow account is KIPEA3E6SNE7QRL36KUJ5CVNW4P4F2JFZZ5O4I7FENFCZIYMKOPSGMKFBY\r\nAlice
+        is setting up and funding the NFT auction...\r\nDone\r\nAlice's balances:
+        {0: 99998099,55: 0}\r\ntmp: B6OQR6G7ROCY5QK5CND2C3XVJNV2FPCJE3BY4TJ3PS474DBGBX7A\r\ns:
+        blk-B6OQR6G7ROCY5QK5CND2C3XVJNV2FPCJE3BY4TJ3PS474DBGBX7A\r\nCould not recognize
+        the field \"spt\", for any fields on AlgoSdk.BlockHeader.\njson: : {\n     
+        \"0\": {\n        \"n\": 512\n      }\n    }\r\nCould not recognize the field
+        \"txn256\", for any fields on AlgoSdk.BlockHeader.\njson: : \"/+Fn9Yf3Izhq4m1vUAe3RKHcVqhhJkTesGSfpJZUfUE=\"\r\nNow
+        waiting 21 seconds before bidding begins!\r\nAuction escrow balances: {0:
+        202000,55: 1}\r\nCarla wants to bid on the NFT, her balances: {0: 100000100}\r\nCarla
+        is placing a bid for 1000000 microAlgos\r\nNo previous bidder found. Placing
+        first bid!\r\nCarla is opting into the NFT with ID 55\r\nDone\r\ntmp: 3N5ZUAA3YIEWE3GPZ2P3SQCC6OJUODCJMDCALOIKKQY63YXZDFZA\r\ns:
+        blk-3N5ZUAA3YIEWE3GPZ2P3SQCC6OJUODCJMDCALOIKKQY63YXZDFZA\r\nCould not recognize
+        the field \"spt\", for any fields on AlgoSdk.BlockHeader.\njson: : {\n     
+        \"0\": {\n        \"n\": 512\n      }\n    }\r\nCould not recognize the field
+        \"txn256\", for any fields on AlgoSdk.BlockHeader.\njson: : \"HQn2+iMjWIFRTaDl+PeJdn5rKOch+otqMK5/Gao+puc=\"\r\nWaiting
+        14 seconds for the auction to finish\r\nAlice is closing the auction\r\nThe
+        auction escrow now holds the following: {0: 0}\r\nAlice's balances after
+        auction: {0: 101197099,55: 0}\r\nCarla's balances after auction: {0: 98997100,55:
+        1}\r\nAuction demo finished!\r\n"
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1005
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/AuctionDemo/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.AuctionDemo.Tests][suite]
+    - id: 1008
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.RockPaperScissors][suite]
+      name: RockPaperScissors
+      fullName: AlgoSdk.Examples.RockPaperScissors
+      resultStatus: 1
+      duration: 75.24779
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1007
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/[Examples][suite]
+    - id: 1001
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/RockPaperScissors/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.RockPaperScissors.Tests][suite]
+      name: Tests
+      fullName: AlgoSdk.Examples.RockPaperScissors.Tests
+      resultStatus: 1
+      duration: 75.245316
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1008
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.RockPaperScissors][suite]
+    - id: 1002
+      uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/RockPaperScissors/Tests/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.RockPaperScissors.Tests.RunRockPaperScissors]
+      name: RunRockPaperScissors
+      fullName: AlgoSdk.Examples.RockPaperScissors.Tests.RunRockPaperScissors
+      resultStatus: 1
+      duration: 75.240944
+      messages: 
+      output: 'Rock Paper Scissors demo started!
+
+        Generating temporary accounts...
+
+        Alice
+        (challenger account): WLWLJ24J3CLUP4YO3WJ2E3ZMI3Q7KAJTAGN465YBSOOB5AJ5GWLJZE5GRY
+
+        Bob
+        (opponent account): KV5IEXRR64SA4ZXSIYYJ6NIHFUUICJIGODVYDCS5B22H6NMTDZDVFROEH4
+
+        Alice
+        is creating the rock paper scissors app
+
+        Done. The app ID is AlgoSdk.AppIndex
+        and the escrow account is XIBF2HUZXFM6NONRNMIZTN2NFJTXL35ECO5DR25S73RGVH6KUJX67GLTOU
+
+        Both
+        Alice and Bob are opting in to the app.
+
+        All participants balances
+        before the game:
+
+        Bob''s balances: {0: 99999100}
+
+        Alice''s
+        balances: {0: 99998100}
+
+        App/Escrow''s balances: {0: 0}
+
+        Alice
+        is creating and setting up the challenge between her and Bob!
+
+        Bob
+        accepts the challenge and sends his play!
+
+        Alice reveals her play!
+
+        Bob
+        wins the game!
+
+        All participants balances after the game:
+
+        Bob''s
+        balances: {0: 100120656}
+
+        Alice''s balances: {0: 99768743}
+
+        App/Escrow''s
+        balances: {0: 100000}
+
+        Alices cleans up the challenge!
+
+        Rock
+        Paper Scissors demo finished!
+
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/RockPaperScissors/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.RockPaperScissors.Tests][suite]
     - id: 1006
       uniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract][suite]
       name: StatefulContract
       fullName: AlgoSdk.Examples.StatefulContract
       resultStatus: 1
-      duration: 1.7908009
+      duration: 133.49315
       messages: 
       output: 
       stacktrace: 
@@ -470,7 +721,7 @@ MonoBehaviour:
       name: Tests
       fullName: AlgoSdk.Examples.StatefulContract.Tests
       resultStatus: 1
-      duration: 1.7882806
+      duration: 133.49063
       messages: 
       output: 
       stacktrace: 
@@ -486,43 +737,43 @@ MonoBehaviour:
       name: RunStatefulContract
       fullName: AlgoSdk.Examples.StatefulContract.Tests.RunStatefulContract
       resultStatus: 1
-      duration: 1.7742311
+      duration: 133.48755
       messages: 
       output: "Started stateful contract example!\r\nGenerating temporary accounts...\r\nadmin
         account: AJNNFQN7DSR7QEY766V7JDG35OPM53ZSNF7CU264AWOOUGSZBMLMSKCRIU\r\ncreator
         account: 53GNUYJSTKGEHAVYE5ZS65YTVJSYZSJ7KJBWNQT3MJESCOKNOWEBYTLVA4\r\nuser
         account: GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU\r\n[CreateApp]
         Signed transaction\r\n[CreateApp] Sent transaction\r\n[CreateApp] App id
-        is: 176\r\n[OptIn] Signed transaction\r\n[OptIn] Sent transaction\r\n[OptIn]
+        is: 82\r\n[OptIn] Signed transaction\r\n[OptIn] Sent transaction\r\n[OptIn]
         Address GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU optin
-        to Application with ID 176\r\n[CallApp] Signed transaction\r\n[CallApp] Sent
-        transaction\r\n[CallApp] Application (ID: 176 confirmed with round: 178\r\n[CallApp]
+        to Application with ID 82\r\n[CallApp] Signed transaction\r\n[CallApp] Sent
+        transaction\r\n[CallApp] Application (ID: 82 confirmed with round: 341\r\n[CallApp]
         Global state delta: key: counter; value: (none); \r\n[CallApp] Local state
         delta: key: counter; value: (none); \r\n[ReadLocalState] User's application
         local state: key: counter; value: (uint) 1; \r\n[ReadGlobalState] Application
         global state: key: counter; value: (uint) 1; \r\n[UpdateApp] Signed transaction\r\n[UpdateApp]
-        Sent transaction\r\n[UpdateApp] Application (ID: 176 confirmed with round:
-        179\r\nSending app argument: 2022-09-14 at 23:55:05\r\n[CallApp] Signed transaction\r\n[CallApp]
-        Sent transaction\r\n[CallApp] Application (ID: 176 confirmed with round:
-        180\r\n[CallApp] Global state delta: key: counter; value: (none); \r\n[CallApp]
-        Local state delta: key: counter; value: (none); key: timestamp; value: (set
-        uint) 0; \r\n[ReadLocalState] User's application local state: key: counter;
-        value: (uint) 2; key: timestamp; value: (bytes) 2022-09-14 at 23:55:05; \r\n[ReadGlobalState]
+        Sent transaction\r\n[UpdateApp] Application (ID: 82 confirmed with round:
+        344\r\nSending app argument: 2022-09-15 at 22:20:32\r\n[CallApp] Signed transaction\r\n[CallApp]
+        Sent transaction\r\n[CallApp] Application (ID: 82 confirmed with round: 347\r\n[CallApp]
+        Global state delta: key: counter; value: (none); \r\n[CallApp] Local state
+        delta: key: counter; value: (none); key: timestamp; value: (set uint) 0;
+        \r\n[ReadLocalState] User's application local state: key: counter; value:
+        (uint) 2; key: timestamp; value: (bytes) 2022-09-15 at 22:20:32; \r\n[ReadGlobalState]
         Application global state: key: counter; value: (uint) 2; \r\n[CloseOutApp]
         Signed transaction\r\n[CloseOutApp] Sent transaction\r\n[CloseOutApp] Application
-        (ID: 176) close out confirmed with round: 181\r\n[OptIn] Signed transaction\r\n[OptIn]
+        (ID: 82) close out confirmed with round: 350\r\n[OptIn] Signed transaction\r\n[OptIn]
         Sent transaction\r\n[OptIn] Address GG7UDCTXNHADKSJ22GG64BZNKXXLXMSYWVZDD2UGHBZ6RLVXWGRLMW52DU
-        optin to Application with ID 176\r\n[CallApp] Signed transaction\r\n[CallApp]
-        Sent transaction\r\n[CallApp] Application (ID: 176 confirmed with round:
-        183\r\n[CallApp] Global state delta: key: counter; value: (none); \r\n[CallApp]
-        Local state delta: key: counter; value: (none); key: timestamp; value: (set
-        uint) 0; \r\n[ReadLocalState] User's application local state: key: counter;
-        value: (uint) 1; key: timestamp; value: (bytes) 2022-09-14 at 23:55:05; \r\n[ReadGlobalState]
+        optin to Application with ID 82\r\n[CallApp] Signed transaction\r\n[CallApp]
+        Sent transaction\r\n[CallApp] Application (ID: 82 confirmed with round: 356\r\n[CallApp]
+        Global state delta: key: counter; value: (none); \r\n[CallApp] Local state
+        delta: key: counter; value: (none); key: timestamp; value: (set uint) 0;
+        \r\n[ReadLocalState] User's application local state: key: counter; value:
+        (uint) 1; key: timestamp; value: (bytes) 2022-09-15 at 22:20:32; \r\n[ReadGlobalState]
         Application global state: key: counter; value: (uint) 3; \r\n[DeleteApp]
         Signed transaction\r\n[DeleteApp] Sent transaction\r\n[DeleteApp] Application
-        (ID: 176 confirmed with round: 184\r\n[ClearApp] Signed transaction\r\n[ClearApp]
-        Sent transaction\r\n[ClearApp] Application (ID: 176 confirmed with round:
-        185\r\nFinished stateful contract example!\r\n"
+        (ID: 82 confirmed with round: 359\r\n[ClearApp] Signed transaction\r\n[ClearApp]
+        Sent transaction\r\n[ClearApp] Application (ID: 82 confirmed with round:
+        362\r\nFinished stateful contract example!\r\n"
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
@@ -532,7 +783,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1001
       parentUniqueId: AlgoSdk.Examples.Tests.dll/AlgoSdk/Examples/StatefulContract/[AlgoSdk.Examples.Tests][AlgoSdk.Examples.StatefulContract.Tests][suite]
-    m_ResultText: unity-algorand-sdk-examples (1.812s)
+    m_ResultText: unity-algorand-sdk-examples (295.209s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
@@ -768,7 +1019,7 @@ MonoBehaviour:
     x: 0
     y: 73
     width: 362
-    height: 613
+    height: 605
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -778,7 +1029,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 8683ffffca83ffff7284ffffb684ffff7e85ffffc285ffff8886ffffcc86ffff9287ffffd687ffff2889ffff6c89ffffa489ffffe889ffff1c8bffff608bffffb48cfffff88cffffbe8dffff028effff3a8effff7e8effff468fffff8a8fffff7490ffffb890ffff1a92ffff5e92ffff9692ffffda92ffff1293ffff5693ffff8e93ffffd293ffff3e96ffff8296ffffba96ffff0097ffffe898ffff
+      m_ExpandedIDs: 96f6fffff2f6ffff2af7ffff6ef7ffff16f8ffff5af8ffff02f9ffff46f9fffff4f9ffff4afaffff28fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1242,9 +1493,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 707
+    y: 699
     width: 1465
-    height: 404
+    height: 412
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default

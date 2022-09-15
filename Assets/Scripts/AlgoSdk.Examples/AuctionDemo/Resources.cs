@@ -9,10 +9,10 @@ namespace AlgoSdk.Examples.AuctionDemo
     public static class Resources
     {
         const ulong FUNDING_AMOUNT = 100_000_000;
-        const int TEMPORARY_ACCOUNTS = 16;
+        const int TEMPORARY_ACCOUNTS = 10;
         static Stack<Account> accountList = new Stack<Account>(TEMPORARY_ACCOUNTS);
 
-        public static async UniTask<AlgoApiResponse<PendingTransactionResponse>> PayAccount(IAlgodClient client, Account sender, Address to, ulong amount)
+        public static async UniTask<AlgoApiResponse<PendingTransactionResponse>> PayAccount(AlgodClient client, Account sender, Address to, ulong amount)
         {
             var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
@@ -40,7 +40,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             return await Util.WaitForTransaction(client, txResponse.TxId);
         }
 
-        public static async UniTask<AlgoApiResponse<PendingTransactionResponse>> FundAccount(IAlgodClient client, Address address, ulong amount = FUNDING_AMOUNT)
+        public static async UniTask<AlgoApiResponse<PendingTransactionResponse>> FundAccount(AlgodClient client, Address address, ulong amount = FUNDING_AMOUNT)
         {
             Setup setup = new Setup();
             List<Account> genesisAccounts = await setup.GetGenesisAccounts();
@@ -48,14 +48,13 @@ namespace AlgoSdk.Examples.AuctionDemo
             return await PayAccount(client, fundingAccount, address, amount);
         }
 
-        public static async UniTask<Account> GetTemporaryAccount(IAlgodClient client)
+        public static async UniTask<Account> GetTemporaryAccount(AlgodClient client)
         {
             if (accountList.Count > 0)
             {
                 return accountList.Pop();
             }
 
-            List<Account> accounts = new List<Account>();
             for (int i = 0; i < TEMPORARY_ACCOUNTS; ++i)
             {
                 accountList.Push(Account.GenerateAccount());
@@ -71,42 +70,29 @@ namespace AlgoSdk.Examples.AuctionDemo
                 return default;
             }
 
-            List<PaymentTxn> txns = new List<PaymentTxn>();
+            var atomic = Transaction.Atomic();
             for (int i = 0; i < accountList.Count; ++i)
             {
                 Account fundingAccount = genesisAccounts[i % genesisAccounts.Count];
-                txns.Add(Transaction.Payment(
+                atomic.AddTxn(Transaction.Payment(
                     sender: fundingAccount.Address,
                     txnParams: txnParams,
                     receiver: accountList.ToArray()[i].Address,
                     amount: FUNDING_AMOUNT
                 ));
             }
+            var signer = atomic.Build();
+            foreach (var account in genesisAccounts)
+                signer = signer.SignWith(account);
 
-            var groupId = TransactionGroup.Of(txns.ToArray()).GetId();
-
-            List<SignedTxn<PaymentTxn>> signedTxns = new List<SignedTxn<PaymentTxn>>();
-            for (int i = 0; i < txns.Count; ++i)
+            try
             {
-                Account fundingAccount = genesisAccounts[i % genesisAccounts.Count];
-                PaymentTxn txn = txns[i];
-                txn.Group = groupId;
-                signedTxns.Add(fundingAccount.SignTxn(txn));
+                var response = await signer.Submit(client);
+                await response.Confirm(10);
             }
-            
-            var signedTxnsArray = signedTxns.SelectMany(x => AlgoApiSerializer.SerializeMessagePack(x)).ToArray();
-            var (txnErr, pendingTx) = await client.RawTransaction(signedTxnsArray);
-            if (txnErr.IsError)
+            catch (AlgoApiException error)
             {
-                Debug.LogError($"[GetTemporaryAccount] Algod SendTransactions failed: {txnErr.Message}");
-                accountList.Clear();
-                return default;
-            }
-
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, pendingTx.TxId);
-            if (pendingErr.IsError)
-            {
-                Debug.LogError($"[GetTemporaryAccount] Algod WaitForTransaction failed: {pendingErr.Message}");
+                Debug.LogError($"[GetTemporaryAccount] Algod WaitForTransaction failed: {error.Message}");
                 accountList.Clear();
                 return default;
             }
@@ -114,7 +100,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             return accountList.Pop();
         }
 
-        public static async UniTask<AlgoApiResponse<PendingTransactionResponse>> EnsureOptedIn(IAlgodClient client, ulong assetId, Account account)
+        public static async UniTask<AlgoApiResponse<PendingTransactionResponse>> EnsureOptedIn(AlgodClient client, ulong assetId, Account account)
         {
             var (err, accountInfo) = await client.AccountInformation(account.Address);
             if (err.IsError)
@@ -147,7 +133,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             return await Util.WaitForTransaction(client, pendingTx.TxId);
         }
 
-        public static async UniTask<ulong> CreateDummyAsset(IAlgodClient client, ulong total, Account account = default)
+        public static async UniTask<ulong> CreateDummyAsset(AlgodClient client, ulong total, Account account = default)
         {
             if (Equals(account, default(Account)))
             {

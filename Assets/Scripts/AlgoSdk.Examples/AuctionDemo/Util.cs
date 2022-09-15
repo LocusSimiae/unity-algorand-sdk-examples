@@ -10,7 +10,7 @@ namespace AlgoSdk.Examples.AuctionDemo
 {
     public static class Util
     {
-        public static async UniTask<AlgoApiResponse<PendingTransactionResponse>> WaitForTransaction(IAlgodClient client, TransactionId txid, ulong timeout = 10)
+        public static async UniTask<AlgoApiResponse<PendingTransactionResponse>> WaitForTransaction(AlgodClient client, TransactionId txid, ulong timeout = 10)
         {
             AlgoApiResponse<PendingTransactionResponse> response = await client.PendingTransactionInformation(txid);
 
@@ -44,7 +44,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             return response;
         }
 
-        public static async UniTask<byte[]> FullyCompileContract(IAlgodClient client, string tealPrecompiledSourcePath)
+        public static async UniTask<byte[]> FullyCompileContract(AlgodClient client, string tealPrecompiledSourcePath)
         {
             if (!System.IO.File.Exists(tealPrecompiledSourcePath))
             {
@@ -88,7 +88,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             return state
         */
 
-        public static async UniTask<Dictionary<string, Algod.TealValue>> GetAppGlobalState(IAlgodClient client, ulong appId)
+        public static async UniTask<Dictionary<string, Algod.TealValue>> GetAppGlobalState(AlgodClient client, ulong appId)
         {
             var (error, application) = await client.GetApplicationByID(appId);
             if (error.IsError)
@@ -109,7 +109,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             );
         }
 
-        public static async UniTask<Dictionary<ulong, ulong>> GetBalances(IAlgodClient client, Address account)
+        public static async UniTask<Dictionary<ulong, ulong>> GetBalances(AlgodClient client, Address account)
         {
             var balances = new Dictionary<ulong, ulong>();
 
@@ -126,7 +126,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             return balances;
         }
 
-        public static async UniTask<(ulong, ulong)> GetLastBlockTimestamp(IAlgodClient client)
+        public static async UniTask<(ulong, ulong)> GetLastBlockTimestamp(AlgodClient client)
         {
             var (statusError, status) = await client.GetStatus();
             if (statusError.IsError)

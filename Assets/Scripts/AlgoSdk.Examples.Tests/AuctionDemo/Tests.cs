@@ -15,7 +15,7 @@ namespace AlgoSdk.Examples.AuctionDemo
         public IEnumerator CheckCurrentAndLastBlockTimes() => UniTask.ToCoroutine(async () =>
         {
             Setup setup = new Setup();
-            IAlgodClient client = setup.AlgodClient;
+            AlgodClient client = setup.AlgodClient;
 
             ulong currentTime = (ulong)DateTimeOffset.Now.ToUnixTimeSeconds();
             Debug.Log($"Current timestamp is {currentTime}");
@@ -24,7 +24,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             Debug.Log($"Last block timestamp is {lastBlockTime}");
 
             long difference = (long)(currentTime - lastBlockTime);
-            Debug.Log($"Timestamps are off by { difference } seconds");
+            Debug.Log($"Timestamps are off by {difference} seconds");
 
             Assert.IsTrue(currentTime >= lastBlockTime, "Current timestamp should be bigger than last round!");
             Assert.IsTrue(difference < 60, "The timestamps are off by more than 1 minute! Is the client synched to the latest block? If you run the sandbox, then try to reset the sandbox.");
@@ -34,10 +34,10 @@ namespace AlgoSdk.Examples.AuctionDemo
         public IEnumerator GetAlgodClient() => UniTask.ToCoroutine(async () =>
         {
             Setup setup = new Setup();
-            IAlgodClient algod = setup.AlgodClient;
+            AlgodClient algod = setup.AlgodClient;
             Assert.IsNotNull(algod, "Algod Client is null!");
 
-            var response = await algod.GetHealth();
+            var response = await algod.HealthCheck();
             Assert.IsFalse(response.Error.IsError, "Couldn't connect to Algorand!");
         });
 
@@ -45,7 +45,7 @@ namespace AlgoSdk.Examples.AuctionDemo
         public IEnumerator GetKmdClient() => UniTask.ToCoroutine(async () =>
         {
             Setup setup = new Setup();
-            IKmdClient kmd = setup.KmdClient;
+            KmdClient kmd = setup.KmdClient;
             Assert.IsNotNull(kmd, "KMD Client is null!");
 
             var response = await kmd.Versions();

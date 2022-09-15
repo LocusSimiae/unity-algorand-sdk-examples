@@ -14,7 +14,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             Debug.Log("Auction demo started!");
 
             Setup setup = new Setup();
-            IAlgodClient client = setup.AlgodClient;
+            AlgodClient client = setup.AlgodClient;
 
             Debug.Log("Generating temporary accounts...");
             Account creator = await Resources.GetTemporaryAccount(client);
@@ -51,14 +51,7 @@ namespace AlgoSdk.Examples.AuctionDemo
                 minBidIncrement: increment
             );
 
-            var appResponse = await client.GetApplication(appId);
-            if (appResponse.Error.IsError)
-            {
-                Debug.LogError($"Algod GetApplication failed: {appResponse.Error.Message}");
-                return;
-            }
-
-            Address appAddress = appResponse.Payload.GetAddress();
+            Address appAddress = ((AppIndex)appId).GetAppAddress();
             Debug.Log($"Done. The auction app ID is {appId} and the escrow account is {appAddress}");
 
             Debug.Log("Alice is setting up and funding the NFT auction...");
@@ -91,11 +84,11 @@ namespace AlgoSdk.Examples.AuctionDemo
             var bidderBalancesBefore = await Util.GetBalances(client, bidder.Address);
             ulong bidderAlgosBefore = bidderBalancesBefore[0];
             Debug.Log($"Carla wants to bid on the NFT, her balances: {bidderBalancesBefore.ToDebugString()}");
-            Debug.Log($"Carla is placing a bid for { bidAmount } microAlgos");
+            Debug.Log($"Carla is placing a bid for {bidAmount} microAlgos");
 
             await Operations.PlaceBid(client, appId, bidder, bidAmount);
 
-            Debug.Log($"Carla is opting into the NFT with ID { nftId}");
+            Debug.Log($"Carla is opting into the NFT with ID {nftId}");
 
             await Resources.EnsureOptedIn(client, nftId, bidder);
 
@@ -113,7 +106,7 @@ namespace AlgoSdk.Examples.AuctionDemo
             await Operations.CloseAuction(client, appId, seller);
 
             var actualAppBalances = await Util.GetBalances(client, appAddress);
-            Debug.Log($"The auction escrow now holds the following: { actualAppBalances.ToDebugString() }");
+            Debug.Log($"The auction escrow now holds the following: {actualAppBalances.ToDebugString()}");
 
             if (actualAppBalances[0] != 0)
             {

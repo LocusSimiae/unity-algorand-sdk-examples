@@ -21,7 +21,7 @@ namespace AlgoSdk.Examples.AuctionDemo
         /// </summary>
         /// <param name="client">An algod client that has the ability to compile TEAL programs.</param>
         /// <returns>A tuple of 2 byte strings. The first is the approval program, and the second is the clear state program.</returns>
-        public static async UniTask<(byte[], byte[])> GetContracts(IAlgodClient client)
+        public static async UniTask<(byte[], byte[])> GetContracts(AlgodClient client)
         {
             if (APPROVAL_PROGRAM == null || APPROVAL_PROGRAM.Length == 0)
             {
@@ -49,7 +49,7 @@ namespace AlgoSdk.Examples.AuctionDemo
         /// </param>
         /// <param name="minBidIncrement">The minimum different required between a new bid and the current leading bid.</param>
         /// <returns>The ID of the newly created auction app.</returns>
-        public static async UniTask<ulong> CreateAuctionApp(IAlgodClient client, Account sender, Address seller, ulong nftId, ulong startTime, ulong endTime, ulong reserve, ulong minBidIncrement)
+        public static async UniTask<ulong> CreateAuctionApp(AlgodClient client, Account sender, Address seller, ulong nftId, ulong startTime, ulong endTime, ulong reserve, ulong minBidIncrement)
         {
             var (approval, clear) = await GetContracts(client);
 
@@ -119,16 +119,9 @@ namespace AlgoSdk.Examples.AuctionDemo
         /// so use a value that makes sense for the NFT being auctioned.
         /// </param>
         /// <returns></returns>
-        public static async UniTask SetupAuctionApp(IAlgodClient client, ulong appId, Account funder, Account nftHolder, ulong nftId, ulong nftAmount)
+        public static async UniTask SetupAuctionApp(AlgodClient client, ulong appId, Account funder, Account nftHolder, ulong nftId, ulong nftAmount)
         {
-            var appResponse = await client.GetApplicationByID(appId);
-            if (appResponse.Error.IsError)
-            {
-                Debug.LogError($"[SetupAuctionApp] Algod GetApplication failed: {appResponse.Error.Message}");
-                return;
-            }
-
-            Address appAddress = appResponse.Payload.GetAddress();
+            Address appAddress = ((AppIndex)appId).GetAppAddress();
 
             var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
@@ -167,28 +160,23 @@ namespace AlgoSdk.Examples.AuctionDemo
                 assetAmount: nftAmount,
                 txnParams: txnParams
             );
-            
-            var groupId = TransactionGroup.Of(fundAppTxn.GetId(), setupTxn.GetId(), fundNftTxn.GetId()).GetId();
-            fundAppTxn.Group = groupId;
-            setupTxn.Group = groupId;
-            fundNftTxn.Group = groupId;
 
-            var signedFundAppTxn = funder.SignTxn(fundAppTxn);
-            var signedSetupTxnn = funder.SignTxn(setupTxn);
-            var signedFundNftTxn = nftHolder.SignTxn(fundNftTxn);
-
-            var (sendTxnError, txid) = await client.SendTransactions(signedFundAppTxn, signedSetupTxnn, signedFundNftTxn);
-            if (sendTxnError.IsError)
+            try
             {
-                Debug.LogError($"[SetupAuctionApp] Algod SendTransaction error: {sendTxnError.Message}");
-                return;
+                var atomic = Transaction.Atomic();
+                var signedTxns = atomic
+                    .AddTxn(fundAppTxn)
+                    .AddTxn(setupTxn)
+                    .AddTxn(fundNftTxn)
+                    .Build()
+                    .SignWith(funder)
+                    .SignWith(nftHolder);
+                var response = await signedTxns.Submit(client);
+                await response.Confirm(10);
             }
-
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
-            if (pendingErr.IsError)
+            catch (AlgoApiException error)
             {
-                Debug.LogError($"[SetupAuctionApp] Algod WaitForTransaction failed: {pendingErr.Message}");
-                return;
+                Debug.LogError($"[SetupAuctionApp] Algod WaitForTransaction failed: {error.Message}");
             }
         }
 
@@ -200,25 +188,18 @@ namespace AlgoSdk.Examples.AuctionDemo
         /// <param name="bidder">The account providing the bid.</param>
         /// <param name="bidAmount">The amount of the bid.</param>
         /// <returns></returns>
-        public static async UniTask PlaceBid(IAlgodClient client, ulong appId, Account bidder, ulong bidAmount)
+        public static async UniTask PlaceBid(AlgodClient client, ulong appId, Account bidder, ulong bidAmount)
         {
-            var appResponse = await client.GetApplication(appId);
-            if (appResponse.Error.IsError)
-            {
-                Debug.LogError($"[PlaceBid] Algod GetApplication failed: {appResponse.Error.Message}");
-                return;
-            }
-
-            Address appAddress = appResponse.Payload.GetAddress();
+            Address appAddress = ((AppIndex)appId).GetAppAddress();
             var appGlobalState = await Util.GetAppGlobalState(client, appId);
 
-            TealValue value;
+            Algod.TealValue value;
             if (!appGlobalState.TryGetValue("nft_id", out value))
             {
                 Debug.LogError($"[PlaceBid] Unable to get nft_id from app global state");
                 return;
             }
-            ulong nftId = value.UintValue;
+            ulong nftId = value.Uint;
 
             Address? prevBidLeader = GetAddressFromAppState(appGlobalState, "bid_account");
             if (!prevBidLeader.HasValue || prevBidLeader.Value == ZERO_ADDRESS)
@@ -227,10 +208,10 @@ namespace AlgoSdk.Examples.AuctionDemo
             }
             else
             {
-                Debug.Log($"Previous bidder found: { prevBidLeader.Value }");
+                Debug.Log($"Previous bidder found: {prevBidLeader.Value}");
             }
 
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[PlaceBid] Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -253,25 +234,20 @@ namespace AlgoSdk.Examples.AuctionDemo
                 txnParams: txnParams
             );
 
-            var groupId = TransactionGroup.Of(payTxn.GetId(), appCallTxn.GetId()).GetId();
-            payTxn.Group = groupId;
-            appCallTxn.Group = groupId;
-
-            var signedPayTxn = bidder.SignTxn(payTxn);
-            var signedAppCallTxn = bidder.SignTxn(appCallTxn);
-
-            var (sendTxnError, txid) = await client.SendTransactions(signedPayTxn, signedAppCallTxn);
-            if (sendTxnError.IsError)
+            try
             {
-                Debug.LogError($"[PlaceBid] Algod SendTransaction error: {sendTxnError.Message}");
-                return;
+                var atomic = Transaction.Atomic();
+                var signedTxns = atomic
+                    .AddTxn(payTxn)
+                    .AddTxn(appCallTxn)
+                    .Build()
+                    .SignWith(bidder);
+                var response = await signedTxns.Submit(client);
+                await response.Confirm(10);
             }
-
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
-            if (pendingErr.IsError)
+            catch (AlgoApiException error)
             {
-                Debug.LogError($"[PlaceBid] Algod WaitForTransaction failed: {pendingErr.Message}");
-                return;
+                Debug.LogError($"[PlaceBid] Algod WaitForTransaction failed: {error.Message}");
             }
         }
 
@@ -292,29 +268,22 @@ namespace AlgoSdk.Examples.AuctionDemo
         /// either the seller or auction creator if you wish to close the
         /// auction before it starts. Otherwise, this can be any account.
         /// </param>
-        public static async UniTask CloseAuction(IAlgodClient client, ulong appId, Account closer)
+        public static async UniTask CloseAuction(AlgodClient client, ulong appId, Account closer)
         {
-            var appResponse = await client.GetApplication(appId);
-            if (appResponse.Error.IsError)
-            {
-                Debug.LogError($"[CloseAuction] Algod GetApplication failed: {appResponse.Error.Message}");
-                return;
-            }
-
             var appGlobalState = await Util.GetAppGlobalState(client, appId);
 
-            TealValue value;
+            Algod.TealValue value;
             if (!appGlobalState.TryGetValue("nft_id", out value))
             {
                 Debug.LogError($"[CloseAuction] Unable to get nft_id from app global state");
                 return;
             }
-            ulong nftId = value.UintValue;
+            ulong nftId = value.Uint;
 
             Address? seller = GetAddressFromAppState(appGlobalState, "seller");
             Address? bidder = GetAddressFromAppState(appGlobalState, "bid_account");
 
-            var (txnParamsError, txnParams) = await client.GetSuggestedParams();
+            var (txnParamsError, txnParams) = await client.TransactionParams();
             if (txnParamsError.IsError)
             {
                 Debug.LogError($"[CloseAuction] Algod GetSuggestedParams error: {txnParamsError.Message}");
@@ -331,14 +300,14 @@ namespace AlgoSdk.Examples.AuctionDemo
 
             var signedDeleteTxn = closer.SignTxn(deleteTxn);
 
-            var (sendTxnError, txid) = await client.SendTransaction(signedDeleteTxn);
+            var (sendTxnError, txnResponse) = await client.SendTransaction(signedDeleteTxn);
             if (sendTxnError.IsError)
             {
                 Debug.LogError($"[CloseAuction] Algod SendTransaction error: {sendTxnError.Message}");
                 return;
             }
 
-            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txid);
+            var (pendingErr, pendingTxn) = await Util.WaitForTransaction(client, txnResponse.TxId);
             if (pendingErr.IsError)
             {
                 Debug.LogError($"[CloseAuction] Algod WaitForTransaction failed: {pendingErr.Message}");
@@ -346,12 +315,12 @@ namespace AlgoSdk.Examples.AuctionDemo
             }
         }
 
-        private static Address? GetAddressFromAppState(Dictionary<string, TealValue> globalAppState, string key)
+        private static Address? GetAddressFromAppState(Dictionary<string, Algod.TealValue> globalAppState, string key)
         {
             Address? address = null;
             if (globalAppState.ContainsKey(key))
             {
-                byte[] publicKeyBytes = globalAppState[key].Bytes.ToArray();
+                byte[] publicKeyBytes = System.Convert.FromBase64String(globalAppState[key].Bytes);
                 Ed25519.PublicKey publicKey = default;
                 publicKey.CopyFrom(publicKeyBytes, 0);
                 address = Address.FromPublicKey(publicKey);

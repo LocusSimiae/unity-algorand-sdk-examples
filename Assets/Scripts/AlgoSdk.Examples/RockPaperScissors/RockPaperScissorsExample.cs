@@ -31,7 +31,7 @@ namespace AlgoSdk.Examples.RockPaperScissors
             );
 
             Address appAddress = appId.GetAppAddress();
-            Debug.Log($"Done. The app ID is {appId} and the escrow account is {appAddress}");
+            Debug.Log($"Done. The app ID is {appId.Index} and the escrow account is {appAddress}");
 
             Debug.Log("Both Alice and Bob are opting in to the app.");
             await Optin(client, challenger, appId);
@@ -120,7 +120,7 @@ namespace AlgoSdk.Examples.RockPaperScissors
             return (AppIndex)pendingTxn.ApplicationIndex.Value;
         }
 
-        public static async UniTask<(byte[], byte[])> GetContracts(IAlgodClient client)
+        public static async UniTask<(byte[], byte[])> GetContracts(AlgodClient client)
         {
             string projectPath = Directory.GetCurrentDirectory();
             var approval = await Util.FullyCompileContract(client, Path.Combine(projectPath, @"Assets\Scripts\AlgoSdk.Examples\RockPaperScissors\python\compiled\approval.teal"));
